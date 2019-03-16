@@ -49,7 +49,5 @@ public class PermisosController {
 			return new ResponseEntity<>(e.getMessage(),HttpStatus.NO_CONTENT);
 		}
 	}
-    
-    
 }
 
