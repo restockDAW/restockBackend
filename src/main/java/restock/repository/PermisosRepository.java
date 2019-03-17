@@ -9,5 +9,6 @@ import restock.entities.Permisos;
 public interface PermisosRepository extends JpaRepository<Permisos, Integer> {
 	
 	public List<Permisos> findByRolId(Integer rolId);
+	
 
 }

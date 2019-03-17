@@ -17,7 +17,7 @@ public class PermisosBusiness {
 		return permisosRepository.findByRolId(rolId);
 	}
 	
-	public List<Permisos> getAll() {
+	public List<Permisos> getTotsElsPermisos() {
 		return permisosRepository.findAll();
 	}
 

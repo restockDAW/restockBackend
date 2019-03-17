@@ -3,6 +3,7 @@ package restock.controller;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,18 +29,18 @@ public class PermisosController {
     }
  
     
-	@RequestMapping(path = "/permis", method = RequestMethod.GET)
+	@RequestMapping(path = "/totsElsPermisos", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getTotsPermisos(final Rol rol) {
 		try {
 			final HttpHeaders httpHeaders = new HttpHeaders();
-			final List<Permisos> permisos = permisosBusiness.getAll();
+			final List<Permisos> permisos = permisosBusiness.getTotsElsPermisos();
 			return new ResponseEntity<>(permisos, httpHeaders, HttpStatus.OK);
 		}catch(final Exception e){	
 			return new ResponseEntity<>(e.getMessage(),HttpStatus.NO_CONTENT);
 		}
 	}
 	
-	@RequestMapping(path = "/permis/{rolId}", method = RequestMethod.GET)
+	@RequestMapping(path = "/permisPerRol/{rolId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getPermisosPerRol(@PathVariable final Integer rolId) {
 		try {
 			final HttpHeaders httpHeaders = new HttpHeaders();

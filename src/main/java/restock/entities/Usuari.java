@@ -33,6 +33,7 @@ public class Usuari implements java.io.Serializable {
 	private String nif;
 	private Date dataNaixement;
 	private Rol rol;
+	private String correu;
 	
 	
 	public Usuari() {
@@ -126,6 +127,16 @@ public class Usuari implements java.io.Serializable {
 	public void setRol(Rol rol) {
 		this.rol = rol;
 	}
+	
+	@Column(name = "correu", nullable = false)
+	public String getCorreu() {
+		return correu;
+	}
+
+	public void setCorreu(String correu) {
+		this.correu = correu;
+	}
+	
 	
 
 }
