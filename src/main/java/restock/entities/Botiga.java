@@ -84,7 +84,7 @@ public class Botiga implements java.io.Serializable {
 		this.usuari = usuari;
 	}
 	
-	@Column(name = "carrer", nullable = false)
+	@Column(name = "carrer", nullable = true)
 	public String getCarrer() {
 		return carrer;
 	}
@@ -93,7 +93,7 @@ public class Botiga implements java.io.Serializable {
 		this.carrer = carrer;
 	}
 
-	@Column(name = "numero", nullable = false)
+	@Column(name = "numero", nullable = true)
 	public String getNumero() {
 		return numero;
 	}
@@ -102,7 +102,7 @@ public class Botiga implements java.io.Serializable {
 		this.numero = numero;
 	}
 
-	@Column(name = "codiPostal", nullable = false)
+	@Column(name = "codiPostal", nullable = true)
 	public String getCodiPostal() {
 		return codiPostal;
 	}
@@ -111,7 +111,7 @@ public class Botiga implements java.io.Serializable {
 		this.codiPostal = codiPostal;
 	}
 
-	@Column(name = "poblacio", nullable = false)
+	@Column(name = "poblacio", nullable = true)
 	public String getPoblacio() {
 		return poblacio;
 	}
@@ -120,7 +120,7 @@ public class Botiga implements java.io.Serializable {
 		this.poblacio = poblacio;
 	}
 
-	@Column(name = "pais", nullable = false)
+	@Column(name = "pais", nullable = true)
 	public String getPais() {
 		return pais;
 	}

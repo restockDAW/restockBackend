@@ -6,9 +6,15 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -26,6 +32,7 @@ public class Usuari implements java.io.Serializable {
 	private String cognom2;
 	private String nif;
 	private Date dataNaixement;
+	private Rol rol;
 	
 	
 	public Usuari() {
@@ -65,7 +72,7 @@ public class Usuari implements java.io.Serializable {
 		this.password = password;
 	}
 	
-	@Column(name = "nom", nullable = false)
+	@Column(name = "nom", nullable = true)
 	public String getNom() {
 		return nom;
 	}
@@ -74,7 +81,7 @@ public class Usuari implements java.io.Serializable {
 		this.nom = nom;
 	}
 
-	@Column(name = "cognom1", nullable = false)
+	@Column(name = "cognom1", nullable = true)
 	public String getCognom1() {
 		return cognom1;
 	}
@@ -83,7 +90,7 @@ public class Usuari implements java.io.Serializable {
 		this.cognom1 = cognom1;
 	}
 
-	@Column(name = "cognom2", nullable = false)
+	@Column(name = "cognom2", nullable = true)
 	public String getCognom2() {
 		return cognom2;
 	}
@@ -92,7 +99,7 @@ public class Usuari implements java.io.Serializable {
 		this.cognom2 = cognom2;
 	}
 
-	@Column(name = "datanaixement")
+	@Column(name = "datanaixement", nullable = true)
 	public Date getDataNaixement() {
 		return dataNaixement;
 	}
@@ -100,7 +107,7 @@ public class Usuari implements java.io.Serializable {
 	public void setDataNaixement(final Date dataNaixement) {
 		this.dataNaixement = dataNaixement;
 	}
-	@Column(name = "nif")
+	@Column(name = "nif", nullable = false)
 	public String getNif() {
 		return nif;
 	}
@@ -109,6 +116,16 @@ public class Usuari implements java.io.Serializable {
 		this.nif = nif;
 	}
 
+	@Fetch(FetchMode.JOIN)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "rol_id", nullable = false)
+	public Rol getRol() {
+		return rol;
+	}
+
+	public void setRol(Rol rol) {
+		this.rol = rol;
+	}
 	
 
 }

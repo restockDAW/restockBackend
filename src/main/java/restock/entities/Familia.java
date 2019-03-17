@@ -49,7 +49,7 @@ public class Familia implements java.io.Serializable {
 		this.nomFamilia = nomFamilia;
 	}
 
-	@Column(name = "descripcio", nullable = false)
+	@Column(name = "descripcio", nullable = true)
 	public String getDescripcio() {
 		return descripcio;
 	}

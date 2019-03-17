@@ -57,7 +57,7 @@ public class SubFamilia implements java.io.Serializable {
 		this.nomSubFamilia = nomSubFamilia;
 	}
 
-	@Column(name = "descripcio", nullable = false)
+	@Column(name = "descripcio", nullable = true)
 	public String getDescripcio() {
 		return descripcio;
 	}

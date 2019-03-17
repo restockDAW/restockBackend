@@ -82,7 +82,7 @@ public class Comanda implements java.io.Serializable {
 		this.proveidor = proveidor;
 	}
 	
-	@Column(name = "dataRecepcio", nullable = false)
+	@Column(name = "dataRecepcio", nullable = true)
 	public Date getDataRecepcio() {
 		return dataRecepcio;
 	}
