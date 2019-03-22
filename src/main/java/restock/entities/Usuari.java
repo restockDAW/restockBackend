@@ -100,7 +100,7 @@ public class Usuari implements java.io.Serializable {
 		this.cognom2 = cognom2;
 	}
 
-	@Column(name = "datanaixement", nullable = true)
+	@Column(name = "data_naixement", nullable = true)
 	public Date getDataNaixement() {
 		return dataNaixement;
 	}
