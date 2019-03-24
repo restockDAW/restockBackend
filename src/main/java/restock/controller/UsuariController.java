@@ -7,11 +7,14 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import restock.entities.Permisos;
+import restock.entities.Rol;
 import restock.entities.Usuari;
 import restock.services.UsuariBusiness;
 
@@ -78,21 +81,20 @@ public class UsuariController {
 		}
 	};
 	
-	@RequestMapping(path = "/cercar", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> cercar(
-			@RequestBody final Usuari usuari) {
-
+	
+	@RequestMapping(path = "/cercar/{camp}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> getUsuaris(@PathVariable final String camp) {
 		try {
 			final HttpHeaders httpHeaders = new HttpHeaders();
-			final List<Usuari> listUsuaris = usuariBusiness.cercarUsuari(usuari);
-			if ((listUsuaris.size()!= 0)) {
+			final List<Usuari> listUsuaris = usuariBusiness.cercarUsuari(camp);
+			if ((listUsuaris.size()== 0)) {
 				return new ResponseEntity<>("No s'han trobat resultats", httpHeaders, HttpStatus.BAD_REQUEST);
 			} else {
 				return new ResponseEntity<>(listUsuaris, httpHeaders, HttpStatus.OK);
 			}
-		} catch (final Exception e) {
-			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}catch(final Exception e){	
+			return new ResponseEntity<>(e.getMessage(),HttpStatus.NO_CONTENT);
 		}
-	};
+	}
 }
 
