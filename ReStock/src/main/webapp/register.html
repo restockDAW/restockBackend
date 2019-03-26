@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Alta d'usuari</title>
+  <link rel="icon" href="assets/img/favicon.png" type="image/png"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/custom.css"/>
+  <link rel="stylesheet" href="assets/css/register.css"/>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.5/css/mdb.min.css" rel="stylesheet">
+  <link href="css/addons-pro/steppers.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+      <div class="card" style="max-width:600px; margin-top:7.5%;">
+        <a href="index.html" class="card-img-link">
+          <img src="assets/img/logo.png" class="card-img-top" alt="Logo ReStock">
+        </a>
+
+        <div class="card-body">
+          <ul class="stepper stepper-horizontal">
+          <li class="active" id="pas1">
+            <a href="#!" >
+              <span class="circle">1</span>
+              <span class="label">La teva organització</span>
+            </a>
+          </li>
+          <li id="pas2">
+            <a href="#!">
+              <span class="circle">2</span>
+              <span class="label">El teu usuari</span>
+            </a>
+          </li>
+        </ul>
+
+          <form method="post" class="needs-validation" id="form" novalidate>
+            <div id="organitzacio">
+              <div class="form-group half left">
+                <label for="nifOrganitzacio">NIF</label>
+                <input class="form-control" id="nifOrganitzacio"
+                placeholder="Introdueix el NIF de la teva organització" required>
+                <div class="invalid-feedback">
+                  Aquest valor és obligatori.
+                </div>
+              </div>
+              <div class="form-group half right">
+                <label for="nomOrganitzacio">Nom</label>
+                <input class="form-control" id="nomOrganitzacio"
+                placeholder="Introdueix el nom de la teva organització" required>
+                <div class="invalid-feedback">
+                  Aquest valor és obligatori.
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="carrer">Direcció</label>
+                <input class="form-control" id="carrer"
+                placeholder="Introdueix el carrer de la teva organització" required>
+                <div class="invalid-feedback">
+                  Aquest valor és obligatori.
+                </div>
+              </div>
+              <div class="form-group left half">
+                <label for="numero">Carrer nº</label>
+                <input class="form-control" id="numero"
+                placeholder="Introdueix el número de carrer" required>
+                <div class="invalid-feedback">
+                  Aquest valor és obligatori.
+                </div>
+              </div>
+              <div class="form-group right half">
+                <label for="codiPostal">Codi postal</label>
+                <input class="form-control" id="codiPostal"
+                placeholder="Introdueix el codi postal de la vostra població" required>
+                <div class="invalid-feedback">
+                  Aquest valor és obligatori.
+                </div>
+              </div>
+              <div class="form-group left half">
+                <label for="poblacio">Població</label>
+                <input class="form-control" id="poblacio"
+                placeholder="Introdueix la vostra població" required>
+                <div class="invalid-feedback">
+                  Aquest valor és obligatori.
+                </div>
+              </div>
+              <div class="form-group right half">
+                <label for="pais">País</label>
+                <input class="form-control" id="pais"
+                placeholder="Introdueix el vostre país" required>
+                <div class="invalid-feedback">
+                  Aquest valor és obligatori.
+                </div>
+              </div>
+              <button id="next" class="btn btn-primary register">Següent</button>
+            </div>
+
+            <div id="usuari">
+              <div class="form-group half left">
+                <label for="user">Nom d'usuari</label>
+                <input class="form-control" id="user"
+                placeholder="Introdueix el teu nom d'usuari" required>
+                <div class="invalid-feedback">
+                  Aquest valor és obligatori.
+                </div>
+              </div>
+              <div class="form-group half right">
+                <label for="nom">Nom</label>
+                <input class="form-control" id="nom"
+                placeholder="Introdueix el teu nom" required>
+                <div class="invalid-feedback">
+                  Aquest valor és obligatori.
+                </div>
+              </div>
+              <div class="form-group half left">
+                <label for="cognom1">Primer cognom</label>
+                <input class="form-control" id="cognom1"
+                placeholder="Introdueix el teu primer cognom" required>
+                <div class="invalid-feedback">
+                  Aquest valor és obligatori.
+                </div>
+              </div>
+              <div class="form-group half right">
+                <label for="cognom2">Segon cognom</label>
+                <input class="form-control" id="cognom2"
+                placeholder="Introdueix el teu segon cognom" required>
+                <div class="invalid-feedback">
+                  Aquest valor és obligatori.
+                </div>
+              </div>
+              <div class="form-group half left">
+                <label for="nifUsuari">NIF</label>
+                <input class="form-control" id="nifUsuari"
+                placeholder="Introdueix el teu NIF" required>
+                <div class="invalid-feedback">
+                  Aquest valor és obligatori.
+                </div>
+              </div>
+              <div class="form-group half right">
+                <label for="password">Data de naixement</label>
+                <input type="date" class="form-control" id="password"
+                placeholder="Introdueix la teva contrasenya" required>
+                <div class="invalid-feedback">
+                  Aquest valor és obligatori.
+                </div>
+              </div>
+              <div class="form-group half left">
+                <label for="password">Contrasenya</label>
+                <input type="password" class="form-control" id="password"
+                placeholder="Introdueix la teva contrasenya" required>
+                <div class="invalid-feedback">
+                  Aquest valor és obligatori.
+                </div>
+              </div>
+              <div class="form-group half right">
+                <label for="password_again">Repetir contrasenya</label>
+                <input type="password" class="form-control" id="password_again"
+                placeholder="Introdueix la teva contrasenya novament" required>
+                <div class="invalid-feedback">
+                  Aquest valor és obligatori.
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Correu electrònic</label>
+                <input type="email" class="form-control" id="email"
+                placeholder="nom@exemple.com" required>
+                <div class="invalid-feedback">
+                  Comprova que has introduït el correu electrònic en el format correcte.
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary register">Donar-me d'alta</button>
+            </div>
+          </form>
+        </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="assets/js/custom.js"></script>
+</body>
+</html>

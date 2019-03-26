@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html data-ng-app="AdminDashboard">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Taullel</title>
+    <!-- Favicon -->
+  <link rel="icon" href="../assets/img/favicon.png" type="image/png"/>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.5/css/mdb.min.css" rel="stylesheet">
+    
+    <!-- Angular UI Notification CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-notification/0.3.6/angular-ui-notification.min.css" integrity="sha256-23ZF4/GF4cZirLvoNb5Vc30koSrP82P17OXgn+13M4w=" crossorigin="anonymous" />
+    
+  <link rel="stylesheet" href="../assets/restock.css"/>
+    
+</head>
+<body data-ng-controller="PageController">
+    
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar" class="animated slideInLeft">
+            <div class="sidebar-header">
+                <img class="img-fluid" src="../assets/img/logo.png" />
+                <strong>RS</strong>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li data-ng-repeat="page in Pages">
+                    <a ng-href="{{page.url}}">
+                        <i data-ng-class="page.icon"></i>
+                        {{page.name}}
+                    </a>
+                </li>
+                <!-- temporal comment - es cambiarà, un cop estigui fet el menu amb jerarquia, si es que es dona el cas.
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-users"></i>
+                        Usuaris
+                    </a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#"><i class="fas fa-user-tie"></i>Responsables</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-user-tag"></i>Proveïdors</a>
+                        </li>
+                    </ul>
+                </li>
+-->
+            </ul>
+        </nav>
+        <!--/.Sidebar -->
+        
+        <!-- Page Content  -->
+        <div id="content">
+
+            <!--Navbar-->
+            <nav class="navbar navbar-expand-lg animated fadeIn">
+
+                        <a id="menuCollapse" class="btn btn-smaller blue-gradient">
+                            <i class="fas fa-align-left"></i>
+                        </a>
+
+              <!-- Navbar search -->
+                <form class="form-inline">
+                  <div class="md-form my-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Buscar..." aria-label="Buscar">
+                  </div>
+                </form>
+
+              <!-- Collapse button -->
+                        <button class="btn btn-dark btn-smaller d-inline-block d-lg-none animated slideInRight" type="button" data-toggle="collapse" data-target="#usermenu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fas fa-align-justify"></i>
+                        </button>
+
+              <!-- Collapsible content -->
+              <div class="collapse navbar-collapse animated fadeIn" id="usermenu">
+
+                            <ul class="nav navbar-nav ml-auto nav-flex-icons">
+                                <span class="navbar-text navbar-username">
+                                  Administrador
+                                </span>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#!faq"><i class="far fa-question-circle"></i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#!organization"><i class="fas fa-sitemap"></i></a>
+                                </li>
+                                <li class="nav-item"><a href="#!profile"><img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="avatar rounded-circle z-depth-0 mx-2" alt="avatar image"></a>
+                                </li>
+                            </ul>
+
+              </div>
+              <!-- Collapsible content -->
+
+            </nav>
+            <!--/.Navbar-->                
+               
+            
+            <!-- Inner Content Container -->
+            <div class="fluid-container" data-ng-view>   
+            </div>            
+            <!-- /Inner Content Container -->
+            
+     
+        </div>
+        
+    </div>
+    
+    
+    
+    <!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.5/js/mdb.min.js"></script>
+    
+    
+    <!-- MomentJs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    
+    <!-- AngularJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js" integrity="sha256-23hi0Ag650tclABdGCdMNSjxvikytyQ44vYGo9HyOrU=" crossorigin="anonymous"></script>
+    <!-- Angular Routing -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-route.js"></script>
+    <!-- UI Notification -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-notification/0.3.6/angular-ui-notification.min.js" integrity="sha256-23jbRBh9KqF32Iw+09EJbZbeNazg4xWna5dwlWQou6Y=" crossorigin="anonymous"></script>
+    
+    
+    <!-- App Controllers and services -->
+    <script src="admin.js"></script>
+    <script src="admin.service.js"></script>
+    <script src="admin.controller.js"></script>
+    
+    <!-- Views Controllers and services -->
+    <script src="dashboard/dashboard.service.js"></script>
+    <script src="dashboard/dashboard.controller.js"></script>
+    
+    <script src="inventari/inventari.service.js"></script>
+    <script src="inventari/inventari.controller.js"></script>
+    
+    <script src="comandes/comandes.service.js"></script>
+    <script src="comandes/comandes.controller.js"></script>
+    
+    <script src="botigues/botigues.service.js"></script>
+    <script src="botigues/botigues.controller.js"></script>
+    
+    <script src="productes/productes.service.js"></script>
+    <script src="productes/productes.controller.js"></script>
+    
+    <script src="responsables/responsables.service.js"></script>
+    <script src="responsables/responsables.controller.js"></script>
+    
+    <script src="proveidors/proveidors.service.js"></script>
+    <script src="proveidors/proveidors.controller.js"></script>
+    
+    <script src="informes/informes.service.js"></script>
+    <script src="informes/informes.controller.js"></script>
+    
+    <script src="organization/organization.service.js"></script>
+    <script src="organization/organization.controller.js"></script>
+    
+    <script src="profile/profile.service.js"></script>
+    <script src="profile/profile.controller.js"></script>
+    
+</body>
+</html>
