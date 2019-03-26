@@ -1,0 +1,22 @@
+.card-body{
+  padding-top: 0;
+}
+
+.stepper{
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
+.card{
+  max-width: 1000px !important;
+  margin-top: 5% !important;
+}
+
+#usuari{
+  display:none;
+}
+
+#next{
+  margin-right: 50px;
+}
