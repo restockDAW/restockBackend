@@ -2,6 +2,7 @@ package restock.entities;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -19,8 +20,6 @@ import org.hibernate.annotations.FetchMode;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 
 
 @Entity
@@ -107,8 +106,7 @@ public class Usuari implements java.io.Serializable {
 	}
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", timezone = "Europe/Madrid")
-	@Column(name = "data_naixement", length = 23, nullable = true)
-	@JsonSerialize(using = LocalDateTimeSerializer.class)
+	@Column(name = "data_naixement", nullable = true)
 	public Date getDataNaixement() {
 		return dataNaixement;
 	}
