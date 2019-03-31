@@ -24,6 +24,11 @@ public class OrganitzacioBusiness {
 		if(userExistent==null && organitzacioExistent == null) {
 			usuariRepository.save(organitzacio.getUsuari());
 			organitzacioRepository.save(organitzacio);
+			
+			Organitzacio orgNova = organitzacioRepository.findByNif(organitzacio.getNif());
+			Usuari userNou = usuariRepository.findByUser(organitzacio.getUsuari().getUser());
+			userNou.setOrganitzacio(orgNova);
+			usuariRepository.save(userNou);
 			return organitzacio;
 		}
 		//La organització no existex pero ja existeix un usuari administrador previ. Es dona d'alta organitzacio

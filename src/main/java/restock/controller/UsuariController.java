@@ -108,21 +108,19 @@ public class UsuariController {
 		}
 	};
 	
-	@RequestMapping(path = "/cercar", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> cercar(
-			@RequestBody final Usuari usuari) {
-
+	@RequestMapping(path = "/cercar/{camp}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> getUsuaris(@PathVariable final String camp) {
 		try {
 			final HttpHeaders httpHeaders = new HttpHeaders();
-			final List<Usuari> listUsuaris = usuariBusiness.cercarUsuari(usuari);
-			if ((listUsuaris.size()!= 0)) {
+			final List<Usuari> listUsuaris = usuariBusiness.cercarUsuari(camp);
+			if ((listUsuaris.size()== 0)) {
 				return new ResponseEntity<>("No s'han trobat resultats", httpHeaders, HttpStatus.BAD_REQUEST);
 			} else {
 				return new ResponseEntity<>(listUsuaris, httpHeaders, HttpStatus.OK);
 			}
-		} catch (final Exception e) {
-			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}catch(final Exception e){	
+			return new ResponseEntity<>(e.getMessage(),HttpStatus.NO_CONTENT);
 		}
-	};
+	}
 }
 

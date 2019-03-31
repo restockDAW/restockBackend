@@ -84,9 +84,9 @@ public class UsuariBusiness {
 		}
 	}
 	
-	public List<Usuari> cercarUsuari(final Usuari usuari) {
+	public List<Usuari> cercarUsuari(final String camp) {
 		List<Usuari> llistaUsuaris = null;
-		//List<Usuari> llistaUsuaris = usuariRepository.findByUser(usuari);
+		llistaUsuaris = usuariRepository.cercaUsuari(camp);
 		
 		if(llistaUsuaris!=null) {
 			

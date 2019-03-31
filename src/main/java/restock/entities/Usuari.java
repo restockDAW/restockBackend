@@ -16,7 +16,11 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 
 
 @Entity
@@ -32,6 +36,8 @@ public class Usuari implements java.io.Serializable {
 	private String cognom2;
 	private String nif;
 	private Date dataNaixement;
+	@JsonIgnore
+	private Organitzacio organitzacio;
 	private Rol rol;
 	private String correu;
 	
@@ -99,8 +105,10 @@ public class Usuari implements java.io.Serializable {
 	public void setCognom2(final String cognom2) {
 		this.cognom2 = cognom2;
 	}
-
-	@Column(name = "data_naixement", nullable = true)
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", timezone = "Europe/Madrid")
+	@Column(name = "data_naixement", length = 23, nullable = true)
+	@JsonSerialize(using = LocalDateTimeSerializer.class)
 	public Date getDataNaixement() {
 		return dataNaixement;
 	}
@@ -126,6 +134,17 @@ public class Usuari implements java.io.Serializable {
 
 	public void setRol(Rol rol) {
 		this.rol = rol;
+	}
+	
+	@Fetch(FetchMode.JOIN)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "organitzacio_id")
+	public Organitzacio getOrganitzacio() {
+		return organitzacio;
+	}
+
+	public void setOrganitzacio(Organitzacio organitzacio) {
+		this.organitzacio = organitzacio;
 	}
 	
 	@Column(name = "correu", nullable = false)
