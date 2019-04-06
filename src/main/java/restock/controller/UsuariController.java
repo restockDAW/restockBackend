@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 
+import restock.entities.Organitzacio;
 import restock.entities.Permisos;
 import restock.entities.Rol;
 import restock.entities.Usuari;
@@ -41,13 +42,14 @@ public class UsuariController {
 		}
 	}
 	
+
 	@RequestMapping(path = "/{userId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getUsuariPerId(@PathVariable final Integer userId) {
 		try {
 			final HttpHeaders httpHeaders = new HttpHeaders();
 			final Usuari usuariRetorn = usuariBusiness.getUserById(userId);
 			if ((usuariRetorn == null)) {
-				return new ResponseEntity<>("No hi ha tal usuari.", httpHeaders, HttpStatus.BAD_REQUEST);
+				return new ResponseEntity<>("Aquest usuari no existeix", httpHeaders, HttpStatus.BAD_REQUEST);
 			} else {
 				return new ResponseEntity<>(usuariRetorn, httpHeaders, HttpStatus.OK);
 			}
@@ -55,7 +57,6 @@ public class UsuariController {
 			return new ResponseEntity<>(e.getMessage(),HttpStatus.NO_CONTENT);
 		}
 	}
-	
     
 	@RequestMapping(path = "/alta", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> alta(

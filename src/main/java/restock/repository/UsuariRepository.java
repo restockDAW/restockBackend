@@ -18,7 +18,11 @@ public interface UsuariRepository extends JpaRepository<Usuari, Integer> {
 	
 	public Usuari findByUserAndPassword(String user, String password);
 	
+	public Usuari findByUserAndNifAndOrganitzacioId(String user, String nif, Integer organitacioId);
+
 	public Usuari findByUserAndRol(String user, Rol rol);
+	
+	public List<Usuari> findByOrganitzacioId(Integer OrgId);
 
 	@Query(value = " " +
 			"SELECT usu "
@@ -30,5 +34,13 @@ public interface UsuariRepository extends JpaRepository<Usuari, Integer> {
 			+ "usu.rol.id = 2 "
 			+ "ORDER BY usu.nom ASC")
 	public List<Usuari> cercaUsuari(@Param("camp") String camp);
+	
+	@Query(value = " " +
+			"SELECT usu "
+			+ "FROM Usuari usu WHERE "
+			+ "(usu.user =:user AND "
+			+ "usu.organitzacio.id =:organitzacioId )")
+	public Usuari findByUserAndOrganitzacioId(@Param("user") String user, 
+			@Param("organitzacioId") Integer organitzacioId);
 
 }
