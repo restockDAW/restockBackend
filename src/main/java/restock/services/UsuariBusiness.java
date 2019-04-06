@@ -30,6 +30,11 @@ public class UsuariBusiness {
 		return Usuaris;
 		}
 	
+	public List<Usuari> getUsuarisPerOrganitzacio(Integer orgId) {
+		List<Usuari> usuaris = usuariRepository.findByOrganitzacioId(orgId);
+		return usuaris;
+		}
+	
 	
 	public Usuari getUserById(final Integer usuariId) {
 		Usuari userExistent = usuariRepository.getOne(usuariId);
