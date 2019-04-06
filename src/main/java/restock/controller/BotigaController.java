@@ -14,10 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 
 import restock.entities.Botiga;
-import restock.entities.Organitzacio;
-import restock.entities.Usuari;
 import restock.services.BotigaBusiness;
-import restock.services.OrganitzacioBusiness;
 
 
 @RestController
@@ -76,6 +73,24 @@ public class BotigaController {
 				return new ResponseEntity<>("No s’ha pogut modificar la botiga", httpHeaders, HttpStatus.BAD_REQUEST);
 			} else {
 				return new ResponseEntity<>("Botiga modificada correctament", httpHeaders, HttpStatus.OK);
+			}
+		} catch (final Exception e) {
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+	};
+	
+	
+	@RequestMapping(path = "/modificacioResponsable", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> modificacioResponsable(
+			@RequestBody final Botiga botiga) {
+
+		try {
+			final HttpHeaders httpHeaders = new HttpHeaders();
+			final Botiga botigaRetorn = botigaBusiness.modificaResponsableBotiga(botiga);
+			if ((botigaRetorn == null)) {
+				return new ResponseEntity<>("No s’ha pogut modificar el responsable la botiga", httpHeaders, HttpStatus.BAD_REQUEST);
+			} else {
+				return new ResponseEntity<>("Responsable modificat correctament", httpHeaders, HttpStatus.OK);
 			}
 		} catch (final Exception e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);

@@ -2,7 +2,6 @@ package restock.entities;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;

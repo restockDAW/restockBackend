@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import restock.entities.Botiga;
-import restock.entities.Organitzacio;
 import restock.entities.Usuari;
 import restock.repository.BotigaRepository;
 import restock.repository.UsuariRepository;
@@ -50,7 +49,7 @@ public class BotigaBusiness {
 			botigaRepository.save(botiga);
 			return botiga;
 		}
-		//La botiga ja existeix pero té un altre administrador.
+		//La botiga ja existeix.
 		else if (botigaExistent != null) {
 			return null;
 		}else return null;	
@@ -81,12 +80,41 @@ public class BotigaBusiness {
 			botigaExistent.setOrganitzacio(botiga.getOrganitzacio());
 			botigaExistent.setPais(botiga.getPais());
 			botigaExistent.setPoblacio(botiga.getPoblacio());
-			//botigaExistent.setUsuari(usuari);
 			botigaRepository.save(botigaExistent);
 			return botiga;
 		}else {
 			return null;
 		}
+	}
+	
+	
+	public Botiga modificaResponsableBotiga(final Botiga botiga) {
+		Botiga botigaExistent= botigaRepository.findById(botiga.getId());
+		Usuari userExistent = null;
+		
+		if(botiga.getUsuari().getId()!=null) {
+			userExistent = usuariRepository.findById(botiga.getUsuari().getId());
+		}else {
+			userExistent = usuariRepository.findByUserAndOrganitzacioId(botiga.getUsuari().getUser(), 
+					botiga.getOrganitzacio().getId());
+		}
+		
+		//La botiga existeix i s'asigna usuari nou.
+		if(userExistent==null && botigaExistent != null) {
+			botiga.getUsuari().setOrganitzacio(botiga.getOrganitzacio());
+			usuariRepository.save(botiga.getUsuari());
+
+			Usuari userNou = usuariRepository.findByUserAndOrganitzacioId(botiga.getUsuari().getUser(), botiga.getOrganitzacio().getId());
+			botigaExistent.setUsuari(userNou);
+			botigaRepository.save(botigaExistent);
+			return botiga;
+		}
+		//La botiga existex i s'asigna usuari existent
+		else if (userExistent!=null && botigaExistent != null) {
+			botigaExistent.setUsuari(userExistent);
+			botigaRepository.save(botigaExistent);
+			return botiga;
+		}else return null;	
 	}
 	
 	public List<Botiga> getBotiguesPerOrganitzacio(Integer orgId) {

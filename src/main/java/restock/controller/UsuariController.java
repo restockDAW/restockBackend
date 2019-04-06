@@ -14,9 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 
-import restock.entities.Organitzacio;
-import restock.entities.Permisos;
-import restock.entities.Rol;
 import restock.entities.Usuari;
 import restock.services.UsuariBusiness;
 
