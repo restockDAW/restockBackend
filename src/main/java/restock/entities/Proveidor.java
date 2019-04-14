@@ -25,13 +25,13 @@ public class Proveidor implements java.io.Serializable {
 	private Integer id;
 	private String nif;
 	private String nom;
-	private Usuari usuari;
 	private String carrer;
 	private String numero;
 	private String codiPostal;
 	private String poblacio;
 	private String pais;
 	private Integer plasEntrega;
+	private Organitzacio organitzacio;
 	
 	
 	public Proveidor() {
@@ -71,17 +71,6 @@ public class Proveidor implements java.io.Serializable {
 		this.nom = nom;
 	}
 
-	@Fetch(FetchMode.JOIN)
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "usuari_id", nullable = false)
-	public Usuari getUsuari() {
-		return usuari;
-	}
-
-	public void setUsuari (Usuari usuari) {
-		this.usuari = usuari;
-	}
-	
 	@Column(name = "carrer", nullable = true)
 	public String getCarrer() {
 		return carrer;
@@ -136,5 +125,17 @@ public class Proveidor implements java.io.Serializable {
 	public void setPlasEntrega(Integer plasEntrega) {
 		this.plasEntrega = plasEntrega;
 	}
+	
+	@Fetch(FetchMode.JOIN)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "organitzacio_id")
+	public Organitzacio getOrganitzacio() {
+		return organitzacio;
+	}
 
+	public void setOrganitzacio(Organitzacio organitzacio) {
+		this.organitzacio = organitzacio;
+	}
+
+	
 }

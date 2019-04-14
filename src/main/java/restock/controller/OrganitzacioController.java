@@ -17,9 +17,11 @@ import org.springframework.http.HttpHeaders;
 
 import restock.entities.Botiga;
 import restock.entities.Organitzacio;
+import restock.entities.Proveidor;
 import restock.entities.Usuari;
 import restock.services.BotigaBusiness;
 import restock.services.OrganitzacioBusiness;
+import restock.services.ProveidorBusiness;
 import restock.services.UsuariBusiness;
 
 
@@ -32,6 +34,9 @@ public class OrganitzacioController {
     
     @Autowired
     private BotigaBusiness botigaBusiness;
+    
+    @Autowired
+    private ProveidorBusiness proveidorBusiness;
     
     @Autowired
     private UsuariBusiness usuariBusiness;
@@ -81,6 +86,21 @@ public class OrganitzacioController {
 				return new ResponseEntity<>("Aquest organització no té botigues", httpHeaders, HttpStatus.BAD_REQUEST);
 			} else {
 				return new ResponseEntity<>(botigaList, httpHeaders, HttpStatus.OK);
+			}
+		}catch(final Exception e){	
+			return new ResponseEntity<>(e.getMessage(),HttpStatus.NO_CONTENT);
+		}
+	}
+	
+	@RequestMapping(path = "/proveidors/{orgId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> getProveidorsPerOrganitzacio(@PathVariable final Integer orgId) {
+		try {
+			final HttpHeaders httpHeaders = new HttpHeaders();
+			final List<Proveidor> proveidorList = proveidorBusiness.getProveidorsPerOrganitzacio(orgId);
+			if ((proveidorList.size() == 0)) {
+				return new ResponseEntity<>("Aquest organització no té proveïdors", httpHeaders, HttpStatus.BAD_REQUEST);
+			} else {
+				return new ResponseEntity<>(proveidorList, httpHeaders, HttpStatus.OK);
 			}
 		}catch(final Exception e){	
 			return new ResponseEntity<>(e.getMessage(),HttpStatus.NO_CONTENT);
