@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class SubFamilia implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer id;
-	private String nomSubFamilia;
+	private String nomSubfamilia;
 	private String descripcio;
 	private Familia familia;
 	
@@ -48,13 +48,13 @@ public class SubFamilia implements java.io.Serializable {
 		this.id = id;
 	}
 	
-	@Column(name = "nomSubFamilia", nullable = false)
-	public String getNomSubFamilia() {
-		return nomSubFamilia;
+	@Column(name = "nomSubfamilia", nullable = false)
+	public String getNomSubfamilia() {
+		return nomSubfamilia;
 	}
 
-	public void setNomSubFamilia(final String nomSubFamilia) {
-		this.nomSubFamilia = nomSubFamilia;
+	public void setNomSubfamilia(final String nomSubfamilia) {
+		this.nomSubfamilia = nomSubfamilia;
 	}
 
 	@Column(name = "descripcio", nullable = true)
