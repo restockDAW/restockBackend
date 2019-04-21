@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import restock.dto.Cercador;
 import restock.entities.Proveidor;
 import restock.repository.ProveidorRepository;
 
@@ -67,4 +68,20 @@ public class ProveidorBusiness {
 		List<Proveidor> proveidors = proveidorRepository.findByOrganitzacioId(orgId);
 		return proveidors;
 		}
+	
+	
+	
+	public List<Proveidor> cercarProveidor(final Cercador cercadorProveidor) {
+		List<Proveidor> llistaProveidors = null;
+		String camp = cercadorProveidor.getCamp();
+		Integer orgId = cercadorProveidor.getOrgId();
+		llistaProveidors = proveidorRepository.cercaProveidor(camp, orgId );
+		
+		if(llistaProveidors!=null) {
+			
+			return llistaProveidors;
+		}else {
+			return null;
+		}
+	}
 }

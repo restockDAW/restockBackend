@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 
+import restock.dto.Cercador;
 import restock.entities.Botiga;
 import restock.services.BotigaBusiness;
 
@@ -42,7 +44,7 @@ public class BotigaController {
 		} catch (final Exception e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-	};
+	}
 	
 	
 	@RequestMapping(path = "/baixa", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -60,7 +62,7 @@ public class BotigaController {
 		} catch (final Exception e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-	};
+	}
 	
 	@RequestMapping(path = "/modificacio", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> modificacio(
@@ -77,7 +79,7 @@ public class BotigaController {
 		} catch (final Exception e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-	};
+	}
 	
 	
 	@RequestMapping(path = "/modificacioResponsable", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -95,6 +97,25 @@ public class BotigaController {
 		} catch (final Exception e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-	};
+	}
+	
+	
+	@RequestMapping(path = "/cercar", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> getBotigues(
+			@RequestBody final Cercador cercadorBotiga) {
+
+		try {
+			final HttpHeaders httpHeaders = new HttpHeaders();
+			final List<Botiga> listBotigues = botigaBusiness.cercarBotiga(cercadorBotiga);
+			if ((listBotigues.size()== 0)) {
+				return new ResponseEntity<>("No s'han trobat resultats", httpHeaders, HttpStatus.BAD_REQUEST);
+			} else {
+				return new ResponseEntity<>(listBotigues, httpHeaders, HttpStatus.OK);
+			}
+		} catch (final Exception e) {
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+	}
+	
 }
 

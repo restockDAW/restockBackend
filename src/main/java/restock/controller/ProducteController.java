@@ -15,6 +15,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 
+import restock.dto.Cercador;
 import restock.entities.Familia;
 import restock.entities.Producte;
 import restock.entities.SubFamilia;
@@ -83,7 +84,7 @@ public class ProducteController {
 		} catch (final Exception e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-	};
+	}
 	
 	@RequestMapping(path = "/families", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getFamilies() {
@@ -112,6 +113,23 @@ public class ProducteController {
 			}
 		}catch(final Exception e){	
 			return new ResponseEntity<>(e.getMessage(),HttpStatus.NO_CONTENT);
+		}
+	}
+	
+	@RequestMapping(path = "/cercar", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> getProductes(
+			@RequestBody final Cercador cercadorProductes) {
+
+		try {
+			final HttpHeaders httpHeaders = new HttpHeaders();
+			final List<Producte> listProducte = producteBusiness.cercarProducte(cercadorProductes);
+			if ((listProducte.size()== 0)) {
+				return new ResponseEntity<>("No s'han trobat resultats", httpHeaders, HttpStatus.BAD_REQUEST);
+			} else {
+				return new ResponseEntity<>(listProducte, httpHeaders, HttpStatus.OK);
+			}
+		} catch (final Exception e) {
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
 }

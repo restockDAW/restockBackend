@@ -9,8 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+
+import restock.dto.Cercador;
 import restock.entities.Proveidor;
 import restock.services.ProveidorBusiness;
 
@@ -60,7 +64,7 @@ public class ProveidorController {
 		} catch (final Exception e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-	};
+	}
 	
 	@RequestMapping(path = "/modificacio", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> modificacio(
@@ -77,6 +81,24 @@ public class ProveidorController {
 		} catch (final Exception e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-	};
+	}
+	
+	
+	@RequestMapping(path = "/cercar", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> getProveidros(
+			@RequestBody final Cercador cercadorProveidor) {
+
+		try {
+			final HttpHeaders httpHeaders = new HttpHeaders();
+			final List<Proveidor> listProveidor = proveidorBusiness.cercarProveidor(cercadorProveidor);
+			if ((listProveidor.size()== 0)) {
+				return new ResponseEntity<>("No s'han trobat resultats", httpHeaders, HttpStatus.BAD_REQUEST);
+			} else {
+				return new ResponseEntity<>(listProveidor, httpHeaders, HttpStatus.OK);
+			}
+		} catch (final Exception e) {
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+	}
 }
 

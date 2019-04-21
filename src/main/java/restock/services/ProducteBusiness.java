@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import restock.dto.Cercador;
 import restock.entities.Familia;
 import restock.entities.Producte;
 import restock.entities.SubFamilia;
@@ -83,6 +84,20 @@ public class ProducteBusiness {
 	public List<SubFamilia> getSubfamiliaPerFamilia(Integer famId) {
 		List<SubFamilia> subfamilies = subfamiliaRepository.findByFamiliaId(famId);
 		return subfamilies;
+	}
+	
+	public List<Producte> cercarProducte(final Cercador cercadorProducte) {
+		List<Producte> llistaProductes = null;
+		String camp = cercadorProducte.getCamp();
+		Integer orgId = cercadorProducte.getOrgId();
+		llistaProductes = producteRepository.cercaProducte(camp, orgId );
+		
+		if(llistaProductes!=null) {
+			
+			return llistaProductes;
+		}else {
+			return null;
+		}
 	}
 	
 }

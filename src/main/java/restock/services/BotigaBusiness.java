@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import restock.dto.Cercador;
 import restock.entities.Botiga;
 import restock.entities.Usuari;
 import restock.repository.BotigaRepository;
@@ -121,5 +122,19 @@ public class BotigaBusiness {
 		List<Botiga> botigues = botigaRepository.findByOrganitzacioId(orgId);
 		return botigues;
 		}
+	
+	public List<Botiga> cercarBotiga(final Cercador cercadorBotiga) {
+		List<Botiga> llistaBotigues = null;
+		String camp = cercadorBotiga.getCamp();
+		Integer orgId = cercadorBotiga.getOrgId();
+		llistaBotigues = botigaRepository.cercaBotiga(camp, orgId );
+		
+		if(llistaBotigues!=null) {
+			
+			return llistaBotigues;
+		}else {
+			return null;
+		}
+	}
 	
 }
