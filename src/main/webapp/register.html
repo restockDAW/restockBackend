@@ -40,9 +40,10 @@
               <div class="form-group half left">
                 <label for="nifOrganitzacio">NIF</label>
                 <input class="form-control" id="nifOrganitzacio"
-                placeholder="Introdueix el NIF de la teva organització" required>
+                placeholder="Introdueix el NIF de la teva organització" required
+                pattern="^[0-9]{7}[A-Z]$">
                 <div class="invalid-feedback">
-                  Aquest valor és obligatori.
+                  Introdueix el NIF de la teva organització en el format correcte.
                 </div>
               </div>
               <div class="form-group half right">
@@ -64,17 +65,19 @@
               <div class="form-group left half">
                 <label for="numero">Carrer nº</label>
                 <input class="form-control" id="numero"
-                placeholder="Introdueix el número de carrer" required>
+                placeholder="Introdueix el número de carrer" required
+                pattern="^[0-9]{1,}$">
                 <div class="invalid-feedback">
-                  Aquest valor és obligatori.
+                  Aquest valor és obligatori i ha de ser un número.
                 </div>
               </div>
               <div class="form-group right half">
                 <label for="codiPostal">Codi postal</label>
                 <input class="form-control" id="codiPostal"
-                placeholder="Introdueix el codi postal de la vostra població" required>
+                placeholder="Introdueix el codi postal de la vostra població" required
+                pattern="^[0-9]{5}$">
                 <div class="invalid-feedback">
-                  Aquest valor és obligatori.
+                  Introdueix el codi postal en el format correcte.
                 </div>
               </div>
               <div class="form-group left half">
@@ -132,9 +135,10 @@
               <div class="form-group half left">
                 <label for="nifUsuari">NIF</label>
                 <input class="form-control" id="nifUsuari"
-                placeholder="Introdueix el teu NIF" required>
+                placeholder="Introdueix el teu NIF" required
+                pattern="^[0-9]{8}[A-Z]$">
                 <div class="invalid-feedback">
-                  Aquest valor és obligatori.
+                  Introdueix el teu NIF en el format correcte.
                 </div>
               </div>
               <div class="form-group half right">
@@ -173,6 +177,11 @@
             </div>
           </form>
         </div>
+      </div>
+      <div id="menu">
+        <a href="index.html" style="float:left;">Tornar a la pàgina d'inici</a>
+        <a href="login.html" style="float:right;">Ja tens un compte?</a>
+      </div>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

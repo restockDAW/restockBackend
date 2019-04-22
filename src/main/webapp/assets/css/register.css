@@ -9,7 +9,7 @@
 }
 
 .card{
-  max-width: 1000px !important;
+  max-width: 950px !important;
   margin-top: 5% !important;
 }
 
@@ -19,4 +19,8 @@
 
 #next{
   margin-right: 50px;
+}
+
+#menu{
+  max-width: 900px;
 }

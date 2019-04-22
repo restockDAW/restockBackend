@@ -1,42 +1,178 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Autenticació</title>
   <link rel="icon" href="assets/img/favicon.png" type="image/png"/>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.5/css/mdb.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/custom.css"/>
+  <title>ReStock - Gestió efectiva d'stocks</title>
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="assets/css/landing-page.css" rel="stylesheet">
 </head>
+
 <body>
-  <div class="container">
-      <div class="card">
-        <a href="index.html" class="card-img-link">
-          <img src="assets/img/logo.png" class="card-img-top" alt="Logo ReStock">
-        </a>
-        <div class="card-body">
-          <p class="card-text">
-            Benvingut al portal web de la plataforma de gestió
-            d'estocs ReStock. És necessària una autenticació per accedir a la
-            plataforma.
-          </p>
-          <p class="card-text">
-            Si és el primer cop que accedeixes a aquest portal serà necessari
-            que et donis d'alta.
-          </p>
-          <hr>
-          <a type="button" class="btn btn-primary btn-lg" href="login.html">Accedir</a>
-          <a type="button" class="btn btn-primary btn-lg" href="register.html">Donar-me d'alta</a>
+  <nav class="navbar navbar-light bg-light static-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" width="250px"/></a>
+      <div id="nav-btn">
+        <a class="btn btn-primary" href="login.html">Iniciar sessió</a>
+        <a class="btn btn-primary" href="register.html">Registre</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="masthead text-white text-center">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-9 mx-auto">
+          <h1 class="mb-5">Gestiona els inventaris de les teves botigues de manera ràpida i efectiva</h1>
         </div>
-  </div>
+      </div>
+    </div>
+  </header>
 
+  <section class="features-icons bg-light text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i class="icon-screen-desktop m-auto text-primary"></i>
+            </div>
+            <h3>Interfície adaptada</h3>
+            <p class="lead mb-0">Interfície preparada per un
+              funcionamient eficient i agradable pels usuaris</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i class="icon-layers m-auto text-primary"></i>
+            </div>
+            <h3>Escalabilitat</h3>
+            <p class="lead mb-0">ReStock està dissenyat per permetre qualsevol
+            tipus d'escalabilitat</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i class="icon-check m-auto text-primary"></i>
+            </div>
+            <h3>Facilitat d'ús</h3>
+            <p class="lead mb-0">Plataforma preparada per a ser utilitzada per
+            usuaris de qualsevol nivell</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <section class="showcase">
+    <div class="container-fluid p-0">
+      <div class="row no-gutters">
 
+        <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/img/bg-showcase-1.png');"></div>
+        <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+          <h2>Control total</h2>
+          <p class="lead mb-0">Gràcies a totes les opcions que incorpora el menú d'administració de ReStock podràs tenir control total sobre totes
+          les dades relacionades amb les botigues de la teva organització</p>
+        </div>
+      </div>
+      <div class="row no-gutters">
+        <div class="col-lg-6 text-white showcase-img" style="background-image: url('assets/img/bg-showcase-2.jpg');"></div>
+        <div class="col-lg-6 my-auto showcase-text">
+          <h2>Treball en equip</h2>
+          <p class="lead mb-0">ReStock està preparat per permetre l'accés a usuaris de tota mena, proporcionant permisos 
+          diferents segons cada tipus de rol d'usuari</p>
+        </div>
+      </div>
+      <div class="row no-gutters">
+        <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/img/bg-showcase-3.jpg');"></div>
+        <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+          <h2>Paga només si ho necessites</h2>
+          <p class="lead mb-0">ReStock és completament gratuït per petits negocis i encara que la teva organització sigui de gran embergadura només hauràs de pagar un preu ajustat segons les teves necessitats i nombre d'usuaris</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <section class="call-to-action text-white text-center" id="contacte">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-9 mx-auto">
+          <h2 class="mb-4">Necessites més informació?</h2>
+        </div>
+        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+          <form>
+            <div class="form-row">
+              <div class="col-12 col-md-9 mb-2 mb-md-0">
+                <input type="email" class="form-control form-control-lg" placeholder="Introdueix el teu correu">
+              </div>
+              <div class="col-12 col-md-3">
+                <button type="submit" class="btn btn-block btn-lg btn-primary">Enviar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+          <ul class="list-inline mb-2">
+            <li class="list-inline-item">
+              <a href="#">Sobre nosaltres</a>
+            </li>
+            <li class="list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+              <a href="index.html#contacte">Contacte</a>
+            </li>
+            <li class="list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+              <a href="#">Termes d'ús</a>
+            </li>
+            <li class="list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+              <a href="#">Política de privacitat</a>
+            </li>
+          </ul>
+          <p class="text-muted small mb-4 mb-lg-0">&copy; ReStock 2019. Tots els drets reservats.</p>
+        </div>
+        <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item mr-3">
+              <a href="#">
+                <i class="fab fa-facebook fa-2x fa-fw"></i>
+              </a>
+            </li>
+            <li class="list-inline-item mr-3">
+              <a href="#">
+                <i class="fab fa-twitter-square fa-2x fa-fw"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fab fa-instagram fa-2x fa-fw"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
 </html>
