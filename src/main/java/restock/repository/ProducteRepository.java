@@ -27,4 +27,17 @@ public interface ProducteRepository extends JpaRepository<Producte, Integer> {
 			@Param("model") String model,
 			@Param("subfamiliaId") Integer subfamiliaId,
 			@Param("proveidorId") Integer proveidorId);
+	
+	
+	@Query(value = " " +
+			"SELECT prod "
+			+ "FROM Producte prod WHERE "
+			+ "(prod.model 		LIKE CONCAT('%',(:camp),'%') OR "
+			+ "prod.marca 		LIKE CONCAT('%',(:camp),'%') OR "
+			+ "prod.descripcio 	LIKE CONCAT('%',(:camp),'%')) AND "
+			+ "prod.proveidor.organitzacio.id =:orgId "
+			+ "ORDER BY prod.marca ASC")
+	public List<Producte> cercaProducte(
+			@Param("camp") String camp,
+			@Param("orgId") Integer orgId);
 }
