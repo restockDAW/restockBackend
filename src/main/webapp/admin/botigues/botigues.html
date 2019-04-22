@@ -93,10 +93,9 @@
             <div class="col-md-6">                
               <!-- Material input -->
               <div class="md-form input-group">
-                  <select data-ng-model="botiga.usuari" class="browser-default custom-select" id="inputResponsable">
-                      <option data-ng-repeat="responsable in responsables" value="{{responsable}}">{{responsable.nom}}</option>
+                  <select data-ng-options="responsable.nom for responsable in responsables track by responsable.id" data-ng-model="botiga.usuari" class="browser-default custom-select" id="inputResponsable">
                   </select>
-                <label class="active" data-ng-class="{active: modalType === 'modificacio'}" data-error="Responsable invàlid" for="inputResponsable">Responsable</label>
+                <label class="active" data-error="Responsable invàlid" for="inputResponsable">Responsable</label>
                   <div class="input-group-append" id="MaterialButton-addon4">
                     <button class="btn btn-md btn-primary m-0 px-3" type="button"><i class="fas fa-user-plus mx-3"></i></button>
                   </div>

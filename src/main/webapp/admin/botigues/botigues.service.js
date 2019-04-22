@@ -2,7 +2,7 @@ app.service("botiguesService", ["$q", "$http", botiguesService])
 
 function botiguesService($q, $http) {
     
-    var baseURL = "http://localhost:8081/restock/botiga";    
+    var baseURL = "../botiga";    
     var service = {
         getAllBotigues: getAllBotigues, 
         createBotiga: createBotiga,

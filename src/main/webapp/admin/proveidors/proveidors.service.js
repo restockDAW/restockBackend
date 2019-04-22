@@ -1,7 +1,7 @@
 app.service("proveidorsService", ["$q", "$http", proveidorsService])
 function proveidorsService($q, $http) {
     
-    var baseURL = "http://localhost:8081/restock/proveidor";    
+    var baseURL = "../proveidor";    
     var service = {
         getAllProveidors: getAllProveidors, 
         createProveidor: createProveidor,

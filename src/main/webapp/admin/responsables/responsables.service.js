@@ -1,7 +1,7 @@
 app.service("responsablesService", ["$q", "$http", responsablesService])
 function responsablesService($q, $http) {
     
-    var baseURL = "http://localhost:8081/restock/usuari";    
+    var baseURL = "../usuari";    
     var service = {
         getAllResponsables: getAllResponsables, 
         createResponsable: createResponsable,

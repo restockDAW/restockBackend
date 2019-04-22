@@ -1,19 +1,18 @@
-var baseURL = "http://localhost:8081/restock/usuari";
+app.service("productesService", ["$q", "$http", productesService])
 
-app.service("articlesService", ["$q", "$http", articlesService])
-
-function articlesService($q, $http) {
+function productesService($q, $http) {
     
+    var baseURL = "../producte";    
     var service = {
-        getAllArticles: getAllArticles, 
-        createArticle: createArticle,
-        updateArticle: updateArticle,
-        deleteArticle: deleteArticle
+        getAllProductes:  getAllProductes, 
+        createProducte: createProducte,
+        updateProducte: updateProducte,
+        deleteProducte: deleteProducte
     };
     
     return service;
     
-    function getAllArticles() {
+    function getAllProductes() {
         var deferred = $q.defer();
         $http({
             method: "GET",
@@ -29,54 +28,59 @@ function articlesService($q, $http) {
         return deferred.promise;
     }
         
-    function createArticle(article) {
+    function createProducte(producte) {
         var deferred = $q.defer();
         $http({
             method: 'POST',
-            data: "{article:" + angular.toJson(article) + "}",
+            data: angular.toJson(producte),
             url: baseURL + '/alta',
             dataType: "json",
             contentType: 'application/json',
-            timeout: 120000
+            timeout: 120000,
+            transformResponse: undefined
         }).then(function (response) {
-            deferred.resolve(angular.fromJson(response.data.d));
-        }, function (error) {
-            deferred.reject(error);
+            deferred.resolve(response.data);
+        }, function (response) {
+            deferred.reject(response.data);
         });
         return deferred.promise;
     }
-    
-    function updateArticle(article) {
+        
+    function updateProducte(producte) {
         var deferred = $q.defer();
         $http({
             method: 'POST',
-            data: "{article:" + angular.toJson(article) + "}",
+            data: angular.toJson(producte),
             url: baseURL + '/modificacio',
             dataType: "json",
             contentType: 'application/json',
-            timeout: 120000
+            timeout: 120000,
+            transformResponse: undefined
         }).then(function (response) {
-            deferred.resolve(angular.fromJson(response.data.d));
-        }, function (error) {
-            deferred.reject(error);
+            deferred.resolve(response.data);
+        }, function (response) {
+            deferred.reject(response.data);
         });
         return deferred.promise;
     }
     
-    function deleteArticle(responsable) {
+    
+    function deleteProducte(producte) {
         var deferred = $q.defer();
         $http({
             method: 'POST',
-            data: "{article:" + angular.toJson(article) + "}",
+            data: angular.toJson(producte),
             url: baseURL + '/baixa',
             dataType: "json",
             contentType: 'application/json',
-            timeout: 120000
+            timeout: 120000,
+            transformResponse: undefined
         }).then(function (response) {
-            deferred.resolve(angular.fromJson(response.data.d));
-        }, function (error) {
-            deferred.reject(error);
+            deferred.resolve(response.data);
+        }, function (response) {
+            deferred.reject(response.data);
         });
         return deferred.promise;
     }
+    
 }

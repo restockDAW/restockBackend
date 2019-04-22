@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mariadb://localhost:3306/restock
-    username: root
-    password: 
+    url: jdbc:mariadb://remotemysql.com:3306/iiaZ3TTBrH
+    username: iiaZ3TTBrH
+    password: 3BoMiHYsgs
     driver-class-name: org.mariadb.jdbc.Driver

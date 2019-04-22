@@ -1,4 +1,4 @@
-app.controller("responsablesCtrl", function($scope, $http, $window, responsablesService, Notification) {
+app.controller("responsablesCtrl", function($scope, $http, $window, Notification, responsablesService) {
         
     $scope.responsable = {};
     $scope.responsables = [];        
@@ -41,9 +41,8 @@ app.controller("responsablesCtrl", function($scope, $http, $window, responsables
     
     $scope.AddResponsable = function(responsable) {
         console.log(responsable);
-        //responsable.dataNaixement = null; //fix date - cannot parse in Java
         responsable.dataNaixement = moment(responsable.dataNaixement).format('DD/MM/YYYY');
-        responsable.rol = 2; //hardocded value for responsable
+        responsable.rol = 2; //hardcoded value for responsable
         
         return responsablesService.createResponsable(responsable)
             .then(function (response) {
@@ -62,11 +61,14 @@ app.controller("responsablesCtrl", function($scope, $http, $window, responsables
     $scope.OpenEditResponsableModal = function(responsable) {
         $scope.modalType = "modificacio";
         $scope.responsable = angular.copy(responsable);
+        $scope.responsable.dataNaixement = moment(responsable.dataNaixement, 'DD/MM/YYYY').toDate();
+        
         $('#modalResponsable').modal('show');   
           
     }
     
     $scope.UpdateResponsable = function(responsable) {
+        responsable.dataNaixement = moment(responsable.dataNaixement).format('DD/MM/YYYY');
         return responsablesService.updateResponsable(responsable)
             .then(function (response) {
                 console.log(response);

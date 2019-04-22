@@ -57,7 +57,7 @@ app.controller("botiguesCtrl", function($scope, $http, $window, Notification, bo
         organitzacio.id = 1;
         
         botiga.organitzacio = organitzacio;
-        botiga.usuari = angular.fromJson(botiga.usuari)
+        //botiga.usuari = angular.fromJson(botiga.usuari)
         
         return botiguesService.createBotiga(botiga)
             .then(function (response) {
@@ -72,7 +72,27 @@ app.controller("botiguesCtrl", function($scope, $http, $window, Notification, bo
                 //stop loader
             })       
     }
-        
+    
+    $scope.OpenEditBotigaModal = function(botiga) {
+        $scope.modalType = "modificacio";
+        $scope.botiga = angular.copy(botiga);
+        $('#modalBotiga').modal('show');    
+        LoadResponsables();          
+    }
+    
+    $scope.UpdateBotiga = function(botiga) {
+        return botiguesService.updateBotiga(botiga)
+            .then(function (response) {
+                console.log(response);
+                Notification.primary(response);
+                $('#modalBotiga').modal('hide');   
+                LoadBotigues();
+            }).catch(function(response) {
+                Notification.error(response);
+            }).finally(function() {
+                //stop loader
+            })     
+    }    
     
     
     $scope.OpenDeleteBotigaModal = function(botiga) {

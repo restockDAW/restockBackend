@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 import restock.dto.Cercador;
 import restock.entities.Proveidor;
-import restock.entities.Usuari;
 import restock.repository.ProveidorRepository;
 
 @Component

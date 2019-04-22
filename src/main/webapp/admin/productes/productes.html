@@ -1,14 +1,18 @@
 
                 <!-- Page Header -->
                 <div class="page-header">
+                    
                     <!-- Heading -->
-                    <span class="heading">10 Productes</span>
+                    <span class="heading"><span data-ng-bind="productes.length"></span> 
+                        <span data-ng-if="productes.length > 1 || productes.length == 0">Productes</span>
+                        <span data-ng-if="productes.length == 1">Productes</span>
+                    </span>
                     <!-- /.Heading -->
                     
                     <!-- Right floated buttons -->
                     <span class="float-right">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-blue btn-md" data-toggle="modal" data-target="#modalNewArticle"><i class="fas fa-tag mr-2" ></i>Crear producte</button>
+                      <button type="button" class="btn btn-blue btn-md" data-ng-click="OpenAddProducteModal()"><i class="fas fa-tag mr-2" ></i>Crear producte</button>
                       <button type="button" class="btn btn-blue btn-md dropdown-toggle px-3" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         <span class="sr-only">Toggle Dropdown</span>
@@ -32,22 +36,28 @@
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                        <th>Usuari</th>                        
-                        <th>Nom</th>
-                        <th>Cognoms</th>
-                        <th>Correu electrónic</th>
+                        <th>Marca</th>                        
+                        <th>Model</th>
+                        <th>Descripció</th>
+                        <th>Tipus</th>
+                        <th>Proveedor</th>
+                        <th>Preu</th>
+                        <th>Preu Venda</th>
                         <th style="width:140px;text-align: right"><i class="fas fa-cogs"></i></th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr data-ng-repeat="article in articles">
-                      <td>{{responsable.user}}</td>                      
-                      <td>{{responsable.nom}}</td>
-                      <td>{{responsable.cognom1}} {{responsable.cognom2}}</td>
-                      <td>{{responsable.correu}}</td>
+                    <tr data-ng-repeat="producte in productes">
+                      <td>{{producte.marca}}</td>                      
+                      <td>{{producte.model}}</td>
+                      <td>{{producte.descripcio}}</td>
+                      <td>{{producte.subfamilia}}</td>
+                      <td>{{producte.proveidor}}</td>
+                      <td>{{producte.preu}}</td>
+                      <td>{{producte.preuVenda}}</td>
                       <td style="width:140px;text-align: right">
-                          <a class="btn btn-orange btn-smaller"><i class="fas fa-edit"></i></a>
-                          <a class="btn btn-red btn-smaller"><i class="fas fa-trash"></i></a>
+                          <a class="btn btn-orange btn-smaller" data-ng-click="OpenEditProducteModal(producte)"><i class="fas fa-edit"></i></a>
+                          <a class="btn btn-red btn-smaller" data-ng-click="OpenDeleteProducteModal(producte)"><i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
                   </tbody>
@@ -59,35 +69,36 @@
                                 
                 
                 
-            <div class="modal fade" id="modalNewArticle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            <div class="modal fade" id="modalProducte" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true" data-keyboard="false" data-backdrop="static">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold"><i class="fas fa-box mx-3"></i>Crear article</h4>
+        <h4 class="modal-title w-100 font-weight-bold"><i class="fas fa-box mx-3"></i>Crear producte</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body mx-3">
-          <form name="ArticleCreation">              
+          <form name="ProducteCreation">              
           </form>
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <button class="btn btn-blue" data-ng-disabled="UserCreation.$invalid" data-ng-click="AddUser(responsable)">Crear</button>
+        <button data-ng-if="modalType === 'alta'" class="btn btn-blue" data-ng-disabled="ProducteCreation.$invalid" data-ng-click="AddProducte(producte)">Crear producte</button>
+        <button data-ng-if="modalType === 'modificacio'" class="btn btn-orange" data-ng-disabled="ProducteCreation.$invalid" data-ng-click="UpdateProducte(producte)">Actualitzar</button>
       </div>
     </div>
   </div>
 </div>
                 
                 
-<div class="modal fade show" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-modal="true">
+<div class="modal fade show" id="modalDeleteProducte" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-modal="true">
       <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
         <!--Content-->
         <div class="modal-content text-center">
           <!--Header-->
           <div class="modal-header d-flex justify-content-center">
-            <p class="heading">Està segur de borrar l'article?</p>
+            <p class="heading">Està segur de borrar el producte - {{producte.nom}}?</p>
           </div>
 
           <!--Body-->
@@ -99,7 +110,7 @@
 
           <!--Footer-->
           <div class="modal-footer flex-center">
-            <a href="" class="btn btn-outline-danger waves-effect waves-light">Si</a>
+            <a href="" class="btn btn-outline-danger waves-effect waves-light" data-ng-click="ConfirmDelete(producte)">Si</a>
             <a type="button" class="btn btn-danger waves-effect" data-dismiss="modal">No</a>
           </div>
         </div>
