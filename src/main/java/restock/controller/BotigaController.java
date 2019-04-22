@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 
 import restock.entities.Botiga;
+import restock.entities.Proveidor;
 import restock.services.BotigaBusiness;
 
 
@@ -27,6 +29,18 @@ public class BotigaController {
     public BotigaController(){
     }
  
+	@RequestMapping(path = "/getAll", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> getTotesLesBotigues(
+			@RequestBody final Integer orgId) {
+		try {
+			final HttpHeaders httpHeaders = new HttpHeaders();
+			final List<Botiga> botigues = botigaBusiness.getBotiguesPerOrganitzacio(orgId);
+			return new ResponseEntity<>(botigues, httpHeaders, HttpStatus.OK);
+		}catch(final Exception e){	
+			return new ResponseEntity<>(e.getMessage(),HttpStatus.NO_CONTENT);
+		}
+	}
+    
 	@RequestMapping(path = "/alta", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> alta(
 			@RequestBody final Botiga botiga) {

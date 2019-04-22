@@ -1,9 +1,8 @@
-var baseURL = "http://localhost:8081/restock/usuari";
-
 app.service("botiguesService", ["$q", "$http", botiguesService])
 
 function botiguesService($q, $http) {
     
+    var baseURL = "http://localhost:8081/restock/botiga";    
     var service = {
         getAllBotigues: getAllBotigues, 
         createBotiga: createBotiga,
@@ -13,10 +12,11 @@ function botiguesService($q, $http) {
     
     return service;
     
-    function getAllBotigues() {
+    function getAllBotigues(orgId) {
         var deferred = $q.defer();
         $http({
-            method: "GET",
+            method: 'POST',
+            data: orgId,
             url: baseURL + '/getAll',
             dataType: "json",
             contentType: 'application/json',
@@ -33,49 +33,52 @@ function botiguesService($q, $http) {
         var deferred = $q.defer();
         $http({
             method: 'POST',
-            data: "{botiga:" + angular.toJson(botiga) + "}",
+            data: angular.toJson(botiga),
             url: baseURL + '/alta',
             dataType: "json",
             contentType: 'application/json',
-            timeout: 120000
+            timeout: 120000,
+            transformResponse: undefined
         }).then(function (response) {
-            deferred.resolve(angular.fromJson(response.data.d));
-        }, function (error) {
-            deferred.reject(error);
+            deferred.resolve(response.data);
+        }, function (response) {
+            deferred.reject(response.data);
         });
         return deferred.promise;
     }
     
-    function updateBotiga(responsable) {
+    function updateBotiga(botiga) {
         var deferred = $q.defer();
         $http({
             method: 'POST',
-            data: "{botiga:" + angular.toJson(botiga) + "}",
+            data: angular.toJson(botiga),
             url: baseURL + '/modificacio',
             dataType: "json",
             contentType: 'application/json',
-            timeout: 120000
+            timeout: 120000,
+            transformResponse: undefined
         }).then(function (response) {
-            deferred.resolve(angular.fromJson(response.data.d));
-        }, function (error) {
-            deferred.reject(error);
+            deferred.resolve(response.data);
+        }, function (response) {
+            deferred.reject(response.data);
         });
         return deferred.promise;
     }
     
-    function deleteBotiga(responsable) {
+    function deleteBotiga(botiga) {
         var deferred = $q.defer();
         $http({
             method: 'POST',
-            data: "{botiga:" + angular.toJson(botiga) + "}",
+            data: angular.toJson(botiga),
             url: baseURL + '/baixa',
             dataType: "json",
             contentType: 'application/json',
-            timeout: 120000
+            timeout: 120000,
+            transformResponse: undefined
         }).then(function (response) {
-            deferred.resolve(angular.fromJson(response.data.d));
-        }, function (error) {
-            deferred.reject(error);
+            deferred.resolve(response.data);
+        }, function (response) {
+            deferred.reject(response.data);
         });
         return deferred.promise;
     }

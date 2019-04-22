@@ -17,7 +17,7 @@ import restock.services.UsuariBusiness;
 
 
 @RestController
-@RequestMapping("/login")
+@RequestMapping("/loginUser")
 public class LoginController {
     
     @Autowired

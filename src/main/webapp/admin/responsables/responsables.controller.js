@@ -41,8 +41,8 @@ app.controller("responsablesCtrl", function($scope, $http, $window, responsables
     
     $scope.AddResponsable = function(responsable) {
         console.log(responsable);
-        //responsable.dataNaixement = new Date(responsable.dataNaixement);
-        responsable.dataNaixement = null; //fix date - cannot parse in Java
+        //responsable.dataNaixement = null; //fix date - cannot parse in Java
+        responsable.dataNaixement = moment(responsable.dataNaixement).format('DD/MM/YYYY');
         responsable.rol = 2; //hardocded value for responsable
         
         return responsablesService.createResponsable(responsable)
@@ -66,7 +66,7 @@ app.controller("responsablesCtrl", function($scope, $http, $window, responsables
           
     }
     
-    $scope.ConfirmEdit = function(responsable) {
+    $scope.UpdateResponsable = function(responsable) {
         return responsablesService.updateResponsable(responsable)
             .then(function (response) {
                 console.log(response);
@@ -83,7 +83,7 @@ app.controller("responsablesCtrl", function($scope, $http, $window, responsables
     
     $scope.OpenDeleteResponsableModal = function(responsable) {
         $scope.responsable = responsable;
-        $('#modalConfirmDelete').modal('show');    
+        $('#modalDeleteResponsable').modal('show');    
     }
     
     $scope.ConfirmDelete = function(responsable) {         
@@ -91,7 +91,7 @@ app.controller("responsablesCtrl", function($scope, $http, $window, responsables
             .then(function (response) {
                 console.log(response);
                 Notification.primary(response);
-                $('#modalConfirmDelete').modal('hide');   
+                $('#modalDeleteResponsable').modal('hide');   
                 LoadResponsables();
             }).catch(function(response) {
                 Notification.error(response);

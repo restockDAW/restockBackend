@@ -1,8 +1,12 @@
 
                 <!-- Page Header -->
                 <div class="page-header">
+
                     <!-- Heading -->
-                    <span class="heading"><span data-ng-bind="responsables.length"></span> Responsables</span>
+                    <span class="heading"><span data-ng-bind="responsables.length"></span> 
+                        <span data-ng-if="responsables.length > 1 || responsables.length == 0">Responsables</span>
+                        <span data-ng-if="responsables.length == 1">Responsable</span>
+                    </span>
                     <!-- /.Heading -->
                     
                     <!-- Right floated buttons -->
@@ -169,14 +173,14 @@
       </div>
       <div class="modal-footer d-flex justify-content-center">
         <button data-ng-if="modalType === 'alta'" class="btn btn-blue" data-ng-disabled="UserCreation.$invalid" data-ng-click="AddResponsable(responsable)">Donar d'alta</button>
-        <button data-ng-if="modalType === 'modificacio'" class="btn btn-orange" data-ng-disabled="UserCreation.$invalid" data-ng-click="ConfirmEdit(responsable)">Actualitzar</button>
+        <button data-ng-if="modalType === 'modificacio'" class="btn btn-orange" data-ng-disabled="UserCreation.$invalid" data-ng-click="UpdateResponsable(responsable)">Actualitzar</button>
       </div>
     </div>
   </div>
 </div>
                 
                 
-<div class="modal fade show" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-modal="true">
+<div class="modal fade show" id="modalDeleteResponsable" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-modal="true">
       <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
         <!--Content-->
         <div class="modal-content text-center">

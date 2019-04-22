@@ -39,7 +39,6 @@ public class UsuariController {
 		}
 	}
 	
-
 	@RequestMapping(path = "/{userId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getUsuariPerId(@PathVariable final Integer userId) {
 		try {

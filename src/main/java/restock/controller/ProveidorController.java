@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import restock.entities.Proveidor;
@@ -26,7 +28,18 @@ public class ProveidorController {
     public ProveidorController(){
     }
  
-    
+	@RequestMapping(path = "/getAll", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> getTotsElsProveidors(
+			@RequestBody final Integer orgId) {
+		try {
+			final HttpHeaders httpHeaders = new HttpHeaders();
+			final List<Proveidor> proveidors = proveidorBusiness.getProveidorsPerOrganitzacio(orgId);
+			return new ResponseEntity<>(proveidors, httpHeaders, HttpStatus.OK);
+		}catch(final Exception e){	
+			return new ResponseEntity<>(e.getMessage(),HttpStatus.NO_CONTENT);
+		}
+	}
+	
 	@RequestMapping(path = "/alta", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> alta(
 			@RequestBody final Proveidor proveidor) {
