@@ -1,1 +1,1 @@
-web: java -jar target/restockBackend.jar
+web: java -war target/ReStock-0.0.1-SNAPSHOT.war
