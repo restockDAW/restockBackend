@@ -1,6 +1,6 @@
 .card-img-top{
-  max-width: 504px !important;
-  max-height: 162px !important;
+  max-width: 450px !important;
+  max-height: 145px !important;
   margin:auto;
   margin-top: 40px;
   margin-bottom: 25px;
@@ -81,4 +81,21 @@ form{
 
 .right{
   float:right;
+}
+
+#menu{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:20px;
+  max-width: 700px;
+}
+
+#menu a{
+  color:white;
+  font-size:18px;
+  font-weight: bolder;
+}
+
+#menu a:hover{
+  color:#4285F4;
 }

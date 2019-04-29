@@ -46,6 +46,7 @@ $(document).ready(function () {
         if(!inputs[i].checkValidity()){
           inputs[i].classList.add(":invalid");
           $("form").addClass("was-validated");
+          $("form").removeClass("needs-validation");
         }
       }
 
