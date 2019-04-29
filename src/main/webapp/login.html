@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-ng-app="Login">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,7 +10,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.5/css/mdb.min.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/custom.css"/>
 </head>
-<body>
+<body data-ng-controller="loginCtrl">
   <div class="container">
       <div class="card" style="max-width:600px;">
         <a href="index.html" class="card-img-link">
@@ -20,20 +20,21 @@
           <form>
             <div class="form-group">
               <label for="user">Nom d'usuari</label>
-              <input class="form-control" id="user" placeholder="Introdueix el teu nom d'usuari">
+              <input class="form-control" id="user" placeholder="Introdueix el teu nom d'usuari" data-ng-model="username">
             </div>
             <div class="form-group">
               <label for="password">Contrasenya</label>
               <input type="password" class="form-control" id="password"
-              placeholder="Introdueix la teva contrasenya">
+              placeholder="Introdueix la teva contrasenya" data-ng-model="password">
             </div>
             <div class="form-group form-check">
               <input type="checkbox" class="form-check-input" id="remember">
               <label class="form-check-label" for="remember">Recordar-me</label>
             </div>
-            <button type="submit" class="btn btn-primary login">Accedir</button>
+            <button type="submit" class="btn btn-primary login" data-ng-click="Login(username, password)">Accedir</button>
           </form>
         </div>
+  </div>
   </div>
 
 
@@ -42,5 +43,15 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      
+    <!-- AngularJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js" integrity="sha256-23hi0Ag650tclABdGCdMNSjxvikytyQ44vYGo9HyOrU=" crossorigin="anonymous"></script>
+    <!-- UI Notification -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-notification/0.3.6/angular-ui-notification.min.js" integrity="sha256-23jbRBh9KqF32Iw+09EJbZbeNazg4xWna5dwlWQou6Y=" crossorigin="anonymous"></script>
+      
+    <!-- Login Controllers and services -->
+    <script src="login/login.controller.js"></script>
+    <script src="login/login.service.js"></script>
+      
 </body>
 </html>

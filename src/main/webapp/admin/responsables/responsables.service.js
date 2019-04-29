@@ -3,6 +3,7 @@ function responsablesService($q, $http) {
     
     var baseURL = "../usuari";    
     var service = {
+        getAll: getAll,
         getAllResponsables: getAllResponsables, 
         createResponsable: createResponsable,
         updateResponsable: updateResponsable,
@@ -11,11 +12,27 @@ function responsablesService($q, $http) {
     
     return service;
     
-    function getAllResponsables() {
+    function getAll() {
         var deferred = $q.defer();
         $http({
-            method: "GET",
+            method: 'GET',
             url: baseURL + '/getAll',
+            dataType: "json",
+            contentType: 'application/json',
+            timeout: 120000
+        }).then(function (response) {
+            deferred.resolve(angular.fromJson(response.data));
+        }, function (error) {
+            deferred.reject(error);
+        });
+        return deferred.promise;
+    }
+    function getAllResponsables(orgId) {
+        var deferred = $q.defer();
+        $http({
+            method: 'POST',
+            data: orgId,
+            url: baseURL + '/getResponsables',
             dataType: "json",
             contentType: 'application/json',
             timeout: 120000

@@ -25,7 +25,8 @@ app.controller("botiguesCtrl", function($scope, $http, $window, Notification, bo
     }
     
     function LoadResponsables() {
-        return responsablesService.getAllResponsables()
+        //return responsablesService.getAllResponsables(1)
+        return responsablesService.getAll()
             .then(function (data) {
                 console.log(data);
                 $scope.responsables = data;
@@ -37,7 +38,7 @@ app.controller("botiguesCtrl", function($scope, $http, $window, Notification, bo
     }
     
     /* Netejem la botiga quan es tanqui el modal */
-    $(".modal").on('hidden.bs.modal', function(){
+    $("#modalBotiga").on('hidden.bs.modal', function(){
         $scope.botiga = {};
         //aprofitem per netejar el tipus de modal
         $scope.modalType = null;
@@ -49,6 +50,35 @@ app.controller("botiguesCtrl", function($scope, $http, $window, Notification, bo
         $('#modalBotiga').modal('show');   
         LoadResponsables();
     }
+    
+    $scope.OpenAddResponsableModal = function() {
+        $('#modalResponsable').modal('show');           
+    }
+    
+    $scope.AddResponsable = function(responsable) {
+        console.log(responsable);
+        responsable.dataNaixement = moment(responsable.dataNaixement).format('DD/MM/YYYY');
+        responsable.rol = 2; //hardcoded value for responsable
+        
+        var organitzacio = {};
+        organitzacio.id = 1;
+        
+        responsable.organitzacio = organitzacio;
+        
+        return responsablesService.createResponsable(responsable)
+            .then(function (response) {
+                console.log(response);
+                Notification.primary(response);
+                $('#modalResponsable').modal('hide');    
+                $scope.UserCreation.$setPristine();
+                LoadResponsables();
+            }).catch(function(response) {
+                Notification.error(response);
+            }).finally(function() {
+                //stop loader
+            })       
+    }
+    
     
     $scope.AddBotiga = function(botiga) {
         console.log(botiga);
@@ -83,16 +113,34 @@ app.controller("botiguesCtrl", function($scope, $http, $window, Notification, bo
     $scope.UpdateBotiga = function(botiga) {
         return botiguesService.updateBotiga(botiga)
             .then(function (response) {
-                console.log(response);
-                Notification.primary(response);
-                $('#modalBotiga').modal('hide');   
-                LoadBotigues();
+                botiguesService.updateResponsableBotiga(botiga)
+                .then(function (response) {  
+                    console.log(response);
+                    Notification.primary(response);
+                    $('#modalBotiga').modal('hide');   
+                    LoadBotigues();
+                }).catch(function(response) {
+                    Notification.error(response);
+                }).finally(function() {
+                    //stop loader
+                })   
             }).catch(function(response) {
                 Notification.error(response);
             }).finally(function() {
                 //stop loader
             })     
     }    
+    
+    $scope.UpdateResponsableBotiga = function(botiga) {
+        return botiguesService.updateBotiga(botiga)
+            .then(function (response) {  
+                
+            }).catch(function(response) {
+                Notification.error(response);
+            }).finally(function() {
+                //stop loader
+            })     
+    }
     
     
     $scope.OpenDeleteBotigaModal = function(botiga) {

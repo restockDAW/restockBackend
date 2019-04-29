@@ -23,6 +23,20 @@ public interface UsuariRepository extends JpaRepository<Usuari, Integer> {
 	public Usuari findByUserAndRol(String user, Rol rol);
 	
 	public List<Usuari> findByOrganitzacioId(Integer OrgId);
+	
+	@Query(value = " " +
+			"SELECT usu "
+			+ "FROM Usuari usu WHERE "
+			+ "(usu.rol.id = 2 AND "
+			+ "usu.organitzacio.id =:organitzacioId )")
+	public List<Usuari> findResponsablesOfOrganitzacio(@Param("organitzacioId") Integer OrgId);
+
+	@Query(value = " " +
+			"SELECT usu "
+			+ "FROM Usuari usu WHERE "
+			+ "(usu.rol.id = 2)")
+	public List<Usuari> findResponsables();
+	
 
 	@Query(value = " " +
 			"SELECT usu "
@@ -43,4 +57,7 @@ public interface UsuariRepository extends JpaRepository<Usuari, Integer> {
 	public Usuari findByUserAndOrganitzacioId(@Param("user") String user, 
 			@Param("organitzacioId") Integer organitzacioId);
 
+	
+	
+	
 }

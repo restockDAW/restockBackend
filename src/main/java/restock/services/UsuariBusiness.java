@@ -29,11 +29,21 @@ public class UsuariBusiness {
 		List<Usuari> Usuaris = usuariRepository.findAll();
 		return Usuaris;
 		}
+
+	public List<Usuari> getResponsables() {
+		List<Usuari> Usuaris = usuariRepository.findResponsables();
+		return Usuaris;
+		}
 	
 	public List<Usuari> getUsuarisPerOrganitzacio(Integer orgId) {
 		List<Usuari> usuaris = usuariRepository.findByOrganitzacioId(orgId);
 		return usuaris;
 		}
+	
+	public List<Usuari> getResponsablesPerOrganitzacio(Integer orgId) {
+		List<Usuari> usuaris = usuariRepository.findResponsablesOfOrganitzacio(orgId);
+		return usuaris;
+	}
 	
 	
 	public Usuari getUserById(final Integer usuariId) {

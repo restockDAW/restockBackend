@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import restock.dto.Cercador;
 import restock.entities.Familia;
 import restock.entities.Producte;
+import restock.entities.Proveidor;
 import restock.entities.SubFamilia;
 import restock.repository.FamiliaRepository;
 import restock.repository.ProducteRepository;
@@ -99,5 +100,12 @@ public class ProducteBusiness {
 			return null;
 		}
 	}
+	
+
+	public List<Producte> getProductesPerOrganitzacio(Integer orgId) {
+		List<Producte> productes = producteRepository.findByOrganitzacioId(orgId);
+		return productes;
+		}
+	
 	
 }

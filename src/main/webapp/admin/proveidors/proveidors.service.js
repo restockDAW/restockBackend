@@ -16,7 +16,7 @@ function proveidorsService($q, $http) {
         $http({
             method: 'POST',
             data: orgId,
-            url: baseURL + '/getAll',
+            url: baseURL + '/getProveidors',
             dataType: "json",
             contentType: 'application/json',
             timeout: 120000

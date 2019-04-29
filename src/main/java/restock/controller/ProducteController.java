@@ -18,6 +18,7 @@ import org.springframework.http.HttpHeaders;
 import restock.dto.Cercador;
 import restock.entities.Familia;
 import restock.entities.Producte;
+import restock.entities.Proveidor;
 import restock.entities.SubFamilia;
 import restock.services.ProducteBusiness;
 
@@ -33,6 +34,19 @@ public class ProducteController {
     public ProducteController(){
     }
  
+
+	@RequestMapping(path = "/getProductes", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> getProveidorsDeOrganitzacio(
+			@RequestBody final Integer orgId) {
+		try {
+			final HttpHeaders httpHeaders = new HttpHeaders();
+			final List<Producte> productes = producteBusiness.getProductesPerOrganitzacio(orgId);
+			return new ResponseEntity<>(productes, httpHeaders, HttpStatus.OK);
+		}catch(final Exception e){	
+			return new ResponseEntity<>(e.getMessage(),HttpStatus.NO_CONTENT);
+		}
+	}
+	
     
 	@RequestMapping(path = "/alta", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> alta(

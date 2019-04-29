@@ -29,10 +29,22 @@ public class UsuariController {
     }
 
 	@RequestMapping(path = "/getAll", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> getTotsElsUsuaris() {
+	public ResponseEntity<?> getUsuaris() {
 		try {
 			final HttpHeaders httpHeaders = new HttpHeaders();
-			final List<Usuari> usuaris = usuariBusiness.getTotsElsUsuaris();
+			final List<Usuari> usuaris = usuariBusiness.getResponsables();
+			return new ResponseEntity<>(usuaris, httpHeaders, HttpStatus.OK);
+		}catch(final Exception e){	
+			return new ResponseEntity<>(e.getMessage(),HttpStatus.NO_CONTENT);
+		}
+	}
+
+	@RequestMapping(path = "/getResponsables", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> getUsuarisDeOrganitzacio(
+			@RequestBody final Integer orgId) {
+		try {
+			final HttpHeaders httpHeaders = new HttpHeaders();
+			final List<Usuari> usuaris = usuariBusiness.getResponsablesPerOrganitzacio(orgId);
 			return new ResponseEntity<>(usuaris, httpHeaders, HttpStatus.OK);
 		}catch(final Exception e){	
 			return new ResponseEntity<>(e.getMessage(),HttpStatus.NO_CONTENT);

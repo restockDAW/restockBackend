@@ -16,7 +16,6 @@ import org.springframework.http.HttpHeaders;
 
 import restock.dto.Cercador;
 import restock.entities.Botiga;
-import restock.entities.Proveidor;
 import restock.services.BotigaBusiness;
 
 

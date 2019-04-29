@@ -30,8 +30,8 @@ public class ProveidorController {
     public ProveidorController(){
     }
  
-	@RequestMapping(path = "/getAll", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> getTotsElsProveidors(
+	@RequestMapping(path = "/getProveidors", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> getProveidorsDeOrganitzacio(
 			@RequestBody final Integer orgId) {
 		try {
 			final HttpHeaders httpHeaders = new HttpHeaders();

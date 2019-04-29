@@ -14,7 +14,8 @@ app.controller("responsablesCtrl", function($scope, $http, $window, Notification
     
     function LoadResponsables() {
         //add loader
-        return responsablesService.getAllResponsables()
+        //return responsablesService.getAllResponsables(1)
+        return responsablesService.getAll()
             .then(function (data) {
                 console.log(data);
                 $scope.responsables = data;
@@ -43,6 +44,12 @@ app.controller("responsablesCtrl", function($scope, $http, $window, Notification
         console.log(responsable);
         responsable.dataNaixement = moment(responsable.dataNaixement).format('DD/MM/YYYY');
         responsable.rol = 2; //hardcoded value for responsable
+        
+        var organitzacio = {};
+        organitzacio.id = 1;
+        
+        responsable.organitzacio = organitzacio;
+        
         
         return responsablesService.createResponsable(responsable)
             .then(function (response) {

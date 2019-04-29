@@ -1,4 +1,4 @@
-app.controller("PageController", function ($scope, $http, $window) {
+app.controller("PageCtrl", function ($scope, $http, $window) {
    
     console.log("PageController initialized");
     

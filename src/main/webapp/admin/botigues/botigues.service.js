@@ -7,6 +7,7 @@ function botiguesService($q, $http) {
         getAllBotigues: getAllBotigues, 
         createBotiga: createBotiga,
         updateBotiga: updateBotiga,
+        updateResponsableBotiga: updateResponsableBotiga,
         deleteBotiga: deleteBotiga
     };
     
@@ -53,6 +54,24 @@ function botiguesService($q, $http) {
             method: 'POST',
             data: angular.toJson(botiga),
             url: baseURL + '/modificacio',
+            dataType: "json",
+            contentType: 'application/json',
+            timeout: 120000,
+            transformResponse: undefined
+        }).then(function (response) {
+            deferred.resolve(response.data);
+        }, function (response) {
+            deferred.reject(response.data);
+        });
+        return deferred.promise;
+    }
+    
+    function updateResponsableBotiga(botiga) {
+        var deferred = $q.defer();
+        $http({
+            method: 'POST',
+            data: angular.toJson(botiga),
+            url: baseURL + '/modificacioResponsable',
             dataType: "json",
             contentType: 'application/json',
             timeout: 120000,

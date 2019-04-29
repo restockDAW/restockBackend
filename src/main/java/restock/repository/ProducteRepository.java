@@ -28,6 +28,15 @@ public interface ProducteRepository extends JpaRepository<Producte, Integer> {
 			@Param("subfamiliaId") Integer subfamiliaId,
 			@Param("proveidorId") Integer proveidorId);
 	
+
+	@Query(value = " " +
+			"SELECT prod "
+			+ "FROM Producte prod WHERE "
+			+ "prod.proveidor.organitzacio.id =:orgId "
+			+ "ORDER BY prod.marca ASC")
+	public List<Producte> findByOrganitzacioId(
+			@Param("orgId") Integer orgId);
+	
 	
 	@Query(value = " " +
 			"SELECT prod "

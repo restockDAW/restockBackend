@@ -51,8 +51,8 @@
                       <td>{{producte.marca}}</td>                      
                       <td>{{producte.model}}</td>
                       <td>{{producte.descripcio}}</td>
-                      <td>{{producte.subfamilia}}</td>
-                      <td>{{producte.proveidor}}</td>
+                      <td>{{producte.subfamilia.nomSubfamilia}}</td>
+                      <td>{{producte.proveidor.nom}}</td>
                       <td>{{producte.preu}}</td>
                       <td>{{producte.preuVenda}}</td>
                       <td style="width:140px;text-align: right">
@@ -74,13 +74,113 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold"><i class="fas fa-box mx-3"></i>Crear producte</h4>
+          
+        <h4 class="modal-title w-100 font-weight-bold">            
+            <span data-ng-if="modalType === 'alta'"><i class="fas fa-box mx-3"></i>Crear producte</span>
+            <span data-ng-if="modalType === 'modificacio'"><i class="fas fa-user-plus mx-3"></i>Editar producte</span>
+            </h4>          
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body mx-3">
-          <form name="ProducteCreation">              
+          <form name="ProducteCreation">    
+              <!-- Grid row -->
+          <div class="form-row">
+            <!-- Grid column -->
+            <div class="col-md-4">
+              <!-- Material input -->
+              <div class="md-form form-group">
+                <input type="text" class="form-control" id="inputMarca"  data-ng-model="producte.marca" required>
+                <label data-ng-class="{active: modalType === 'modificacio'}" data-error="Marca invàlida" for="inputMarca">Marca</label>
+              </div>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-4">
+              <!-- Material input -->
+              <div class="md-form form-group">
+                <input type="text" class="form-control" id="inputModel"  data-ng-model="producte.model" required>
+                <label data-ng-class="{active: modalType === 'modificacio'}" for="inputModel">Model</label>
+              </div>
+            </div>
+            <!-- Grid column -->
+              
+              <!-- Grid column -->
+            <div class="col-md-4">                
+              <!-- Material input -->
+              <div class="md-form input-group">
+                  <select data-ng-options="proveidor.nom for proveidor in proveidors track by proveidor.id" data-ng-model="producte.proveidor" class="browser-default custom-select" id="inputProveidor">
+                  </select>
+                <label class="active" data-error="Proveïdor invàlid" for="inputProveidor">Proveïdor</label>
+              </div>
+            </div>
+            <!-- Grid column --> 
+              
+          </div>
+          <!-- Grid row -->
+          
+          <!-- Grid row -->
+          <div class="form-row">
+            <!-- Grid column -->
+            <div class="col-md-12">
+              <!-- Material input -->
+              <div class="md-form form-group">
+                <input type="text" class="form-control" id="inputDescripcio" data-ng-model="producte.descripcio" required>
+                <label data-ng-class="{active: modalType === 'modificacio'}" data-error="Descripció invàlida" for="inputDescripcio">Descripció</label>
+              </div>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+
+          <!-- Grid row -->
+          <div class="form-row">
+            <!-- Grid column -->
+            <div class="col-md-2">
+              <!-- Material input -->
+              <div class="md-form form-group">
+                <input type="number" class="form-control" id="inputPreu" data-ng-model="producte.preu" required>
+                <label data-ng-class="{active: modalType === 'modificacio'}" for="inputPreu">Preu</label>
+              </div>
+            </div>
+            <!-- Grid column -->
+              
+            <!-- Grid column -->
+            <div class="col-md-2">
+              <!-- Material input -->
+              <div class="md-form form-group">
+                <input type="number" class="form-control" id="inputPreuVenda"  data-ng-model="producte.preuVenda">
+                <label data-ng-class="{active: modalType === 'modificacio'}" for="inputPreuVenda">Preu Venda</label>
+              </div>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-4">
+              <!-- Material input -->
+              <div class="md-form input-group">
+                  <select data-ng-options="familia.nomFamilia for familia in families track by familia.id" data-ng-model="producte.familia" data-ng-change="LoadSubFamilies(producte.familia.id)" class="browser-default custom-select" id="inputFamilia">
+                  </select>
+                <label class="active" data-error="Familia invàlida" for="inputFamilia">Familia</label>
+              </div>
+            </div>
+            <!-- Grid column -->
+              
+            <!-- Grid column -->
+            <div class="col-md-4">                
+              <!-- Material input -->
+              <div class="md-form input-group">
+                  <select data-ng-options="subfamilia.nomSubfamilia for subfamilia in subfamilies track by subfamilia.id" data-ng-model="producte.subfamilia" class="browser-default custom-select" id="inputResponsable">
+                  </select>
+                <label class="active" data-error="Responsable invàlid" for="inputResponsable">Subfamilia</label>
+              </div>
+            </div>
+            <!-- Grid column -->  
+          </div>
+          <!-- Grid row -->
+              <br>
           </form>
       </div>
       <div class="modal-footer d-flex justify-content-center">
