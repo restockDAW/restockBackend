@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import restock.dto.Cercador;
 import restock.entities.Familia;
 import restock.entities.Producte;
-import restock.entities.Proveidor;
 import restock.entities.SubFamilia;
 import restock.repository.FamiliaRepository;
 import restock.repository.ProducteRepository;

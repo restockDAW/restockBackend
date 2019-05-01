@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
@@ -25,10 +26,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Comanda implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer id;
-	private Date dataComanda;
+	private Date datacomanda;
 	private Botiga botiga;
 	private Proveidor proveidor;
-	private Date dataRecepcio;
+	private Date datarecepcio;
 	
 	public Comanda() {
 	}
@@ -51,13 +52,14 @@ public class Comanda implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "dataComanda", nullable = false)
-	public Date getDataComanda() {
-		return dataComanda;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", timezone = "Europe/Madrid")
+	@Column(name = "datacomanda", nullable = false)
+	public Date getDatacomanda() {
+		return datacomanda;
 	}
 
-	public void setDataComanda(Date dataComanda) {
-		this.dataComanda = dataComanda;
+	public void setDatacomanda(Date datacomanda) {
+		this.datacomanda = datacomanda;
 	}
 
 	@Fetch(FetchMode.JOIN)
@@ -81,14 +83,15 @@ public class Comanda implements java.io.Serializable {
 	public void setProveidor(Proveidor proveidor) {
 		this.proveidor = proveidor;
 	}
-	
-	@Column(name = "dataRecepcio", nullable = true)
-	public Date getDataRecepcio() {
-		return dataRecepcio;
+
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", timezone = "Europe/Madrid")
+	@Column(name = "datarecepcio", nullable = true)
+	public Date getDatarecepcio() {
+		return datarecepcio;
 	}
 
-	public void setDataRecepcio(Date dataRecepcio) {
-		this.dataRecepcio = dataRecepcio;
+	public void setDatarecepcio(Date datarecepcio) {
+		this.datarecepcio = datarecepcio;
 	}
 	
 

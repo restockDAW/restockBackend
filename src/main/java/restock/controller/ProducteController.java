@@ -18,7 +18,6 @@ import org.springframework.http.HttpHeaders;
 import restock.dto.Cercador;
 import restock.entities.Familia;
 import restock.entities.Producte;
-import restock.entities.Proveidor;
 import restock.entities.SubFamilia;
 import restock.services.ProducteBusiness;
 

@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
-@Table(name = "detallComanda")
+@Table(name = "detallcomanda")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class DetallComanda implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
