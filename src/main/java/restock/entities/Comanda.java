@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
+
 @Entity
 @Table(name = "comanda")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
@@ -40,6 +41,15 @@ public class Comanda implements java.io.Serializable {
 	}
 
 	
+	public Comanda(Integer id, Date datacomanda, Botiga botiga, Proveidor proveidor, Date datarecepcio) {
+		super();
+		this.id = id;
+		this.datacomanda = datacomanda;
+		this.botiga = botiga;
+		this.proveidor = proveidor;
+		this.datarecepcio = datarecepcio;
+	}
+
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
@@ -93,6 +103,6 @@ public class Comanda implements java.io.Serializable {
 	public void setDatarecepcio(Date datarecepcio) {
 		this.datarecepcio = datarecepcio;
 	}
-	
+
 
 }

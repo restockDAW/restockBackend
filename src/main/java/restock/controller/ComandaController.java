@@ -17,8 +17,10 @@ import org.springframework.http.HttpHeaders;
 import restock.dto.ComandaBotiga;
 import restock.entities.Botiga;
 import restock.entities.Comanda;
+import restock.entities.DetallComanda;
 import restock.entities.Organitzacio;
 import restock.services.ComandaBusiness;
+import restock.services.DetallComandaBusiness;
 
 
 @RestController
@@ -27,6 +29,9 @@ public class ComandaController {
     
     @Autowired
     private ComandaBusiness comandaBusiness;
+    
+    @Autowired
+    private DetallComandaBusiness detallComandaBusiness;
     
 
     public ComandaController(){
@@ -86,6 +91,23 @@ public class ComandaController {
 		}
 	}
 	
+	@RequestMapping(path = "/cercarPendentsPerBotiga", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> getComandesPendentsPerBotiga(
+			@RequestBody final Botiga botiga) {
+
+		try {
+			final HttpHeaders httpHeaders = new HttpHeaders();
+			final List<Comanda> listComandes = comandaBusiness.cercaComandesPendentsPerBotiga(botiga);
+			if (listComandes == null) {
+				return new ResponseEntity<>("No s'han trobat comandes pendents de rebre", httpHeaders, HttpStatus.BAD_REQUEST);
+			} else {
+				return new ResponseEntity<>(listComandes, httpHeaders, HttpStatus.OK);
+			}
+		} catch (final Exception e) {
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+	}
+	
 	@RequestMapping(path = "/cercarPerOrganitzacio", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getComandesPerOrganitzacio(
 			@RequestBody final Organitzacio org) {
@@ -97,6 +119,40 @@ public class ComandaController {
 				return new ResponseEntity<>("No s'han trobat comandes", httpHeaders, HttpStatus.BAD_REQUEST);
 			} else {
 				return new ResponseEntity<>(listComandes, httpHeaders, HttpStatus.OK);
+			}
+		} catch (final Exception e) {
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@RequestMapping(path = "/cercarPendentsPerOrganitzacio", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> getComandesPendnetsPerOrganitzacio(
+			@RequestBody final Organitzacio org) {
+
+		try {
+			final HttpHeaders httpHeaders = new HttpHeaders();
+			final List<Comanda> listComandes = comandaBusiness.cercaComandesPendentsPerOrganitzacio(org);
+			if (listComandes == null) {
+				return new ResponseEntity<>("No s'han trobat comandes pendents", httpHeaders, HttpStatus.BAD_REQUEST);
+			} else {
+				return new ResponseEntity<>(listComandes, httpHeaders, HttpStatus.OK);
+			}
+		} catch (final Exception e) {
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@RequestMapping(path = "/veureDetallComanda", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> veureDetallComanda(
+			@RequestBody final Comanda comanda) {
+
+		try {
+			final HttpHeaders httpHeaders = new HttpHeaders();
+			final List<DetallComanda> listDetallComanda = detallComandaBusiness.cercaDetallComanda(comanda);
+			if ((listDetallComanda.size()== 0)) {
+				return new ResponseEntity<>("No s'ha trobat el detall de la comanda", httpHeaders, HttpStatus.BAD_REQUEST);
+			} else {
+				return new ResponseEntity<>(listDetallComanda, httpHeaders, HttpStatus.OK);
 			}
 		} catch (final Exception e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);

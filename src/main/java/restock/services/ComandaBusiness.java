@@ -69,17 +69,22 @@ public class ComandaBusiness {
 	}
 	
 	public List<Comanda> cercaComandesPerBotiga(final Botiga botiga) {
-		
 		List<Comanda> comandes = new ArrayList<Comanda>();
 		comandes = comandaRepository.findByBotigaId(botiga.getId());
 		if(comandes.size()>0) {
 			return comandes;
-		}else return null;
-				
+		}else return null;		
+	}
+	
+	public List<Comanda> cercaComandesPendentsPerBotiga(final Botiga botiga) {
+		List<Comanda> comandes = new ArrayList<Comanda>();
+		comandes = comandaRepository.findPendentsByBotigaId(botiga.getId(), new Date());
+		if(comandes.size()>0) {
+			return comandes;
+		}else return null;		
 	}
 	
 	public List<Comanda> cercaComandesPerOrganitzacio(final Organitzacio org) {
-		
 		List<Botiga> botigues = new ArrayList<Botiga>();
 		botigues = botigaRepository.findByOrganitzacioId(org.getId());
 
@@ -93,8 +98,26 @@ public class ComandaBusiness {
 		}
 		if(comandes.size()>0) {
 			return comandes;
-		}else return null;
-				
+		}else return null;		
+	}
+	
+	public List<Comanda> cercaComandesPendentsPerOrganitzacio(final Organitzacio org) {
+		List<Botiga> botigues = new ArrayList<Botiga>();
+		botigues = botigaRepository.findByOrganitzacioId(org.getId());
+
+		List<Comanda> comandes = new ArrayList<Comanda>();
+		
+		if(botigues.size()>0) {
+			for(Botiga botiga : botigues) {
+				List<Comanda> comandaPerBotiga = comandaRepository.findPendentsByBotigaId(botiga.getId(), new Date());
+				comandes.addAll(comandaPerBotiga);
+			}
+		}
+		if(comandes.size()>0) {
+			return comandes;
+		}else {
+			return null;		
+		}
 	}
 	
 }
