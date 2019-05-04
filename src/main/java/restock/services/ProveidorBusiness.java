@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.services;
 
 import java.util.List;
@@ -9,6 +13,9 @@ import restock.dto.Cercador;
 import restock.entities.Proveidor;
 import restock.repository.ProveidorRepository;
 
+/**
+ * The Class ProveidorBusiness.
+ */
 @Component
 public class ProveidorBusiness {
 
@@ -16,6 +23,12 @@ public class ProveidorBusiness {
 	@Autowired
 	private ProveidorRepository proveidorRepository;
 
+	/**
+	 * Guarda proveidor.
+	 *
+	 * @param proveidor
+	 * @return proveidor
+	 */
 	public Proveidor guardaProveidor(final Proveidor proveidor) {
 		Proveidor proveidorExistent= proveidorRepository.findByNomAndOrganitzacioId(proveidor.getNom(), proveidor.getOrganitzacio().getId());
 				
@@ -28,6 +41,12 @@ public class ProveidorBusiness {
 	}
 	
 	
+	/**
+	 * Elimina proveidor.
+	 *
+	 * @param proveidor 
+	 * @return proveidor
+	 */
 	public Proveidor eliminaProveidor(final Proveidor proveidor) {
 		Proveidor proveidorExistent = proveidorRepository.findById(proveidor.getId());
 		
@@ -40,6 +59,12 @@ public class ProveidorBusiness {
 		}
 	}
 	
+	/**
+	 * Modifica proveidor.
+	 *
+	 * @param proveidor 
+	 * @return proveidor
+	 */
 	public Proveidor modificaProveidor(final Proveidor proveidor) {
 		Proveidor proveidorExistent = proveidorRepository.findById(proveidor.getId());
 		
@@ -64,6 +89,12 @@ public class ProveidorBusiness {
 		}
 	}
 	
+	/**
+	 * Gets the proveidors per organitzacio.
+	 *
+	 * @param orgId
+	 * @return proveidors per organitzacio
+	 */
 	public List<Proveidor> getProveidorsPerOrganitzacio(Integer orgId) {
 		List<Proveidor> proveidors = proveidorRepository.findByOrganitzacioId(orgId);
 		return proveidors;
@@ -71,6 +102,12 @@ public class ProveidorBusiness {
 	
 	
 	
+	/**
+	 * Cercar proveidor.
+	 *
+	 * @param cercadorProveidor
+	 * @return list
+	 */
 	public List<Proveidor> cercarProveidor(final Cercador cercadorProveidor) {
 		List<Proveidor> llistaProveidors = null;
 		String camp = cercadorProveidor.getCamp();

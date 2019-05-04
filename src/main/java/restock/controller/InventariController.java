@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.controller;
 
 
@@ -20,6 +24,9 @@ import restock.entities.Organitzacio;
 import restock.services.InventariBusiness;
 
 
+/**
+ * The Class InventariController.
+ */
 @RestController
 @RequestMapping("/inventari")
 public class InventariController {
@@ -28,10 +35,19 @@ public class InventariController {
     private InventariBusiness inventariBusiness;
     
 
+    /**
+     * Inventari controller.
+     */
     public InventariController(){
     }
  
 	
+	/**
+	 * Gets comandes per botiga.
+	 *
+	 * @param botiga 
+	 * @return comandes per botiga
+	 */
 	@RequestMapping(path = "/cercarPerBotiga", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getComandesPerBotiga(
 			@RequestBody final Botiga botiga) {
@@ -49,6 +65,12 @@ public class InventariController {
 		}
 	}
 	
+	/**
+	 * Gets comandes per organitzacio.
+	 *
+	 * @param org 
+	 * @return comandes per organitzacio
+	 */
 	@RequestMapping(path = "/cercarPerOrganitzacio", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getComandesPerOrganitzacio(
 			@RequestBody final Organitzacio org) {

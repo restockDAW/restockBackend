@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.controller;
 
 
@@ -22,6 +26,9 @@ import restock.entities.SubFamilia;
 import restock.services.ProducteBusiness;
 
 
+/**
+ * The Class ProducteController.
+ */
 @RestController
 @RequestMapping("/producte")
 public class ProducteController {
@@ -30,10 +37,19 @@ public class ProducteController {
     private ProducteBusiness producteBusiness;
     
 
+    /**
+     * Producte controller.
+     */
     public ProducteController(){
     }
  
 
+	/**
+	 * Gets proveidors de organitzacio.
+	 *
+	 * @param orgId the org id
+	 * @return proveidors de organitzacio
+	 */
 	@RequestMapping(path = "/getProductes", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getProveidorsDeOrganitzacio(
 			@RequestBody final Integer orgId) {
@@ -47,6 +63,12 @@ public class ProducteController {
 	}
 	
     
+	/**
+	 * Alta.
+	 *
+	 * @param producte the producte
+	 * @return response entity
+	 */
 	@RequestMapping(path = "/alta", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> alta(
 			@RequestBody final Producte producte) {
@@ -65,6 +87,12 @@ public class ProducteController {
 	}
 	
 	
+	/**
+	 * Baixa.
+	 *
+	 * @param producte the producte
+	 * @return response entity
+	 */
 	@RequestMapping(path = "/baixa", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> baixa(
 			@RequestBody final Producte producte) {
@@ -82,6 +110,12 @@ public class ProducteController {
 		}
 	};
 	
+	/**
+	 * Modificacio.
+	 *
+	 * @param producte the producte
+	 * @return response entity
+	 */
 	@RequestMapping(path = "/modificacio", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> modificacio(
 			@RequestBody final Producte producte) {
@@ -114,6 +148,12 @@ public class ProducteController {
 		}
 	}
 	
+	/**
+	 * Gets subfamilies per familia id.
+	 *
+	 * @param famId 
+	 * @return subfamilies per familia id
+	 */
 	@RequestMapping(path = "/subfamilia/{famId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getSubfamiliesPerFamiliaId(@PathVariable final Integer famId) {
 		try {
@@ -129,6 +169,12 @@ public class ProducteController {
 		}
 	}
 	
+	/**
+	 * Gets productes.
+	 *
+	 * @param cercadorProductes 
+	 * @return productes
+	 */
 	@RequestMapping(path = "/cercar", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getProductes(
 			@RequestBody final Cercador cercadorProductes) {

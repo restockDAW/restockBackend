@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.controller;
 
 
@@ -19,6 +23,9 @@ import restock.entities.Botiga;
 import restock.services.BotigaBusiness;
 
 
+/**
+ * The Class BotigaController.
+ */
 @RestController
 @RequestMapping("/botiga")
 public class BotigaController {
@@ -26,9 +33,18 @@ public class BotigaController {
     @Autowired
     private BotigaBusiness botigaBusiness;
 
+    /**
+     * Botiga controller.
+     */
     public BotigaController(){
     }
  
+	/**
+	 * Gets totes les botigues.
+	 *
+	 * @param orgId 
+	 * @return totes les botigues
+	 */
 	@RequestMapping(path = "/getAll", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getTotesLesBotigues(
 			@RequestBody final Integer orgId) {
@@ -41,6 +57,12 @@ public class BotigaController {
 		}
 	}
     
+	/**
+	 * Alta.
+	 *
+	 * @param botiga 
+	 * @return response entity
+	 */
 	@RequestMapping(path = "/alta", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> alta(
 			@RequestBody final Botiga botiga) {
@@ -59,6 +81,12 @@ public class BotigaController {
 	}
 	
 	
+	/**
+	 * Baixa.
+	 *
+	 * @param botiga 
+	 * @return response entity
+	 */
 	@RequestMapping(path = "/baixa", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> baixa(
 			@RequestBody final Botiga botiga) {
@@ -76,6 +104,12 @@ public class BotigaController {
 		}
 	}
 	
+	/**
+	 * Modificacio.
+	 *
+	 * @param botiga 
+	 * @return response entity
+	 */
 	@RequestMapping(path = "/modificacio", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> modificacio(
 			@RequestBody final Botiga botiga) {
@@ -94,6 +128,12 @@ public class BotigaController {
 	}
 	
 	
+	/**
+	 * Modificacio responsable.
+	 *
+	 * @param botiga 
+	 * @return  response entity
+	 */
 	@RequestMapping(path = "/modificacioResponsable", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> modificacioResponsable(
 			@RequestBody final Botiga botiga) {
@@ -112,6 +152,12 @@ public class BotigaController {
 	}
 	
 	
+	/**
+	 * Gets the botigues.
+	 *
+	 * @param cercadorBotiga 
+	 * @return botigues
+	 */
 	@RequestMapping(path = "/cercar", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getBotigues(
 			@RequestBody final Cercador cercadorBotiga) {

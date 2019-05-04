@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.entities;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -21,6 +25,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 
+/**
+ * The Class Comanda.
+ */
 @Entity
 @Table(name = "comanda")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
@@ -32,15 +39,32 @@ public class Comanda implements java.io.Serializable {
 	private Proveidor proveidor;
 	private Date datarecepcio;
 	
+	/**
+	 * Comanda.
+	 */
 	public Comanda() {
 	}
 
+	/**
+	 * Comanda.
+	 *
+	 * @param id 
+	 */
 	public Comanda(final Integer id) {
 		super();
 		this.id = id;
 	}
 
 	
+	/**
+	 * Comanda.
+	 *
+	 * @param id the id
+	 * @param datacomanda the datacomanda
+	 * @param botiga the botiga
+	 * @param proveidor the proveidor
+	 * @param datarecepcio the datarecepcio
+	 */
 	public Comanda(Integer id, Date datacomanda, Botiga botiga, Proveidor proveidor, Date datarecepcio) {
 		super();
 		this.id = id;

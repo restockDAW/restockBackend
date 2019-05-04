@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.entities;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -21,6 +25,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
+/**
+ * The Class Usuari.
+ */
 @Entity
 @Table(name = "usuari")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
@@ -40,9 +47,17 @@ public class Usuari implements java.io.Serializable {
 	private String correu;
 	
 	
+	/**
+	 * Usuari.
+	 */
 	public Usuari() {
 	}
 
+	/**
+	 * Usuari.
+	 *
+	 * @param
+	 */
 	public Usuari(final Integer id) {
 		super();
 		this.id = id;

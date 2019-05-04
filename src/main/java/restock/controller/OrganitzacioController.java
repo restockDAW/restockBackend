@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.controller;
 
 
@@ -27,6 +31,9 @@ import restock.services.ProveidorBusiness;
 import restock.services.UsuariBusiness;
 
 
+/**
+ * The Class OrganitzacioController.
+ */
 @RestController
 @RequestMapping("/organitzacio")
 public class OrganitzacioController {
@@ -46,10 +53,19 @@ public class OrganitzacioController {
     @Autowired
     private UsuariBusiness usuariBusiness;
 
+    /**
+     * Organitzacio controller.
+     */
     public OrganitzacioController(){
     }
  
     
+	/**
+	 * Alta.
+	 *
+	 * @param organitzacio 
+	 * @return response entity
+	 */
 	@RequestMapping(path = "/alta", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> alta(
 			@RequestBody final Organitzacio organitzacio) {
@@ -67,6 +83,12 @@ public class OrganitzacioController {
 		}
 	}
 	
+	/**
+	 * Gets usuaris per organitzacio.
+	 *
+	 * @param orgId
+	 * @return usuaris per organitzacio
+	 */
 	@RequestMapping(path = "/usuaris/{orgId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getUsuarisPerOrganitzacio(@PathVariable final Integer orgId) {
 		try {
@@ -82,6 +104,12 @@ public class OrganitzacioController {
 		}
 	}
 	
+	/**
+	 * Gets botigues per organitzacio.
+	 *
+	 * @param orgId 
+	 * @return botigues per organitzacio
+	 */
 	@RequestMapping(path = "/botigues/{orgId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getBotiguesPerOrganitzacio(@PathVariable final Integer orgId) {
 		try {
@@ -97,6 +125,12 @@ public class OrganitzacioController {
 		}
 	}
 	
+	/**
+	 * Gets proveidors per organitzacio.
+	 *
+	 * @param orgId
+	 * @return proveidors per organitzacio
+	 */
 	@RequestMapping(path = "/proveidors/{orgId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getProveidorsPerOrganitzacio(@PathVariable final Integer orgId) {
 		try {
@@ -112,6 +146,12 @@ public class OrganitzacioController {
 		}
 	}
 	
+	/**
+	 * Gets productes per proveidor id.
+	 *
+	 * @param provId 
+	 * @return productes per proveidor id
+	 */
 	@RequestMapping(path = "/productes/{provId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getProductesPerProveidorId(@PathVariable final Integer provId) {
 		try {

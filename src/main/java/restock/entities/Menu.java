@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.entities;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -12,6 +16,9 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
+/**
+ * The Class Menu.
+ */
 @Entity
 @Table(name = "menu")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
@@ -21,9 +28,17 @@ public class Menu implements java.io.Serializable {
 	private String descripcio;
 	
 	
+	/**
+	 * Menu.
+	 */
 	public Menu() {
 	}
 
+	/**
+	 * Menu.
+	 *
+	 * @param id 
+	 */
 	public Menu(final Integer id) {
 		super();
 		this.id = id;

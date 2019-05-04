@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.services;
 
 import java.util.ArrayList;
@@ -20,6 +24,9 @@ import restock.repository.DetallComandaRepository;
 import restock.repository.ProducteRepository;
 import restock.repository.ProveidorRepository;
 
+/**
+ * The Class ComandaBusiness.
+ */
 @Component
 public class ComandaBusiness {
 	@Autowired
@@ -37,6 +44,12 @@ public class ComandaBusiness {
 	@Autowired
 	private BotigaRepository botigaRepository;
 
+	/**
+	 * Guarda comanda.
+	 *
+	 * @param comandaBotiga
+	 * @return comanda
+	 */
 	public Comanda guardaComanda(final ComandaBotiga comandaBotiga) {
 		if(comandaBotiga.getDetallComandaList().size()>0){
 			Comanda comanda = new Comanda();
@@ -68,6 +81,12 @@ public class ComandaBusiness {
 		}		
 	}
 	
+	/**
+	 * Cerca comandes per botiga.
+	 *
+	 * @param botiga 
+	 * @return list
+	 */
 	public List<Comanda> cercaComandesPerBotiga(final Botiga botiga) {
 		List<Comanda> comandes = new ArrayList<Comanda>();
 		comandes = comandaRepository.findByBotigaId(botiga.getId());
@@ -76,6 +95,12 @@ public class ComandaBusiness {
 		}else return null;		
 	}
 	
+	/**
+	 * Cerca comandes pendents per botiga.
+	 *
+	 * @param botiga 
+	 * @return list
+	 */
 	public List<Comanda> cercaComandesPendentsPerBotiga(final Botiga botiga) {
 		List<Comanda> comandes = new ArrayList<Comanda>();
 		comandes = comandaRepository.findPendentsByBotigaId(botiga.getId(), new Date());
@@ -84,6 +109,12 @@ public class ComandaBusiness {
 		}else return null;		
 	}
 	
+	/**
+	 * Cerca comandes per organitzacio.
+	 *
+	 * @param org 
+	 * @return list
+	 */
 	public List<Comanda> cercaComandesPerOrganitzacio(final Organitzacio org) {
 		List<Botiga> botigues = new ArrayList<Botiga>();
 		botigues = botigaRepository.findByOrganitzacioId(org.getId());
@@ -101,6 +132,12 @@ public class ComandaBusiness {
 		}else return null;		
 	}
 	
+	/**
+	 * Cerca comandes pendents per organitzacio.
+	 *
+	 * @param org 
+	 * @return list
+	 */
 	public List<Comanda> cercaComandesPendentsPerOrganitzacio(final Organitzacio org) {
 		List<Botiga> botigues = new ArrayList<Botiga>();
 		botigues = botigaRepository.findByOrganitzacioId(org.getId());

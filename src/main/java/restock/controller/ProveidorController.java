@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.controller;
 
 
@@ -19,6 +23,9 @@ import restock.entities.Proveidor;
 import restock.services.ProveidorBusiness;
 
 
+/**
+ * The Class ProveidorController.
+ */
 @RestController
 @RequestMapping("/proveidor")
 public class ProveidorController {
@@ -27,9 +34,18 @@ public class ProveidorController {
     private ProveidorBusiness proveidorBusiness;
     
 
+    /**
+     * Proveidor controller.
+     */
     public ProveidorController(){
     }
  
+	/**
+	 * Gets proveidors de organitzacio.
+	 *
+	 * @param orgId 
+	 * @return proveidors de organitzacio
+	 */
 	@RequestMapping(path = "/getProveidors", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getProveidorsDeOrganitzacio(
 			@RequestBody final Integer orgId) {
@@ -42,6 +58,12 @@ public class ProveidorController {
 		}
 	}
 	
+	/**
+	 * Alta.
+	 *
+	 * @param proveidor 
+	 * @return response entity
+	 */
 	@RequestMapping(path = "/alta", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> alta(
 			@RequestBody final Proveidor proveidor) {
@@ -60,6 +82,12 @@ public class ProveidorController {
 	}
 	
 	
+	/**
+	 * Baixa.
+	 *
+	 * @param proveidor 
+	 * @return response entity
+	 */
 	@RequestMapping(path = "/baixa", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> baixa(
 			@RequestBody final Proveidor proveidor) {
@@ -77,6 +105,12 @@ public class ProveidorController {
 		}
 	}
 	
+	/**
+	 * Modificacio.
+	 *
+	 * @param proveidor
+	 * @return response entity
+	 */
 	@RequestMapping(path = "/modificacio", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> modificacio(
 			@RequestBody final Proveidor proveidor) {
@@ -95,6 +129,12 @@ public class ProveidorController {
 	}
 	
 	
+	/**
+	 * Gets proveidros.
+	 *
+	 * @param cercadorProveidor 
+	 * @return proveidros
+	 */
 	@RequestMapping(path = "/cercar", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getProveidros(
 			@RequestBody final Cercador cercadorProveidor) {

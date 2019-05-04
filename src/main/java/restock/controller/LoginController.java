@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,6 +20,9 @@ import restock.entities.Usuari;
 import restock.services.UsuariBusiness;
 
 
+/**
+ * The Class LoginController.
+ */
 @RestController
 @RequestMapping("/loginUser")
 public class LoginController {
@@ -23,10 +30,19 @@ public class LoginController {
     @Autowired
     private UsuariBusiness usuariBusiness;
 
+    /**
+     * Login controller.
+     */
     public LoginController(){
     }
  
     
+	/**
+	 * Login.
+	 *
+	 * @param login 
+	 * @return response entity
+	 */
 	@RequestMapping(path = "", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> login(
 			@RequestBody final Login login) {

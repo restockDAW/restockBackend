@@ -1,14 +1,29 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.dto;
 
+/**
+ * The Class Login.
+ */
 public class Login implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private String user;
 	private String password;
 
 	
+	/**
+	 * Login.
+	 */
 	public Login() {
 	}
 
+	/**
+	 * Login.
+	 *
+	 * @param id
+	 */
 	public Login(final Integer id) {
 		super();
 	}

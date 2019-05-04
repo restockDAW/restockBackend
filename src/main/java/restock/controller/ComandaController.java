@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.controller;
 
 
@@ -23,6 +27,9 @@ import restock.services.ComandaBusiness;
 import restock.services.DetallComandaBusiness;
 
 
+/**
+ * The Class ComandaController.
+ */
 @RestController
 @RequestMapping("/comanda")
 public class ComandaController {
@@ -34,10 +41,19 @@ public class ComandaController {
     private DetallComandaBusiness detallComandaBusiness;
     
 
+    /**
+     * Comanda controller.
+     */
     public ComandaController(){
     }
  
 	
+	/**
+	 * Alta.
+	 *
+	 * @param comandaBotiga 
+	 * @return response entity
+	 */
 	@RequestMapping(path = "/alta", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> alta(
 			@RequestBody final ComandaBotiga comandaBotiga) {
@@ -74,7 +90,13 @@ public class ComandaController {
 //	}
 	
 	
-	@RequestMapping(path = "/cercarPerBotiga", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	/**
+ * Gets the comandes per botiga.
+ *
+ * @param botiga 
+ * @return comandes per botiga
+ */
+@RequestMapping(path = "/cercarPerBotiga", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getComandesPerBotiga(
 			@RequestBody final Botiga botiga) {
 
@@ -91,6 +113,12 @@ public class ComandaController {
 		}
 	}
 	
+	/**
+	 * Gets comandes pendents per botiga.
+	 *
+	 * @param botiga 
+	 * @return comandes pendents per botiga
+	 */
 	@RequestMapping(path = "/cercarPendentsPerBotiga", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getComandesPendentsPerBotiga(
 			@RequestBody final Botiga botiga) {
@@ -108,6 +136,12 @@ public class ComandaController {
 		}
 	}
 	
+	/**
+	 * Gets comandes per organitzacio.
+	 *
+	 * @param org 
+	 * @return comandes per organitzacio
+	 */
 	@RequestMapping(path = "/cercarPerOrganitzacio", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getComandesPerOrganitzacio(
 			@RequestBody final Organitzacio org) {
@@ -125,8 +159,14 @@ public class ComandaController {
 		}
 	}
 	
+	/**
+	 * Gets comandes pendents per organitzacio.
+	 *
+	 * @param org
+	 * @return comandes pendents per organitzacio
+	 */
 	@RequestMapping(path = "/cercarPendentsPerOrganitzacio", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> getComandesPendnetsPerOrganitzacio(
+	public ResponseEntity<?> getComandesPendentsPerOrganitzacio(
 			@RequestBody final Organitzacio org) {
 
 		try {
@@ -142,6 +182,12 @@ public class ComandaController {
 		}
 	}
 	
+	/**
+	 * Veure detall comanda.
+	 *
+	 * @param comanda 
+	 * @return response entity
+	 */
 	@RequestMapping(path = "/veureDetallComanda", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> veureDetallComanda(
 			@RequestBody final Comanda comanda) {

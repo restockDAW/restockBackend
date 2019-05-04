@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.services;
 
 import java.util.List;
@@ -9,12 +13,21 @@ import restock.dto.Login;
 import restock.entities.Usuari;
 import restock.repository.UsuariRepository;
 
+/**
+ * The Class UsuariBusiness.
+ */
 @Component
 public class UsuariBusiness {
 
 	@Autowired
 	private UsuariRepository usuariRepository;
 	
+	/**
+	 * Login.
+	 *
+	 * @param login 
+	 * @return usuari
+	 */
 	public Usuari login(final Login login) {
 		Usuari userExistent = usuariRepository.findByUserAndPassword(login.getUser(), login.getPassword());
 		if(userExistent==null) {
@@ -35,17 +48,35 @@ public class UsuariBusiness {
 		return Usuaris;
 		}
 	
+	/**
+	 * Gets the usuaris per organitzacio.
+	 *
+	 * @param orgId 
+	 * @return usuaris per organitzacio
+	 */
 	public List<Usuari> getUsuarisPerOrganitzacio(Integer orgId) {
 		List<Usuari> usuaris = usuariRepository.findByOrganitzacioId(orgId);
 		return usuaris;
 		}
 	
+	/**
+	 * Gets the responsables per organitzacio.
+	 *
+	 * @param orgId
+	 * @return responsables per organitzacio
+	 */
 	public List<Usuari> getResponsablesPerOrganitzacio(Integer orgId) {
 		List<Usuari> usuaris = usuariRepository.findResponsablesOfOrganitzacio(orgId);
 		return usuaris;
 	}
 	
 	
+	/**
+	 * Gets the user by id.
+	 *
+	 * @param usuariId the usuari id
+	 * @return the user by id
+	 */
 	public Usuari getUserById(final Integer usuariId) {
 		Usuari userExistent = usuariRepository.getOne(usuariId);
 
@@ -57,6 +88,12 @@ public class UsuariBusiness {
 	}
 	
 
+	/**
+	 * Guarda usuari.
+	 *
+	 * @param usuari 
+	 * @return usuari
+	 */
 	public Usuari guardaUsuari(final Usuari usuari) {
 		Usuari userExistent = usuariRepository.findByUser(usuari.getUser());
 		
@@ -69,6 +106,12 @@ public class UsuariBusiness {
 		}
 	}
 	
+	/**
+	 * Elimina usuari.
+	 *
+	 * @param usuari
+	 * @return usuari
+	 */
 	public Usuari eliminaUsuari(final Usuari usuari) {
 		Usuari userExistent = usuariRepository.findByUserAndRol(usuari.getUser(), usuari.getRol());
 		
@@ -81,6 +124,12 @@ public class UsuariBusiness {
 		}
 	}
 	
+	/**
+	 * Modifica usuari.
+	 *
+	 * @param usuari
+	 * @return usuari
+	 */
 	public Usuari modificaUsuari(final Usuari usuari) {
 		Usuari userExistent = usuariRepository.findByUser(usuari.getUser());
 		
@@ -99,6 +148,12 @@ public class UsuariBusiness {
 		}
 	}
 	
+	/**
+	 * Cercar usuari.
+	 *
+	 * @param camp 
+	 * @return list
+	 */
 	public List<Usuari> cercarUsuari(final String camp) {
 		List<Usuari> llistaUsuaris = null;
 		llistaUsuaris = usuariRepository.cercaUsuari(camp);

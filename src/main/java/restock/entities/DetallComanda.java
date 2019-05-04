@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.entities;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -17,6 +21,9 @@ import org.hibernate.annotations.FetchMode;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
+/**
+ * The Class DetallComanda.
+ */
 @Entity
 @Table(name = "detallcomanda")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
@@ -27,9 +34,17 @@ public class DetallComanda implements java.io.Serializable {
 	private Producte producte;
 	private Double quantitat;
 	
+	/**
+	 * Detall comanda.
+	 */
 	public DetallComanda() {
 	}
 
+	/**
+	 * Detall comanda.
+	 *
+	 * @param id
+	 */
 	public DetallComanda(final Integer id) {
 		super();
 		this.id = id;

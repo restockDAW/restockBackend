@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.services;
 
 import java.util.List;
@@ -13,6 +17,9 @@ import restock.repository.FamiliaRepository;
 import restock.repository.ProducteRepository;
 import restock.repository.SubfamiliaRepository;
 
+/**
+ * The Class ProducteBusiness.
+ */
 @Component
 public class ProducteBusiness {
 
@@ -26,6 +33,12 @@ public class ProducteBusiness {
 	@Autowired
 	private SubfamiliaRepository subfamiliaRepository;
 
+	/**
+	 * Guarda producte.
+	 *
+	 * @param producte
+	 * @return producte
+	 */
 	public Producte guardaProducte(final Producte producte) {
 		Producte producteExistent= producteRepository.findByMarcaAndModelAndSubfamiliaAndProveidor(producte.getMarca(), producte.getModel(),
 				producte.getSubfamilia().getId(), producte.getProveidor().getId());
@@ -39,6 +52,12 @@ public class ProducteBusiness {
 	}
 	
 	
+	/**
+	 * Elimina producte.
+	 *
+	 * @param producte
+	 * @return producte
+	 */
 	public Producte eliminaProducte(final Producte producte) {
 		Producte producteExistent = producteRepository.findById(producte.getId());
 		
@@ -51,6 +70,12 @@ public class ProducteBusiness {
 		}
 	}
 	
+	/**
+	 * Modifica producte.
+	 *
+	 * @param producte 
+	 * @return producte
+	 */
 	public Producte modificaProducte(final Producte producte) {
 		Producte producteExistent = producteRepository.findById(producte.getId());
 		
@@ -71,6 +96,12 @@ public class ProducteBusiness {
 		}
 	}
 	
+	/**
+	 * Gets the productes per proveidor.
+	 *
+	 * @param provId 
+	 * @return productes per proveidor
+	 */
 	public List<Producte> getProductesPerProveidor(Integer provId) {
 		List<Producte> productes = producteRepository.findByProveidorId(provId);
 		return productes;
@@ -81,11 +112,23 @@ public class ProducteBusiness {
 		return families;
 	}
 	
+	/**
+	 * Gets the subfamilia per familia.
+	 *
+	 * @param famId 
+	 * @return subfamilia per familia
+	 */
 	public List<SubFamilia> getSubfamiliaPerFamilia(Integer famId) {
 		List<SubFamilia> subfamilies = subfamiliaRepository.findByFamiliaId(famId);
 		return subfamilies;
 	}
 	
+	/**
+	 * Cercar producte.
+	 *
+	 * @param cercadorProducte
+	 * @return list
+	 */
 	public List<Producte> cercarProducte(final Cercador cercadorProducte) {
 		List<Producte> llistaProductes = null;
 		String camp = cercadorProducte.getCamp();
@@ -101,6 +144,12 @@ public class ProducteBusiness {
 	}
 	
 
+	/**
+	 * Gets the productes per organitzacio.
+	 *
+	 * @param orgId 
+	 * @return productes per organitzacio
+	 */
 	public List<Producte> getProductesPerOrganitzacio(Integer orgId) {
 		List<Producte> productes = producteRepository.findByOrganitzacioId(orgId);
 		return productes;

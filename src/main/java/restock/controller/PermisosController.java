@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.controller;
 
 import java.util.List;
@@ -18,6 +22,9 @@ import restock.entities.Rol;
 import restock.services.PermisosBusiness;
 
 
+/**
+ * The Class PermisosController.
+ */
 @RestController
 @RequestMapping("/permisos")
 public class PermisosController {
@@ -25,10 +32,19 @@ public class PermisosController {
     @Autowired
     private PermisosBusiness permisosBusiness;
 
+    /**
+     * Permisos controller.
+     */
     public PermisosController(){
     }
  
     
+	/**
+	 * Gets tots permisos.
+	 *
+	 * @param rol 
+	 * @return tots permisos
+	 */
 	@RequestMapping(path = "/totsElsPermisos", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getTotsPermisos(final Rol rol) {
 		try {
@@ -40,6 +56,12 @@ public class PermisosController {
 		}
 	}
 	
+	/**
+	 * Gets permisos per rol.
+	 *
+	 * @param rolId 
+	 * @return permisos per rol
+	 */
 	@RequestMapping(path = "/permisPerRol/{rolId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getPermisosPerRol(@PathVariable final Integer rolId) {
 		try {

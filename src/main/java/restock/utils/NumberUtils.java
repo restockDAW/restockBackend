@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 
 package restock.utils;
 
@@ -5,13 +9,25 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
+/**
+ * The Class NumberUtils.
+ */
 public class NumberUtils {
 
+	/**
+	 * Number utils.
+	 */
 	private NumberUtils() {
 
 	}
 
 
+	/**
+	 * Price format.
+	 *
+	 * @param value 
+	 * @return string
+	 */
 	public static String priceFormat(final Double value) {
 		if (value != 0) {
 			final DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(Locale.ENGLISH);
@@ -25,6 +41,12 @@ public class NumberUtils {
 	}
 
 
+	/**
+	 * Es NIE.
+	 *
+	 * @param identificacio 
+	 * @return true, if successful
+	 */
 	public static boolean esNIE(final String identificacio) {
 		boolean esNIE = false;
 		if ((identificacio != null) && (identificacio.length() == 9) &&
@@ -34,6 +56,12 @@ public class NumberUtils {
 		return esNIE;
 	}
 	
+	/**
+	 * Checks if is number.
+	 *
+	 * @param string 
+	 * @return true, if is number
+	 */
 	public static boolean isNumber(final String string) {
 		if ((string == null) || string.isEmpty()) {
 			return false;

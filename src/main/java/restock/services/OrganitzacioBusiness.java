@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +12,9 @@ import restock.entities.Usuari;
 import restock.repository.OrganitzacioRepository;
 import restock.repository.UsuariRepository;
 
+/**
+ * The Class OrganitzacioBusiness.
+ */
 @Component
 public class OrganitzacioBusiness {
 
@@ -17,6 +24,12 @@ public class OrganitzacioBusiness {
 	@Autowired
 	private OrganitzacioRepository organitzacioRepository;
 
+	/**
+	 * Guarda administrador.
+	 *
+	 * @param organitzacio
+	 * @return organitzacio
+	 */
 	public Organitzacio guardaAdministrador(final Organitzacio organitzacio) {
 		Usuari userExistent = usuariRepository.findByUser(organitzacio.getUsuari().getUser());
 		Organitzacio organitzacioExistent= organitzacioRepository.findByNom(organitzacio.getNom());

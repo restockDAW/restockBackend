@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.entities;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -11,6 +15,9 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
+/**
+ * The Class Familia.
+ */
 @Entity
 @Table(name = "familia")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
@@ -21,9 +28,17 @@ public class Familia implements java.io.Serializable {
 	private String descripcio;
 	
 	
+	/**
+	 * Familia.
+	 */
 	public Familia() {
 	}
 
+	/**
+	 * Familia.
+	 *
+	 * @param id 
+	 */
 	public Familia(final Integer id) {
 		super();
 		this.id = id;

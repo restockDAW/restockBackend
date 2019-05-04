@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.services;
 
 import java.util.List;
@@ -12,6 +16,9 @@ import restock.repository.BotigaRepository;
 import restock.repository.UsuariRepository;
 
 
+/**
+ * The Class BotigaBusiness.
+ */
 @Component
 public class BotigaBusiness {
 
@@ -21,6 +28,12 @@ public class BotigaBusiness {
 	@Autowired
 	private BotigaRepository botigaRepository;
 
+	/**
+	 * Guarda botiga.
+	 *
+	 * @param botiga 
+	 * @return botiga
+	 */
 	public Botiga guardaBotiga(final Botiga botiga) {
 		Botiga botigaExistent= botigaRepository.findByNomAndOrganitzacioId(botiga.getNom(), botiga.getOrganitzacio().getId());
 		Usuari userExistent = null;
@@ -57,6 +70,12 @@ public class BotigaBusiness {
 	}
 	
 	
+	/**
+	 * Elimina botiga.
+	 *
+	 * @param botiga
+	 * @return botiga
+	 */
 	public Botiga eliminaBotiga(final Botiga botiga) {
 		Botiga botigaExistent = botigaRepository.findById(botiga.getId());
 		
@@ -69,6 +88,12 @@ public class BotigaBusiness {
 		}
 	}
 	
+	/**
+	 * Modifica botiga.
+	 *
+	 * @param botiga
+	 * @return botiga
+	 */
 	public Botiga modificaBotiga(final Botiga botiga) {
 		Botiga botigaExistent = botigaRepository.findById(botiga.getId());
 		
@@ -89,6 +114,12 @@ public class BotigaBusiness {
 	}
 	
 	
+	/**
+	 * Modifica responsable botiga.
+	 *
+	 * @param botiga
+	 * @return botiga
+	 */
 	public Botiga modificaResponsableBotiga(final Botiga botiga) {
 		Botiga botigaExistent= botigaRepository.findById(botiga.getId());
 		Usuari userExistent = null;
@@ -118,11 +149,23 @@ public class BotigaBusiness {
 		}else return null;	
 	}
 	
+	/**
+	 * Gets the botigues per organitzacio.
+	 *
+	 * @param orgId
+	 * @return botigues per organitzacio
+	 */
 	public List<Botiga> getBotiguesPerOrganitzacio(Integer orgId) {
 		List<Botiga> botigues = botigaRepository.findByOrganitzacioId(orgId);
 		return botigues;
 		}
 	
+	/**
+	 * Cercar botiga.
+	 *
+	 * @param cercadorBotiga 
+	 * @return list
+	 */
 	public List<Botiga> cercarBotiga(final Cercador cercadorBotiga) {
 		List<Botiga> llistaBotigues = null;
 		String camp = cercadorBotiga.getCamp();

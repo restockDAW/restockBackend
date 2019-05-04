@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.services;
 
 import java.util.ArrayList;
@@ -12,6 +16,9 @@ import restock.entities.Organitzacio;
 import restock.repository.BotigaRepository;
 import restock.repository.InventariRepository;
 
+/**
+ * The Class InventariBusiness.
+ */
 @Component
 public class InventariBusiness {
 	@Autowired
@@ -21,6 +28,12 @@ public class InventariBusiness {
 	private BotigaRepository botigaRepository;
 
 	
+	/**
+	 * Cerca inventari per botiga.
+	 *
+	 * @param botiga
+	 * @return list
+	 */
 	public List<Inventari> cercaInventariPerBotiga(final Botiga botiga) {
 		
 		List<Inventari> inventaris = new ArrayList<Inventari>();
@@ -31,6 +44,12 @@ public class InventariBusiness {
 				
 	}
 	
+	/**
+	 * Cerca inventari per organitzacio.
+	 *
+	 * @param org
+	 * @return list
+	 */
 	public List<Inventari> cercaInventariPerOrganitzacio(final Organitzacio org) {
 		
 		List<Botiga> botigues = new ArrayList<Botiga>();

@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.entities;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -11,6 +15,9 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
+/**
+ * The Class Rol.
+ */
 @Entity
 @Table(name = "rol")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
@@ -21,9 +28,17 @@ public class Rol implements java.io.Serializable {
 	private String descripcio;
 	
 	
+	/**
+	 * Rol.
+	 */
 	public Rol() {
 	}
 
+	/**
+	 * Rol.
+	 *
+	 * @param id 
+	 */
 	public Rol(final Integer id) {
 		super();
 		this.id = id;

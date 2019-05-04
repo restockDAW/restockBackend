@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 
 package restock.utils;
 
@@ -24,8 +28,7 @@ public class DataUtils {
 	/**
 	 * Convertir timestamp A date.
 	 *
-	 * @param timestamp
-	 *            un/a timestamp
+	 * @param timestamp 
 	 * @return un date
 	 */
 	public static Date convertirTimestampADate(final Timestamp timestamp) {
@@ -36,9 +39,7 @@ public class DataUtils {
 	 * Agafa el valor de long from format date.
 	 *
 	 * @param date
-	 *            un/a date
 	 * @param format
-	 *            un/a format
 	 * @return un long from format date
 	 */
 	public static long getLongFromFormatDate(final LocalDateTime date, final String format) {
@@ -49,9 +50,7 @@ public class DataUtils {
 	 * Agafa el valor de format date from timestamp. 
 	 *
 	 * @param timestamp
-	 *            un/a timestamp
 	 * @param format
-	 *            un/a format
 	 * @return un format date from timestamp
 	 */
 	public static String getFormatDateFromTimestamp(final Timestamp timestamp, final String format) {
@@ -65,9 +64,7 @@ public class DataUtils {
 	 * Agafa el valor de format date from date. 
 	 *
 	 * @param localDateTime
-	 *            un/a date
 	 * @param format
-	 *            un/a format
 	 * @return un format date from date
 	 */
 	public static String getFormatDateFromDate(final LocalDateTime localDateTime, final String format) {
@@ -82,7 +79,6 @@ public class DataUtils {
 	 * Agafa el valor de month from date. 
 	 *
 	 * @param date
-	 *            un/a date
 	 * @return un month from date
 	 */
 	public static int getMonthFromDate(final Date date) {
@@ -95,9 +91,7 @@ public class DataUtils {
 	 * Agafa el valor de date from format string.
 	 *
 	 * @param date
-	 *            un/a date
 	 * @param format
-	 *            un/a format
 	 * @return un date from format string
 	 */
 	public static Date getDateFromFormatString(final String date, final String format) {
@@ -113,7 +107,6 @@ public class DataUtils {
 	 * Agafa el valor de today with format.
 	 *
 	 * @param format
-	 *            un/a format
 	 * @return un today with format
 	 */
 	public static String getTodayWithFormat(final String format) {
@@ -126,7 +119,6 @@ public class DataUtils {
 	 * Agafa el valor de year from date. 
 	 *
 	 * @param date
-	 *            un/a date
 	 * @return un year from date
 	 */
 	public static int getYearFromDate(final Date date) {
@@ -139,9 +131,7 @@ public class DataUtils {
 	 * Agafa el valor de first date.
 	 *
 	 * @param year
-	 *            un/a year
 	 * @param month
-	 *            un/a month
 	 * @return un first date
 	 */
 	public static LocalDateTime getFirstDate(final int year, final int month) {
@@ -154,9 +144,7 @@ public class DataUtils {
 	 * Agafa el valor de last date. 
 	 *
 	 * @param year
-	 *            un/a year
 	 * @param month
-	 *            un/a month
 	 * @return un last date
 	 */
 	public static LocalDateTime getLastDate(final int year, final int month) {
@@ -170,7 +158,6 @@ public class DataUtils {
 	 * Next month from date. 
 	 *
 	 * @param date
-	 *            un/a date
 	 * @return un date
 	 */
 	public static Date nextMonthFromDate(final Date date) {
@@ -237,8 +224,8 @@ public class DataUtils {
 	/**
 	 * convertim un objecte <i>java.util.Date</i> al tipus <i>java.time.LocalDateTime</i>
 	 *
-	 * @param dateToConvert
-	 * @return
+	 * @param dateToConvert the date to convert
+	 * @return the local date time
 	 */
 	public LocalDateTime convertToLocalDateTimeViaInstant(final Date dateToConvert) {
 		return dateToConvert.toInstant()

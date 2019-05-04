@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.controller;
 
 import java.util.List;
@@ -18,6 +22,9 @@ import restock.entities.Usuari;
 import restock.services.UsuariBusiness;
 
 
+/**
+ * The Class UsuariController.
+ */
 @RestController
 @RequestMapping("/usuari")
 public class UsuariController {
@@ -25,6 +32,9 @@ public class UsuariController {
     @Autowired
     private UsuariBusiness usuariBusiness;
 
+    /**
+     * Usuari controller.
+     */
     public UsuariController(){
     }
 
@@ -39,6 +49,12 @@ public class UsuariController {
 		}
 	}
 
+	/**
+	 * Gets usuaris de organitzacio.
+	 *
+	 * @param orgId 
+	 * @return usuaris de organitzacio
+	 */
 	@RequestMapping(path = "/getResponsables", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getUsuarisDeOrganitzacio(
 			@RequestBody final Integer orgId) {
@@ -51,6 +67,12 @@ public class UsuariController {
 		}
 	}
 	
+	/**
+	 * Gets usuari per id.
+	 *
+	 * @param userId
+	 * @return usuari per id
+	 */
 	@RequestMapping(path = "/{userId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getUsuariPerId(@PathVariable final Integer userId) {
 		try {
@@ -66,6 +88,12 @@ public class UsuariController {
 		}
 	}
     
+	/**
+	 * Alta.
+	 *
+	 * @param usuari
+	 * @return response entity
+	 */
 	@RequestMapping(path = "/alta", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> alta(
 			@RequestBody final Usuari usuari) {
@@ -83,6 +111,12 @@ public class UsuariController {
 		}
 	};
 	
+	/**
+	 * Baixa.
+	 *
+	 * @param usuari 
+	 * @return response entity
+	 */
 	@RequestMapping(path = "/baixa", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> baixa(
 			@RequestBody final Usuari usuari) {
@@ -100,6 +134,12 @@ public class UsuariController {
 		}
 	};
 	
+	/**
+	 * Modificacio.
+	 *
+	 * @param usuari
+	 * @return response entity
+	 */
 	@RequestMapping(path = "/modificacio", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> modificacio(
 			@RequestBody final Usuari usuari) {
@@ -117,6 +157,12 @@ public class UsuariController {
 		}
 	};
 	
+	/**
+	 * Gets usuaris.
+	 *
+	 * @param camp 
+	 * @return usuaris
+	 */
 	@RequestMapping(path = "/cercar/{camp}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getUsuaris(@PathVariable final String camp) {
 		try {

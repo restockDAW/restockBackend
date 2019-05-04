@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.entities;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -17,6 +21,9 @@ import org.hibernate.annotations.FetchMode;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
+/**
+ * The Class Organitzacio.
+ */
 @Entity
 @Table(name = "organitzacio")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
@@ -33,9 +40,17 @@ public class Organitzacio implements java.io.Serializable {
 	private String pais;
 	
 	
+	/**
+	 * Organitzacio.
+	 */
 	public Organitzacio() {
 	}
 
+	/**
+	 * Organitzacio.
+	 *
+	 * @param id
+	 */
 	public Organitzacio(final Integer id) {
 		super();
 		this.id = id;

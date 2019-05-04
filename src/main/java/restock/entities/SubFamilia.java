@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.entities;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -18,6 +22,9 @@ import org.hibernate.annotations.FetchMode;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
+/**
+ * The Class SubFamilia.
+ */
 @Entity
 @Table(name = "subfamilia")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
@@ -29,9 +36,17 @@ public class SubFamilia implements java.io.Serializable {
 	private Familia familia;
 	
 	
+	/**
+	 * Sub familia.
+	 */
 	public SubFamilia() {
 	}
 
+	/**
+	 * Sub familia.
+	 *
+	 * @param id 
+	 */
 	public SubFamilia(final Integer id) {
 		super();
 		this.id = id;

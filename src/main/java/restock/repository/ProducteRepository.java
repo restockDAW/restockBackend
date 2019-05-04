@@ -1,3 +1,7 @@
+/*
+ * 
+ * Albert Codina
+ */
 package restock.repository;
 
 import java.util.List;
@@ -9,12 +13,36 @@ import org.springframework.data.repository.query.Param;
 import restock.entities.Producte;
 
 
+/**
+ * The Interface ProducteRepository.
+ */
 public interface ProducteRepository extends JpaRepository<Producte, Integer> {
 	
+	/**
+	 * Find by id.
+	 *
+	 * @param id 
+	 * @return producte
+	 */
 	public Producte findById(Integer id);
 	
+	/**
+	 * Find by proveidor id.
+	 *
+	 * @param provId
+	 * @return list
+	 */
 	public List<Producte> findByProveidorId(Integer provId);
 	
+	/**
+	 * Find by marca and model and subfamilia and proveidor.
+	 *
+	 * @param marca 
+	 * @param model 
+	 * @param subfamiliaId 
+	 * @param proveidorId 
+	 * @return producte
+	 */
 	@Query(value = " " +
 			"SELECT prod "
 			+ "FROM Producte prod WHERE "
@@ -29,6 +57,12 @@ public interface ProducteRepository extends JpaRepository<Producte, Integer> {
 			@Param("proveidorId") Integer proveidorId);
 	
 
+	/**
+	 * Find by organitzacio id.
+	 *
+	 * @param orgId 
+	 * @return list
+	 */
 	@Query(value = " " +
 			"SELECT prod "
 			+ "FROM Producte prod WHERE "
@@ -38,6 +72,13 @@ public interface ProducteRepository extends JpaRepository<Producte, Integer> {
 			@Param("orgId") Integer orgId);
 	
 	
+	/**
+	 * Cerca producte.
+	 *
+	 * @param camp 
+	 * @param orgId 
+	 * @return list
+	 */
 	@Query(value = " " +
 			"SELECT prod "
 			+ "FROM Producte prod WHERE "
