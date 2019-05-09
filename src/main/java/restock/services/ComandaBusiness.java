@@ -82,6 +82,28 @@ public class ComandaBusiness {
 	}
 	
 	/**
+	 * Modificar comanda.
+	 *
+	 * @param comandaBotiga
+	 * @return comanda
+	 */
+	public Comanda modificarComanda(final ComandaBotiga comandaBotiga) {		
+		if(comandaBotiga.getDetallComandaList().size()>0){
+			
+			Integer comandaId = comandaBotiga.getDetallComandaList().get(0).getComanda().getId();
+			List<DetallComanda> detallComandaList = detallComandaRepository.findByComandaId(comandaId);
+			detallComandaRepository.delete(detallComandaList);
+			
+			Comanda comanda = comandaRepository.findOne(comandaId);
+			comandaRepository.delete(comanda);
+			
+			return guardaComanda(comandaBotiga);
+		}else {
+			return null;
+		}		
+	}
+	
+	/**
 	 * Cerca comandes per botiga.
 	 *
 	 * @param botiga 

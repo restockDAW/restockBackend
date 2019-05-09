@@ -23,5 +23,5 @@ public interface InventariRepository extends JpaRepository<Inventari, Integer> {
 	 */
 	public List<Inventari> findByBotigaId(Integer botigaId);
 	
-
+	public Inventari findByBotigaIdAndProducteId(Integer botigaId, Integer producteId);
 }

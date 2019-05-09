@@ -1,6 +1,6 @@
 /*
  * 
- * Albert Codina
+OSFAIVYIZ * Albert Codina
  */
 package restock.controller;
 
@@ -72,23 +72,23 @@ public class ComandaController {
 	}
 	
 	
-//	@RequestMapping(path = "/modificacio", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-//	public ResponseEntity<?> modificacio(
-//			@RequestBody final Proveidor proveidor) {
-//
-//		try {
-//			final HttpHeaders httpHeaders = new HttpHeaders();
-//			final Proveidor proveidorRetorn = proveidorBusiness.modificaProveidor(proveidor);
-//			if ((proveidorRetorn == null)) {
-//				return new ResponseEntity<>("No s’ha pogut modificar el proveidor", httpHeaders, HttpStatus.BAD_REQUEST);
-//			} else {
-//				return new ResponseEntity<>("Proveidor modificat correctament", httpHeaders, HttpStatus.OK);
-//			}
-//		} catch (final Exception e) {
-//			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-//		}
-//	}
-	
+	@RequestMapping(path = "/modificacio", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> modificacio(
+			@RequestBody final ComandaBotiga comandaBotiga) {
+
+		try {
+			final HttpHeaders httpHeaders = new HttpHeaders();
+			final Comanda comandaRetorn = comandaBusiness.modificarComanda(comandaBotiga);
+			if ((comandaRetorn == null)) {
+				return new ResponseEntity<>("No s'ha pogut donar d'alta la comanda", httpHeaders, HttpStatus.BAD_REQUEST);
+			} else {
+				return new ResponseEntity<>("Comanda enviada correctament", httpHeaders, HttpStatus.OK);
+			}
+		} catch (final Exception e) {
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+	}
+		
 	
 	/**
  * Gets the comandes per botiga.
