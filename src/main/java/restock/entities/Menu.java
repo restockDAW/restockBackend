@@ -37,7 +37,7 @@ public class Menu implements java.io.Serializable {
 	/**
 	 * Menu.
 	 *
-	 * @param id 
+	 * @param id the id
 	 */
 	public Menu(final Integer id) {
 		super();

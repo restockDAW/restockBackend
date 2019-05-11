@@ -42,7 +42,7 @@ public class BotigaController {
 	/**
 	 * Gets totes les botigues.
 	 *
-	 * @param orgId 
+	 * @param orgId the org id
 	 * @return totes les botigues
 	 */
 	@RequestMapping(path = "/getAll", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -60,7 +60,7 @@ public class BotigaController {
 	/**
 	 * Alta.
 	 *
-	 * @param botiga 
+	 * @param botiga the botiga
 	 * @return response entity
 	 */
 	@RequestMapping(path = "/alta", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -84,7 +84,7 @@ public class BotigaController {
 	/**
 	 * Baixa.
 	 *
-	 * @param botiga 
+	 * @param botiga the botiga
 	 * @return response entity
 	 */
 	@RequestMapping(path = "/baixa", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -107,7 +107,7 @@ public class BotigaController {
 	/**
 	 * Modificacio.
 	 *
-	 * @param botiga 
+	 * @param botiga the botiga
 	 * @return response entity
 	 */
 	@RequestMapping(path = "/modificacio", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -131,7 +131,7 @@ public class BotigaController {
 	/**
 	 * Modificacio responsable.
 	 *
-	 * @param botiga 
+	 * @param botiga the botiga
 	 * @return  response entity
 	 */
 	@RequestMapping(path = "/modificacioResponsable", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -155,7 +155,7 @@ public class BotigaController {
 	/**
 	 * Gets the botigues.
 	 *
-	 * @param cercadorBotiga 
+	 * @param cercadorBotiga the cercador botiga
 	 * @return botigues
 	 */
 	@RequestMapping(path = "/cercar", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)

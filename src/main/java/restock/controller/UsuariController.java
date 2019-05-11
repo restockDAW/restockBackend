@@ -52,7 +52,7 @@ public class UsuariController {
 	/**
 	 * Gets usuaris de organitzacio.
 	 *
-	 * @param orgId 
+	 * @param orgId the org id
 	 * @return usuaris de organitzacio
 	 */
 	@RequestMapping(path = "/getResponsables", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -70,7 +70,7 @@ public class UsuariController {
 	/**
 	 * Gets usuari per id.
 	 *
-	 * @param userId
+	 * @param userId the user id
 	 * @return usuari per id
 	 */
 	@RequestMapping(path = "/{userId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -91,7 +91,7 @@ public class UsuariController {
 	/**
 	 * Alta.
 	 *
-	 * @param usuari
+	 * @param usuari the usuari
 	 * @return response entity
 	 */
 	@RequestMapping(path = "/alta", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -114,7 +114,7 @@ public class UsuariController {
 	/**
 	 * Baixa.
 	 *
-	 * @param usuari 
+	 * @param usuari the usuari
 	 * @return response entity
 	 */
 	@RequestMapping(path = "/baixa", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -137,7 +137,7 @@ public class UsuariController {
 	/**
 	 * Modificacio.
 	 *
-	 * @param usuari
+	 * @param usuari the usuari
 	 * @return response entity
 	 */
 	@RequestMapping(path = "/modificacio", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -160,7 +160,7 @@ public class UsuariController {
 	/**
 	 * Gets usuaris.
 	 *
-	 * @param camp 
+	 * @param camp the camp
 	 * @return usuaris
 	 */
 	@RequestMapping(path = "/cercar/{camp}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

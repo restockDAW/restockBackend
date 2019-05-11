@@ -50,7 +50,7 @@ public class Proveidor implements java.io.Serializable {
 	/**
 	 * Proveidor.
 	 *
-	 * @param id
+	 * @param id the id
 	 */
 	public Proveidor(final Integer id) {
 		super();

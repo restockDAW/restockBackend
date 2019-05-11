@@ -22,7 +22,7 @@ public class Login implements java.io.Serializable {
 	/**
 	 * Login.
 	 *
-	 * @param id
+	 * @param id the id
 	 */
 	public Login(final Integer id) {
 		super();

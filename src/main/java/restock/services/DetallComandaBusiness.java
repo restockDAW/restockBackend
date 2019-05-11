@@ -25,7 +25,7 @@ public class DetallComandaBusiness {
 	/**
 	 * Cerca detall comanda.
 	 *
-	 * @param comanda
+	 * @param comanda the comanda
 	 * @return list
 	 */
 	public List<DetallComanda> cercaDetallComanda(final Comanda comanda) {

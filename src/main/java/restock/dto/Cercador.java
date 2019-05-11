@@ -15,8 +15,8 @@ public class Cercador implements java.io.Serializable {
 	/**
 	 * Cercador.
 	 *
-	 * @param camp 
-	 * @param orgId 
+	 * @param camp the camp
+	 * @param orgId the org id
 	 */
 	public Cercador(String camp, Integer orgId) {
 		super();

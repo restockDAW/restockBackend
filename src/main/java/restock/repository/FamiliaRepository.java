@@ -16,6 +16,9 @@ import restock.entities.Familia;
  */
 public interface FamiliaRepository extends JpaRepository<Familia, Integer> {
 	
+	/* (non-Javadoc)
+	 * @see org.springframework.data.jpa.repository.JpaRepository#findAll()
+	 */
 	public List<Familia> findAll();
 	
 }

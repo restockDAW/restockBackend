@@ -63,7 +63,7 @@ public class OrganitzacioController {
 	/**
 	 * Alta.
 	 *
-	 * @param organitzacio 
+	 * @param organitzacio the organitzacio
 	 * @return response entity
 	 */
 	@RequestMapping(path = "/alta", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -86,7 +86,7 @@ public class OrganitzacioController {
 	/**
 	 * Gets usuaris per organitzacio.
 	 *
-	 * @param orgId
+	 * @param orgId the org id
 	 * @return usuaris per organitzacio
 	 */
 	@RequestMapping(path = "/usuaris/{orgId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -107,7 +107,7 @@ public class OrganitzacioController {
 	/**
 	 * Gets botigues per organitzacio.
 	 *
-	 * @param orgId 
+	 * @param orgId the org id
 	 * @return botigues per organitzacio
 	 */
 	@RequestMapping(path = "/botigues/{orgId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -128,7 +128,7 @@ public class OrganitzacioController {
 	/**
 	 * Gets proveidors per organitzacio.
 	 *
-	 * @param orgId
+	 * @param orgId the org id
 	 * @return proveidors per organitzacio
 	 */
 	@RequestMapping(path = "/proveidors/{orgId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -149,7 +149,7 @@ public class OrganitzacioController {
 	/**
 	 * Gets productes per proveidor id.
 	 *
-	 * @param provId 
+	 * @param provId the prov id
 	 * @return productes per proveidor id
 	 */
 	@RequestMapping(path = "/productes/{provId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

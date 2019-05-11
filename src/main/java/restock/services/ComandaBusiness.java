@@ -47,7 +47,7 @@ public class ComandaBusiness {
 	/**
 	 * Guarda comanda.
 	 *
-	 * @param comandaBotiga
+	 * @param comandaBotiga the comanda botiga
 	 * @return comanda
 	 */
 	public Comanda guardaComanda(final ComandaBotiga comandaBotiga) {
@@ -84,7 +84,7 @@ public class ComandaBusiness {
 	/**
 	 * Modificar comanda.
 	 *
-	 * @param comandaBotiga
+	 * @param comandaBotiga the comanda botiga
 	 * @return comanda
 	 */
 	public Comanda modificarComanda(final ComandaBotiga comandaBotiga) {		
@@ -106,7 +106,7 @@ public class ComandaBusiness {
 	/**
 	 * Cerca comandes per botiga.
 	 *
-	 * @param botiga 
+	 * @param botiga the botiga
 	 * @return list
 	 */
 	public List<Comanda> cercaComandesPerBotiga(final Botiga botiga) {
@@ -120,7 +120,7 @@ public class ComandaBusiness {
 	/**
 	 * Cerca comandes pendents per botiga.
 	 *
-	 * @param botiga 
+	 * @param botiga the botiga
 	 * @return list
 	 */
 	public List<Comanda> cercaComandesPendentsPerBotiga(final Botiga botiga) {
@@ -134,7 +134,7 @@ public class ComandaBusiness {
 	/**
 	 * Cerca comandes per organitzacio.
 	 *
-	 * @param org 
+	 * @param org the org
 	 * @return list
 	 */
 	public List<Comanda> cercaComandesPerOrganitzacio(final Organitzacio org) {
@@ -157,7 +157,7 @@ public class ComandaBusiness {
 	/**
 	 * Cerca comandes pendents per organitzacio.
 	 *
-	 * @param org 
+	 * @param org the org
 	 * @return list
 	 */
 	public List<Comanda> cercaComandesPendentsPerOrganitzacio(final Organitzacio org) {

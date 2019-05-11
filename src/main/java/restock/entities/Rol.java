@@ -37,7 +37,7 @@ public class Rol implements java.io.Serializable {
 	/**
 	 * Rol.
 	 *
-	 * @param id 
+	 * @param id the id
 	 */
 	public Rol(final Integer id) {
 		super();

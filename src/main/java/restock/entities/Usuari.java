@@ -56,7 +56,7 @@ public class Usuari implements java.io.Serializable {
 	/**
 	 * Usuari.
 	 *
-	 * @param
+	 * @param id the id
 	 */
 	public Usuari(final Integer id) {
 		super();

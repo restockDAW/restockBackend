@@ -23,7 +23,7 @@ public class PermisosBusiness {
 	/**
 	 * Gets the permisos per rol.
 	 *
-	 * @param rolId
+	 * @param rolId the rol id
 	 * @return permisos per rol
 	 */
 	public List<Permisos> getPermisosPerRol(final Integer rolId) {

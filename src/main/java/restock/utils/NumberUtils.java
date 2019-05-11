@@ -25,7 +25,7 @@ public class NumberUtils {
 	/**
 	 * Price format.
 	 *
-	 * @param value 
+	 * @param value the value
 	 * @return string
 	 */
 	public static String priceFormat(final Double value) {
@@ -44,7 +44,7 @@ public class NumberUtils {
 	/**
 	 * Es NIE.
 	 *
-	 * @param identificacio 
+	 * @param identificacio the identificacio
 	 * @return true, if successful
 	 */
 	public static boolean esNIE(final String identificacio) {
@@ -59,7 +59,7 @@ public class NumberUtils {
 	/**
 	 * Checks if is number.
 	 *
-	 * @param string 
+	 * @param string the string
 	 * @return true, if is number
 	 */
 	public static boolean isNumber(final String string) {

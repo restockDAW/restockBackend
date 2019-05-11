@@ -18,7 +18,7 @@ public interface PermisosRepository extends JpaRepository<Permisos, Integer> {
 	/**
 	 * Find by rol id.
 	 *
-	 * @param rolId 
+	 * @param rolId the rol id
 	 * @return list
 	 */
 	public List<Permisos> findByRolId(Integer rolId);

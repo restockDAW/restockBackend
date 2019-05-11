@@ -43,7 +43,7 @@ public class DetallComanda implements java.io.Serializable {
 	/**
 	 * Detall comanda.
 	 *
-	 * @param id
+	 * @param id the id
 	 */
 	public DetallComanda(final Integer id) {
 		super();

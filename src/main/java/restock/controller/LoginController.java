@@ -40,7 +40,7 @@ public class LoginController {
 	/**
 	 * Login.
 	 *
-	 * @param login 
+	 * @param login the login
 	 * @return response entity
 	 */
 	@RequestMapping(path = "", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)

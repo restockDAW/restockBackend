@@ -43,7 +43,7 @@ public class Permisos implements java.io.Serializable {
 	/**
 	 * Permisos.
 	 *
-	 * @param id 
+	 * @param id the id
 	 */
 	public Permisos(final Integer id) {
 		super();

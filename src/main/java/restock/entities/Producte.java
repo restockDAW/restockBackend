@@ -47,7 +47,7 @@ public class Producte implements java.io.Serializable {
 	/**
 	 * Producte.
 	 *
-	 * @param id 
+	 * @param id the id
 	 */
 	public Producte(final Integer id) {
 		super();

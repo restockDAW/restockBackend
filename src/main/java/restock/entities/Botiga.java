@@ -48,7 +48,7 @@ public class Botiga implements java.io.Serializable {
 	/**
 	 * Botiga.
 	 *
-	 * @param id
+	 * @param id the id
 	 */
 	public Botiga(final Integer id) {
 		super();

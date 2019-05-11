@@ -25,7 +25,7 @@ public class UsuariBusiness {
 	/**
 	 * Login.
 	 *
-	 * @param login 
+	 * @param login the login
 	 * @return usuari
 	 */
 	public Usuari login(final Login login) {
@@ -51,7 +51,7 @@ public class UsuariBusiness {
 	/**
 	 * Gets the usuaris per organitzacio.
 	 *
-	 * @param orgId 
+	 * @param orgId the org id
 	 * @return usuaris per organitzacio
 	 */
 	public List<Usuari> getUsuarisPerOrganitzacio(Integer orgId) {
@@ -62,7 +62,7 @@ public class UsuariBusiness {
 	/**
 	 * Gets the responsables per organitzacio.
 	 *
-	 * @param orgId
+	 * @param orgId the org id
 	 * @return responsables per organitzacio
 	 */
 	public List<Usuari> getResponsablesPerOrganitzacio(Integer orgId) {
@@ -91,7 +91,7 @@ public class UsuariBusiness {
 	/**
 	 * Guarda usuari.
 	 *
-	 * @param usuari 
+	 * @param usuari the usuari
 	 * @return usuari
 	 */
 	public Usuari guardaUsuari(final Usuari usuari) {
@@ -109,7 +109,7 @@ public class UsuariBusiness {
 	/**
 	 * Elimina usuari.
 	 *
-	 * @param usuari
+	 * @param usuari the usuari
 	 * @return usuari
 	 */
 	public Usuari eliminaUsuari(final Usuari usuari) {
@@ -127,7 +127,7 @@ public class UsuariBusiness {
 	/**
 	 * Modifica usuari.
 	 *
-	 * @param usuari
+	 * @param usuari the usuari
 	 * @return usuari
 	 */
 	public Usuari modificaUsuari(final Usuari usuari) {
@@ -151,7 +151,7 @@ public class UsuariBusiness {
 	/**
 	 * Cercar usuari.
 	 *
-	 * @param camp 
+	 * @param camp the camp
 	 * @return list
 	 */
 	public List<Usuari> cercarUsuari(final String camp) {

@@ -27,7 +27,7 @@ public class OrganitzacioBusiness {
 	/**
 	 * Guarda administrador.
 	 *
-	 * @param organitzacio
+	 * @param organitzacio the organitzacio
 	 * @return organitzacio
 	 */
 	public Organitzacio guardaAdministrador(final Organitzacio organitzacio) {

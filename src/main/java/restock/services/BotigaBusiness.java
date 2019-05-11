@@ -31,7 +31,7 @@ public class BotigaBusiness {
 	/**
 	 * Guarda botiga.
 	 *
-	 * @param botiga 
+	 * @param botiga the botiga
 	 * @return botiga
 	 */
 	public Botiga guardaBotiga(final Botiga botiga) {
@@ -73,7 +73,7 @@ public class BotigaBusiness {
 	/**
 	 * Elimina botiga.
 	 *
-	 * @param botiga
+	 * @param botiga the botiga
 	 * @return botiga
 	 */
 	public Botiga eliminaBotiga(final Botiga botiga) {
@@ -91,7 +91,7 @@ public class BotigaBusiness {
 	/**
 	 * Modifica botiga.
 	 *
-	 * @param botiga
+	 * @param botiga the botiga
 	 * @return botiga
 	 */
 	public Botiga modificaBotiga(final Botiga botiga) {
@@ -117,7 +117,7 @@ public class BotigaBusiness {
 	/**
 	 * Modifica responsable botiga.
 	 *
-	 * @param botiga
+	 * @param botiga the botiga
 	 * @return botiga
 	 */
 	public Botiga modificaResponsableBotiga(final Botiga botiga) {
@@ -152,7 +152,7 @@ public class BotigaBusiness {
 	/**
 	 * Gets the botigues per organitzacio.
 	 *
-	 * @param orgId
+	 * @param orgId the org id
 	 * @return botigues per organitzacio
 	 */
 	public List<Botiga> getBotiguesPerOrganitzacio(Integer orgId) {
@@ -163,7 +163,7 @@ public class BotigaBusiness {
 	/**
 	 * Cercar botiga.
 	 *
-	 * @param cercadorBotiga 
+	 * @param cercadorBotiga the cercador botiga
 	 * @return list
 	 */
 	public List<Botiga> cercarBotiga(final Cercador cercadorBotiga) {

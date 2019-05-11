@@ -36,7 +36,7 @@ public class ProducteBusiness {
 	/**
 	 * Guarda producte.
 	 *
-	 * @param producte
+	 * @param producte the producte
 	 * @return producte
 	 */
 	public Producte guardaProducte(final Producte producte) {
@@ -55,7 +55,7 @@ public class ProducteBusiness {
 	/**
 	 * Elimina producte.
 	 *
-	 * @param producte
+	 * @param producte the producte
 	 * @return producte
 	 */
 	public Producte eliminaProducte(final Producte producte) {
@@ -73,7 +73,7 @@ public class ProducteBusiness {
 	/**
 	 * Modifica producte.
 	 *
-	 * @param producte 
+	 * @param producte the producte
 	 * @return producte
 	 */
 	public Producte modificaProducte(final Producte producte) {
@@ -99,7 +99,7 @@ public class ProducteBusiness {
 	/**
 	 * Gets the productes per proveidor.
 	 *
-	 * @param provId 
+	 * @param provId the prov id
 	 * @return productes per proveidor
 	 */
 	public List<Producte> getProductesPerProveidor(Integer provId) {
@@ -115,7 +115,7 @@ public class ProducteBusiness {
 	/**
 	 * Gets the subfamilia per familia.
 	 *
-	 * @param famId 
+	 * @param famId the fam id
 	 * @return subfamilia per familia
 	 */
 	public List<SubFamilia> getSubfamiliaPerFamilia(Integer famId) {
@@ -126,7 +126,7 @@ public class ProducteBusiness {
 	/**
 	 * Cercar producte.
 	 *
-	 * @param cercadorProducte
+	 * @param cercadorProducte the cercador producte
 	 * @return list
 	 */
 	public List<Producte> cercarProducte(final Cercador cercadorProducte) {
@@ -147,7 +147,7 @@ public class ProducteBusiness {
 	/**
 	 * Gets the productes per organitzacio.
 	 *
-	 * @param orgId 
+	 * @param orgId the org id
 	 * @return productes per organitzacio
 	 */
 	public List<Producte> getProductesPerOrganitzacio(Integer orgId) {

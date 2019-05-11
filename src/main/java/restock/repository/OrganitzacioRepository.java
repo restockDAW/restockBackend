@@ -16,7 +16,7 @@ public interface OrganitzacioRepository extends JpaRepository<Organitzacio, Inte
 	/**
 	 * Find by nif.
 	 *
-	 * @param nif
+	 * @param nif the nif
 	 * @return organitzacio
 	 */
 	public Organitzacio findByNif(String nif);
@@ -24,7 +24,7 @@ public interface OrganitzacioRepository extends JpaRepository<Organitzacio, Inte
 	/**
 	 * Find by nom.
 	 *
-	 * @param nom 
+	 * @param nom the nom
 	 * @return organitzacio
 	 */
 	public Organitzacio findByNom(String nom);

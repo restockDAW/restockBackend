@@ -19,8 +19,14 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.TimeZone;
 
+/**
+ * The Class DataUtils.
+ */
 public class DataUtils {
 
+	/**
+	 * Data utils.
+	 */
 	private DataUtils() {
 
 	}
@@ -28,7 +34,7 @@ public class DataUtils {
 	/**
 	 * Convertir timestamp A date.
 	 *
-	 * @param timestamp 
+	 * @param timestamp the timestamp
 	 * @return un date
 	 */
 	public static Date convertirTimestampADate(final Timestamp timestamp) {
@@ -38,8 +44,8 @@ public class DataUtils {
 	/**
 	 * Agafa el valor de long from format date.
 	 *
-	 * @param date
-	 * @param format
+	 * @param date the date
+	 * @param format the format
 	 * @return un long from format date
 	 */
 	public static long getLongFromFormatDate(final LocalDateTime date, final String format) {
@@ -49,8 +55,8 @@ public class DataUtils {
 	/**
 	 * Agafa el valor de format date from timestamp. 
 	 *
-	 * @param timestamp
-	 * @param format
+	 * @param timestamp the timestamp
+	 * @param format the format
 	 * @return un format date from timestamp
 	 */
 	public static String getFormatDateFromTimestamp(final Timestamp timestamp, final String format) {
@@ -63,8 +69,8 @@ public class DataUtils {
 	/**
 	 * Agafa el valor de format date from date. 
 	 *
-	 * @param localDateTime
-	 * @param format
+	 * @param localDateTime the local date time
+	 * @param format the format
 	 * @return un format date from date
 	 */
 	public static String getFormatDateFromDate(final LocalDateTime localDateTime, final String format) {
@@ -78,7 +84,7 @@ public class DataUtils {
 	/**
 	 * Agafa el valor de month from date. 
 	 *
-	 * @param date
+	 * @param date the date
 	 * @return un month from date
 	 */
 	public static int getMonthFromDate(final Date date) {
@@ -90,8 +96,8 @@ public class DataUtils {
 	/**
 	 * Agafa el valor de date from format string.
 	 *
-	 * @param date
-	 * @param format
+	 * @param date the date
+	 * @param format the format
 	 * @return un date from format string
 	 */
 	public static Date getDateFromFormatString(final String date, final String format) {
@@ -106,7 +112,7 @@ public class DataUtils {
 	/**
 	 * Agafa el valor de today with format.
 	 *
-	 * @param format
+	 * @param format the format
 	 * @return un today with format
 	 */
 	public static String getTodayWithFormat(final String format) {
@@ -118,7 +124,7 @@ public class DataUtils {
 	/**
 	 * Agafa el valor de year from date. 
 	 *
-	 * @param date
+	 * @param date the date
 	 * @return un year from date
 	 */
 	public static int getYearFromDate(final Date date) {
@@ -130,8 +136,8 @@ public class DataUtils {
 	/**
 	 * Agafa el valor de first date.
 	 *
-	 * @param year
-	 * @param month
+	 * @param year the year
+	 * @param month the month
 	 * @return un first date
 	 */
 	public static LocalDateTime getFirstDate(final int year, final int month) {
@@ -143,8 +149,8 @@ public class DataUtils {
 	/**
 	 * Agafa el valor de last date. 
 	 *
-	 * @param year
-	 * @param month
+	 * @param year the year
+	 * @param month the month
 	 * @return un last date
 	 */
 	public static LocalDateTime getLastDate(final int year, final int month) {
@@ -157,7 +163,7 @@ public class DataUtils {
 	/**
 	 * Next month from date. 
 	 *
-	 * @param date
+	 * @param date the date
 	 * @return un date
 	 */
 	public static Date nextMonthFromDate(final Date date) {
@@ -169,10 +175,10 @@ public class DataUtils {
 
 
 	/**
-	 * convertim un Calendar a un LocalDateTime
+	 * convertim un Calendar a un LocalDateTime.
 	 *
-	 * @param calendar
-	 * @return
+	 * @param calendar the calendar
+	 * @return the local date time
 	 */
 	public static LocalDateTime toLocalDateTime(final Calendar calendar) {
 		if (calendar == null) {
@@ -184,9 +190,9 @@ public class DataUtils {
 	}
 
 	/**
-	 * Convertim una data de tipus LocalDate a tipus Date
+	 * Convertim una data de tipus LocalDate a tipus Date.
 	 *
-	 * @param localDate
+	 * @param localDate the local date
 	 * @return Date
 	 */
 	public static Date convertirLocalDateToUtilDate(final LocalDate localDate) {
@@ -194,9 +200,9 @@ public class DataUtils {
 	}
 
 	/**
-	 * Convertim una data de tipus Date a tipus LocalDate
+	 * Convertim una data de tipus Date a tipus LocalDate.
 	 *
-	 * @param date
+	 * @param date the date
 	 * @return LocaDate
 	 */
 	public static LocalDate convertirDateToLocalDate(final Date date) {

@@ -48,7 +48,7 @@ public class Comanda implements java.io.Serializable {
 	/**
 	 * Comanda.
 	 *
-	 * @param id 
+	 * @param id the id
 	 */
 	public Comanda(final Integer id) {
 		super();

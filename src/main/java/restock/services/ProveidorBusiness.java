@@ -26,7 +26,7 @@ public class ProveidorBusiness {
 	/**
 	 * Guarda proveidor.
 	 *
-	 * @param proveidor
+	 * @param proveidor the proveidor
 	 * @return proveidor
 	 */
 	public Proveidor guardaProveidor(final Proveidor proveidor) {
@@ -44,7 +44,7 @@ public class ProveidorBusiness {
 	/**
 	 * Elimina proveidor.
 	 *
-	 * @param proveidor 
+	 * @param proveidor the proveidor
 	 * @return proveidor
 	 */
 	public Proveidor eliminaProveidor(final Proveidor proveidor) {
@@ -62,7 +62,7 @@ public class ProveidorBusiness {
 	/**
 	 * Modifica proveidor.
 	 *
-	 * @param proveidor 
+	 * @param proveidor the proveidor
 	 * @return proveidor
 	 */
 	public Proveidor modificaProveidor(final Proveidor proveidor) {
@@ -92,7 +92,7 @@ public class ProveidorBusiness {
 	/**
 	 * Gets the proveidors per organitzacio.
 	 *
-	 * @param orgId
+	 * @param orgId the org id
 	 * @return proveidors per organitzacio
 	 */
 	public List<Proveidor> getProveidorsPerOrganitzacio(Integer orgId) {
@@ -105,7 +105,7 @@ public class ProveidorBusiness {
 	/**
 	 * Cercar proveidor.
 	 *
-	 * @param cercadorProveidor
+	 * @param cercadorProveidor the cercador proveidor
 	 * @return list
 	 */
 	public List<Proveidor> cercarProveidor(final Cercador cercadorProveidor) {

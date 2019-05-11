@@ -18,7 +18,7 @@ public interface DetallComandaRepository extends JpaRepository<DetallComanda, In
 	/**
 	 * Find by comanda id.
 	 *
-	 * @param comandaId
+	 * @param comandaId the comanda id
 	 * @return list
 	 */
 	public List<DetallComanda> findByComandaId(Integer comandaId);

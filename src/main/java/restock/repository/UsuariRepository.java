@@ -18,12 +18,15 @@ import java.util.List;
 public interface UsuariRepository extends JpaRepository<Usuari, Integer> {
 
 	
+	/* (non-Javadoc)
+	 * @see org.springframework.data.jpa.repository.JpaRepository#findAll()
+	 */
 	public List<Usuari> findAll();
 	
 	/**
 	 * Find by id.
 	 *
-	 * @param usuariId 
+	 * @param usuariId the usuari id
 	 * @return usuari
 	 */
 	public Usuari findById(Integer usuariId);
@@ -31,7 +34,7 @@ public interface UsuariRepository extends JpaRepository<Usuari, Integer> {
 	/**
 	 * Find by user.
 	 *
-	 * @param user 
+	 * @param user the user
 	 * @return usuari
 	 */
 	public Usuari findByUser(String user);
@@ -39,8 +42,8 @@ public interface UsuariRepository extends JpaRepository<Usuari, Integer> {
 	/**
 	 * Find by user and password.
 	 *
-	 * @param user 
-	 * @param password
+	 * @param user the user
+	 * @param password the password
 	 * @return  usuari
 	 */
 	public Usuari findByUserAndPassword(String user, String password);
@@ -48,9 +51,9 @@ public interface UsuariRepository extends JpaRepository<Usuari, Integer> {
 	/**
 	 * Find by user and nif and organitzacio id.
 	 *
-	 * @param user 
-	 * @param nif 
-	 * @param organitacioId
+	 * @param user the user
+	 * @param nif the nif
+	 * @param organitacioId the organitacio id
 	 * @return usuari
 	 */
 	public Usuari findByUserAndNifAndOrganitzacioId(String user, String nif, Integer organitacioId);
@@ -58,8 +61,8 @@ public interface UsuariRepository extends JpaRepository<Usuari, Integer> {
 	/**
 	 * Find by user and rol.
 	 *
-	 * @param user 
-	 * @param rol
+	 * @param user the user
+	 * @param rol the rol
 	 * @return usuari
 	 */
 	public Usuari findByUserAndRol(String user, Rol rol);
@@ -67,7 +70,7 @@ public interface UsuariRepository extends JpaRepository<Usuari, Integer> {
 	/**
 	 * Find by organitzacio id.
 	 *
-	 * @param OrgId 
+	 * @param OrgId the org id
 	 * @return list
 	 */
 	public List<Usuari> findByOrganitzacioId(Integer OrgId);
@@ -75,7 +78,7 @@ public interface UsuariRepository extends JpaRepository<Usuari, Integer> {
 	/**
 	 * Find responsables of organitzacio.
 	 *
-	 * @param OrgId
+	 * @param OrgId the org id
 	 * @return list
 	 */
 	@Query(value = " " +
@@ -100,7 +103,7 @@ public interface UsuariRepository extends JpaRepository<Usuari, Integer> {
 	/**
 	 * Cerca usuari.
 	 *
-	 * @param camp 
+	 * @param camp the camp
 	 * @return list
 	 */
 	@Query(value = " " +
@@ -117,8 +120,8 @@ public interface UsuariRepository extends JpaRepository<Usuari, Integer> {
 	/**
 	 * Find by user and organitzacio id.
 	 *
-	 * @param user 
-	 * @param organitzacioId 
+	 * @param user the user
+	 * @param organitzacioId the organitzacio id
 	 * @return usuari
 	 */
 	@Query(value = " " +

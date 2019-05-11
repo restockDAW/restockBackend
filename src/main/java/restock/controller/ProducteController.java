@@ -151,7 +151,7 @@ public class ProducteController {
 	/**
 	 * Gets subfamilies per familia id.
 	 *
-	 * @param famId 
+	 * @param famId the fam id
 	 * @return subfamilies per familia id
 	 */
 	@RequestMapping(path = "/subfamilia/{famId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -172,7 +172,7 @@ public class ProducteController {
 	/**
 	 * Gets productes.
 	 *
-	 * @param cercadorProductes 
+	 * @param cercadorProductes the cercador productes
 	 * @return productes
 	 */
 	@RequestMapping(path = "/cercar", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)

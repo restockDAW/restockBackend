@@ -43,7 +43,7 @@ public class ProveidorController {
 	/**
 	 * Gets proveidors de organitzacio.
 	 *
-	 * @param orgId 
+	 * @param orgId the org id
 	 * @return proveidors de organitzacio
 	 */
 	@RequestMapping(path = "/getProveidors", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -61,7 +61,7 @@ public class ProveidorController {
 	/**
 	 * Alta.
 	 *
-	 * @param proveidor 
+	 * @param proveidor the proveidor
 	 * @return response entity
 	 */
 	@RequestMapping(path = "/alta", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -85,7 +85,7 @@ public class ProveidorController {
 	/**
 	 * Baixa.
 	 *
-	 * @param proveidor 
+	 * @param proveidor the proveidor
 	 * @return response entity
 	 */
 	@RequestMapping(path = "/baixa", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -108,7 +108,7 @@ public class ProveidorController {
 	/**
 	 * Modificacio.
 	 *
-	 * @param proveidor
+	 * @param proveidor the proveidor
 	 * @return response entity
 	 */
 	@RequestMapping(path = "/modificacio", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -132,7 +132,7 @@ public class ProveidorController {
 	/**
 	 * Gets proveidros.
 	 *
-	 * @param cercadorProveidor 
+	 * @param cercadorProveidor the cercador proveidor
 	 * @return proveidros
 	 */
 	@RequestMapping(path = "/cercar", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)

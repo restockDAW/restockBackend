@@ -20,7 +20,7 @@ public interface ProveidorRepository extends JpaRepository<Proveidor, Integer> {
 	/**
 	 * Find by nif.
 	 *
-	 * @param nif 
+	 * @param nif the nif
 	 * @return proveidor
 	 */
 	public Proveidor findByNif(String nif);
@@ -28,7 +28,7 @@ public interface ProveidorRepository extends JpaRepository<Proveidor, Integer> {
 	/**
 	 * Find by nom.
 	 *
-	 * @param nom 
+	 * @param nom the nom
 	 * @return proveidor
 	 */
 	public Proveidor findByNom(String nom);
@@ -36,7 +36,7 @@ public interface ProveidorRepository extends JpaRepository<Proveidor, Integer> {
 	/**
 	 * Find by id.
 	 *
-	 * @param id 	 
+	 * @param id the id
 	 * @return proveidor
 	 */
 	public Proveidor findById(Integer id);
@@ -44,8 +44,8 @@ public interface ProveidorRepository extends JpaRepository<Proveidor, Integer> {
 	/**
 	 * Find by nom and organitzacio id.
 	 *
-	 * @param nom 
-	 * @param organitzacioId
+	 * @param nom the nom
+	 * @param organitzacioId the organitzacio id
 	 * @return proveidor
 	 */
 	public Proveidor findByNomAndOrganitzacioId(String nom, Integer organitzacioId);
@@ -53,7 +53,7 @@ public interface ProveidorRepository extends JpaRepository<Proveidor, Integer> {
 	/**
 	 * Find by organitzacio id.
 	 *
-	 * @param organitzacioId 
+	 * @param organitzacioId the organitzacio id
 	 * @return list
 	 */
 	public List<Proveidor> findByOrganitzacioId(Integer organitzacioId);
@@ -61,8 +61,8 @@ public interface ProveidorRepository extends JpaRepository<Proveidor, Integer> {
 	/**
 	 * Cerca proveidor.
 	 *
-	 * @param camp 
-	 * @param orgId 
+	 * @param camp the camp
+	 * @param orgId the org id
 	 * @return list
 	 */
 	@Query(value = " " +

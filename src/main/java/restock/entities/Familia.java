@@ -37,7 +37,7 @@ public class Familia implements java.io.Serializable {
 	/**
 	 * Familia.
 	 *
-	 * @param id 
+	 * @param id the id
 	 */
 	public Familia(final Integer id) {
 		super();

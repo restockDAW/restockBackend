@@ -43,7 +43,7 @@ public class Inventari implements java.io.Serializable {
 	/**
 	 * Inventari.
 	 *
-	 * @param id 
+	 * @param id the id
 	 */
 	public Inventari(final Integer id) {
 		super();

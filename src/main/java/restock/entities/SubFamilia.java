@@ -45,7 +45,7 @@ public class SubFamilia implements java.io.Serializable {
 	/**
 	 * Sub familia.
 	 *
-	 * @param id 
+	 * @param id the id
 	 */
 	public SubFamilia(final Integer id) {
 		super();

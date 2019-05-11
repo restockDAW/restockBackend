@@ -21,7 +21,7 @@ public interface ProducteRepository extends JpaRepository<Producte, Integer> {
 	/**
 	 * Find by id.
 	 *
-	 * @param id 
+	 * @param id the id
 	 * @return producte
 	 */
 	public Producte findById(Integer id);
@@ -29,7 +29,7 @@ public interface ProducteRepository extends JpaRepository<Producte, Integer> {
 	/**
 	 * Find by proveidor id.
 	 *
-	 * @param provId
+	 * @param provId the prov id
 	 * @return list
 	 */
 	public List<Producte> findByProveidorId(Integer provId);
@@ -37,10 +37,10 @@ public interface ProducteRepository extends JpaRepository<Producte, Integer> {
 	/**
 	 * Find by marca and model and subfamilia and proveidor.
 	 *
-	 * @param marca 
-	 * @param model 
-	 * @param subfamiliaId 
-	 * @param proveidorId 
+	 * @param marca the marca
+	 * @param model the model
+	 * @param subfamiliaId the subfamilia id
+	 * @param proveidorId the proveidor id
 	 * @return producte
 	 */
 	@Query(value = " " +
@@ -60,7 +60,7 @@ public interface ProducteRepository extends JpaRepository<Producte, Integer> {
 	/**
 	 * Find by organitzacio id.
 	 *
-	 * @param orgId 
+	 * @param orgId the org id
 	 * @return list
 	 */
 	@Query(value = " " +
@@ -75,8 +75,8 @@ public interface ProducteRepository extends JpaRepository<Producte, Integer> {
 	/**
 	 * Cerca producte.
 	 *
-	 * @param camp 
-	 * @param orgId 
+	 * @param camp the camp
+	 * @param orgId the org id
 	 * @return list
 	 */
 	@Query(value = " " +

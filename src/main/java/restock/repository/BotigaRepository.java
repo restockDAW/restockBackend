@@ -20,7 +20,7 @@ public interface BotigaRepository extends JpaRepository<Botiga, Integer> {
 	/**
 	 * Find by nom.
 	 *
-	 * @param nom 
+	 * @param nom the nom
 	 * @return botiga
 	 */
 	public Botiga findByNom(String nom);
@@ -28,8 +28,8 @@ public interface BotigaRepository extends JpaRepository<Botiga, Integer> {
 	/**
 	 * Find by nom and organitzacio id.
 	 *
-	 * @param nom 
-	 * @param organitzacioId
+	 * @param nom the nom
+	 * @param organitzacioId the organitzacio id
 	 * @return botiga
 	 */
 	public Botiga findByNomAndOrganitzacioId(String nom, Integer organitzacioId);
@@ -37,7 +37,7 @@ public interface BotigaRepository extends JpaRepository<Botiga, Integer> {
 	/**
 	 * Find by organitzacio id.
 	 *
-	 * @param organitzacioId 
+	 * @param organitzacioId the organitzacio id
 	 * @return list
 	 */
 	public List<Botiga> findByOrganitzacioId(Integer organitzacioId);
@@ -45,7 +45,7 @@ public interface BotigaRepository extends JpaRepository<Botiga, Integer> {
 	/**
 	 * Find by id.
 	 *
-	 * @param id
+	 * @param id the id
 	 * @return botiga
 	 */
 	public Botiga findById(Integer id);
@@ -54,8 +54,8 @@ public interface BotigaRepository extends JpaRepository<Botiga, Integer> {
 	/**
 	 * Cerca botiga.
 	 *
-	 * @param camp 
-	 * @param orgId
+	 * @param camp the camp
+	 * @param orgId the org id
 	 * @return list
 	 */
 	@Query(value = " " +

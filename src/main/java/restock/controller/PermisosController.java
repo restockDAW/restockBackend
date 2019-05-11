@@ -42,7 +42,7 @@ public class PermisosController {
 	/**
 	 * Gets tots permisos.
 	 *
-	 * @param rol 
+	 * @param rol the rol
 	 * @return tots permisos
 	 */
 	@RequestMapping(path = "/totsElsPermisos", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -59,7 +59,7 @@ public class PermisosController {
 	/**
 	 * Gets permisos per rol.
 	 *
-	 * @param rolId 
+	 * @param rolId the rol id
 	 * @return permisos per rol
 	 */
 	@RequestMapping(path = "/permisPerRol/{rolId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

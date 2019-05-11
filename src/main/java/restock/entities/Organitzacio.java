@@ -49,7 +49,7 @@ public class Organitzacio implements java.io.Serializable {
 	/**
 	 * Organitzacio.
 	 *
-	 * @param id
+	 * @param id the id
 	 */
 	public Organitzacio(final Integer id) {
 		super();

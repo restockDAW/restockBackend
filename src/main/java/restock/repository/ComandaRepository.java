@@ -21,7 +21,7 @@ public interface ComandaRepository extends JpaRepository<Comanda, Integer> {
 	/**
 	 * Find by botiga id.
 	 *
-	 * @param botigaId
+	 * @param botigaId the botiga id
 	 * @return list
 	 */
 	public List<Comanda> findByBotigaId(Integer botigaId);
@@ -31,8 +31,8 @@ public interface ComandaRepository extends JpaRepository<Comanda, Integer> {
 	/**
 	 * Find pendents by botiga id.
 	 *
-	 * @param botigaId
-	 * @param data
+	 * @param botigaId the botiga id
+	 * @param data the data
 	 * @return list
 	 */
 	@Query(value = " " +
