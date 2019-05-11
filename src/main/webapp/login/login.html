@@ -1,0 +1,34 @@
+
+  <link rel="stylesheet" href="assets/css/custom.css"/>
+    
+  <div class="container">
+      <div class="card" style="max-width:750px;">
+        <a href="index.html" class="card-img-link">
+          <img src="assets/img/logo.png" class="card-img-top" alt="Logo ReStock">
+        </a>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <label for="user">Nom d'usuari</label>
+              <input class="form-control" id="user" placeholder="Introdueix el teu nom d'usuari" data-ng-model="username">
+            </div>
+            <div class="form-group">
+              <label for="password">Contrasenya</label>
+              <input type="password" class="form-control" id="password"
+              placeholder="Introdueix la teva contrasenya" data-ng-model="password">
+            </div>
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="remember">
+              <label class="form-check-label" for="remember">Recordar-me</label>
+            </div>
+            <button type="submit" class="btn btn-primary login" data-ng-click="Login(username, password)">Accedir</button>
+          </form>
+        </div>
+      </div>
+      <div id="menu">
+        <a href="index.html" style="float:left;">Tornar a la pàgina d'inici</a>
+        <a href="#!register" style="float:right;">Encara no tens un compte?</a>
+      </div>
+    </div>
+
+
