@@ -19,10 +19,10 @@
                         <span class="sr-only">Toggle Dropdown</span>
                       </button>
                       <div class="dropdown-menu dropdown-menu-right">
-                          <a class="dropdown-item" href="#"><i class="fas fa-file-excel mr-2"></i>Exportar excel</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-file-csv mr-2"></i>Exportar csv</a>
+                          <a class="dropdown-item" data-ng-click="exportToExcel('#tableComandes', 'Comandes')"><i class="fas fa-file-excel mr-2"></i>Exportar excel</a>
+                        <a class="dropdown-item" data-ng-click="exportToCsv('#tableComandes', 'Comandes')"><i class="fas fa-file-csv mr-2"></i>Exportar csv</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"><i class="fas fa-print mr-2"></i>Imprimir</a>
+                        <a class="dropdown-item" data-ng-click="exportToPdf('#tableComandes', 'Comandes')"><i class="fas fa-file-pdf mr-2"></i>Descargar pdf</a>
                       </div>
                     </div>
                     </span>                    
@@ -34,7 +34,7 @@
                 <!-- Table Responsive container -->
                 <div class="table-responsive">
                 
-                <table class="table table-hover">
+                <table class="table table-hover" id="tableComandes">
                   <thead>
                     <tr>                  
                         <th>Botiga</th>
