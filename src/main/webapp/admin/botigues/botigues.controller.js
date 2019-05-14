@@ -62,10 +62,11 @@ app.controller("botiguesCtrl", function($scope, $http, $window, Notification, bo
         
         var organitzacio = {};
         organitzacio.id = Auth.currentUser().organitzacio.id;
+        organitzacio.usuari = responsable;
         
-        responsable.organitzacio = organitzacio;
+        //responsable.organitzacio = organitzacio;
         
-        return responsablesService.createResponsable(responsable)
+        return responsablesService.createResponsable(organitzacio)
             .then(function (response) {
                 console.log(response);
                 Notification.primary(response);

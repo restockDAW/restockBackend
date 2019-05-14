@@ -58,7 +58,11 @@ function loginService($q, $http) {
             contentType: 'application/json',
             timeout: 120000
         }).then(function (response) {
-            deferred.resolve(angular.fromJson(response.data));
+            try {
+                deferred.resolve(angular.fromJson(response.data));                
+            } catch(err) {
+                deferred.resolve(null);
+            }
         }, function (error) {
             deferred.reject(error);
         });
