@@ -5,6 +5,7 @@ function responsablesService($q, $http) {
     var service = {
         getAll: getAll,
         getAllResponsables: getAllResponsables, 
+        getResponsable: getResponsable,
         createResponsable: createResponsable,
         updateResponsable: updateResponsable,
         deleteResponsable: deleteResponsable
@@ -33,6 +34,21 @@ function responsablesService($q, $http) {
             method: 'POST',
             data: orgId,
             url: baseURL + '/getResponsables',
+            dataType: "json",
+            contentType: 'application/json',
+            timeout: 120000
+        }).then(function (response) {
+            deferred.resolve(angular.fromJson(response.data));
+        }, function (error) {
+            deferred.reject(error);
+        });
+        return deferred.promise;
+    }
+    function getResponsable(id) {
+        var deferred = $q.defer();
+        $http({
+            method: 'GET',
+            url: baseURL + '/' + id,
             dataType: "json",
             contentType: 'application/json',
             timeout: 120000

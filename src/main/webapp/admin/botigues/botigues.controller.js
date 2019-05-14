@@ -1,4 +1,4 @@
-app.controller("botiguesCtrl", function($scope, $http, $window, Notification, botiguesService, responsablesService) {
+app.controller("botiguesCtrl", function($scope, $http, $window, Notification, botiguesService, responsablesService, Auth) {
         
     $scope.botiga = {};
     $scope.botigues = [];
@@ -13,11 +13,12 @@ app.controller("botiguesCtrl", function($scope, $http, $window, Notification, bo
     
     function LoadBotigues() {
         //add loader
-        return botiguesService.getAllBotigues(1)
+        return botiguesService.getAllBotigues(Auth.currentUser().organitzacio.id)
             .then(function (data) {
                 console.log(data);
                 $scope.botigues = data;
             }).catch(function(response) {
+                Notification.error(response);
                 //notification of error
             }).finally(function() {
                 //stop loader
@@ -25,8 +26,7 @@ app.controller("botiguesCtrl", function($scope, $http, $window, Notification, bo
     }
     
     function LoadResponsables() {
-        //return responsablesService.getAllResponsables(1)
-        return responsablesService.getAll()
+        return responsablesService.getAllResponsables(Auth.currentUser().organitzacio.id)
             .then(function (data) {
                 console.log(data);
                 $scope.responsables = data;
@@ -61,7 +61,7 @@ app.controller("botiguesCtrl", function($scope, $http, $window, Notification, bo
         responsable.rol = 2; //hardcoded value for responsable
         
         var organitzacio = {};
-        organitzacio.id = 1;
+        organitzacio.id = Auth.currentUser().organitzacio.id;
         
         responsable.organitzacio = organitzacio;
         
@@ -84,7 +84,7 @@ app.controller("botiguesCtrl", function($scope, $http, $window, Notification, bo
         console.log(botiga);
         
         var organitzacio = {};
-        organitzacio.id = 1;
+        organitzacio.id = Auth.currentUser().organitzacio.id;
         
         botiga.organitzacio = organitzacio;
         //botiga.usuari = angular.fromJson(botiga.usuari)

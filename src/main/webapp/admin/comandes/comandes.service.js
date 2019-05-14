@@ -1,81 +1,104 @@
-var baseURL = "http://localhost:8081/restock/usuari";
-
 app.service("comandesService", ["$q", "$http", comandesService])
 
 function comandesService($q, $http) {
     
+    var baseURL = "../comanda";    
     var service = {
         getAllComandes: getAllComandes, 
-        createComandes: createComandes,
-        updateComandes: updateComandes,
-        deleteComandes: deleteComandes
+        getDetallComanda: getDetallComanda, 
+        createComanda: createComanda,
+        updateComanda: updateComanda,
+        deleteComanda: deleteComanda
     };
     
     return service;
     
-    function getAllComandes() {
+    function getAllComandes(organitzacio) {
         var deferred = $q.defer();
         $http({
-            method: "GET",
-            url: baseURL + '/getAll',
+            method: "POST",
+            data: angular.toJson(organitzacio),
+            url: baseURL + '/cercarPendentsPerOrganitzacio',
             dataType: "json",
             contentType: 'application/json',
-            timeout: 120000
+            timeout: 120000,
+            transformResponse: undefined
         }).then(function (response) {
             deferred.resolve(angular.fromJson(response.data));
-        }, function (error) {
-            deferred.reject(error);
+        }, function (response) {
+            deferred.reject(response.data);
+        });
+        return deferred.promise;
+    }
+    
+    function getDetallComanda(comanda) {
+        var deferred = $q.defer();
+        $http({
+            method: 'POST',
+            data: angular.toJson(comanda),
+            url: baseURL + '/veureDetallComanda',
+            dataType: "json",
+            contentType: 'application/json',
+            timeout: 120000,
+            transformResponse: undefined
+        }).then(function (response) {
+            deferred.resolve(angular.fromJson(response.data));
+        }, function (response) {
+            deferred.reject(response.data);
         });
         return deferred.promise;
     }
         
-    function createComandes(comanda) {
+    function createComanda(comanda) {
         var deferred = $q.defer();
         $http({
             method: 'POST',
-            data: "{comanda:" + angular.toJson(comanda) + "}",
+            data: angular.toJson(comanda),
             url: baseURL + '/alta',
             dataType: "json",
             contentType: 'application/json',
-            timeout: 120000
+            timeout: 120000,
+            transformResponse: undefined
         }).then(function (response) {
-            deferred.resolve(angular.fromJson(response.data.d));
-        }, function (error) {
-            deferred.reject(error);
+            deferred.resolve(response.data);
+        }, function (response) {
+            deferred.reject(response.data);
         });
         return deferred.promise;
     }
     
-    function updateComandes(comanda) {
+    function updateComanda(comanda) {
         var deferred = $q.defer();
         $http({
             method: 'POST',
-            data: "{comanda:" + angular.toJson(comanda) + "}",
+            data: angular.toJson(comanda),
             url: baseURL + '/modificacio',
             dataType: "json",
             contentType: 'application/json',
-            timeout: 120000
+            timeout: 120000,
+            transformResponse: undefined
         }).then(function (response) {
-            deferred.resolve(angular.fromJson(response.data.d));
-        }, function (error) {
-            deferred.reject(error);
+            deferred.resolve(response.data);
+        }, function (response) {
+            deferred.reject(response.data);
         });
         return deferred.promise;
     }
     
-    function deleteComandes(comanda) {
+    function deleteComanda(comanda) {
         var deferred = $q.defer();
         $http({
             method: 'POST',
-            data: "{comanda:" + angular.toJson(comanda) + "}",
+            data: angular.toJson(comanda),
             url: baseURL + '/baixa',
             dataType: "json",
             contentType: 'application/json',
-            timeout: 120000
+            timeout: 120000,
+            transformResponse: undefined
         }).then(function (response) {
-            deferred.resolve(angular.fromJson(response.data.d));
-        }, function (error) {
-            deferred.reject(error);
+            deferred.resolve(response.data);
+        }, function (response) {
+            deferred.reject(response.data);
         });
         return deferred.promise;
     }

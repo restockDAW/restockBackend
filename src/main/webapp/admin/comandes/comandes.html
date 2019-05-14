@@ -1,14 +1,19 @@
 
                 <!-- Page Header -->
                 <div class="page-header">
+                    
+                    
                     <!-- Heading -->
-                    <span class="heading">10 Comandes</span>
+                    <span class="heading"><span data-ng-bind="comandes.length"></span> 
+                        <span data-ng-if="comandes.length > 1 || comandes.length == 0">Comandes</span>
+                        <span data-ng-if="comandes.length == 1">Comanda</span>
+                    </span>
                     <!-- /.Heading -->
                     
                     <!-- Right floated buttons -->
                     <span class="float-right">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-blue btn-md" data-toggle="modal" data-target="#modalNewUser"><i class="fas fa-user-plus mr-2" ></i>Crear comanda</button>
+                      <button type="button" class="btn btn-blue btn-md" data-ng-click="OpenAddComandaModal()"><i class="fas fas fa-shopping-basket mr-2" ></i>Crear comanda</button>
                       <button type="button" class="btn btn-blue btn-md dropdown-toggle px-3" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         <span class="sr-only">Toggle Dropdown</span>
@@ -31,23 +36,24 @@
                 
                 <table class="table table-hover">
                   <thead>
-                    <tr>
-                        <th>Usuari</th>                        
-                        <th>Nom</th>
-                        <th>Cognoms</th>
-                        <th>Correu electrónic</th>
+                    <tr>                  
+                        <th>Botiga</th>
+                        <th>Data de la comanda</th>      
+                        <th>Proveïdor</th>
+                        <th>Data de recepció</th>
                         <th style="width:140px;text-align: right"><i class="fas fa-cogs"></i></th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr data-ng-repeat="responsable in responsables">
-                      <td>{{responsable.user}}</td>                      
-                      <td>{{responsable.nom}}</td>
-                      <td>{{responsable.cognom1}} {{responsable.cognom2}}</td>
-                      <td>{{responsable.correu}}</td>
+                    <tr data-ng-repeat="comanda in comandes">                 
+                      <td>{{comanda.botiga.nom}}</td>
+                      <td>{{comanda.datacomanda}}</td>     
+                      <td>{{comanda.proveidor.nom}}</td>
+                      <td>{{comanda.datarecepcio}}</td>
                       <td style="width:140px;text-align: right">
-                          <a class="btn btn-orange btn-smaller"><i class="fas fa-edit"></i></a>
-                          <a class="btn btn-red btn-smaller"><i class="fas fa-trash"></i></a>
+                          <a class="btn btn-green btn-smaller" data-ng-click="OpenUpdateComandaToInventariModal(comanda)"><i class="fas fa-clipboard-check"></i></a>
+                          <a class="btn btn-orange btn-smaller" data-ng-click="OpenEditComandaModal(comanda)"><i class="fas fa-edit"></i></a>
+                          <a class="btn btn-red btn-smaller" data-ng-click="OpenDeleteComandaModal(comanda)"><i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
                   </tbody>
@@ -59,139 +65,215 @@
                                 
                 
                 
-            <div class="modal fade" id="modalNewUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            <div class="modal fade" id="modalComanda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true" data-keyboard="false" data-backdrop="static">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold"><i class="fas fa-user-plus mx-3"></i>Crear responsable</h4>
+          
+          
+        <h4 class="modal-title w-100 font-weight-bold">            
+            <span data-ng-if="modalType === 'alta'"><i class="fas fa-shopping-basket mx-3"></i>Crear comanda</span>
+            <span data-ng-if="modalType === 'modificacio'"><i class="fas fa-shopping-basket mx-3"></i>Editar comanda</span>
+            </h4>
+          
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body mx-3">
-          <form name="UserCreation">
-          <!-- Grid row -->
+          <form name="ComandaCreation">
+              
+                 <!-- Grid row -->
           <div class="form-row">
-            <!-- Grid column -->
-            <div class="col-md-6">
+              
+              
+              <!-- Grid column -->
+            <div class="col-md-6">                
               <!-- Material input -->
-              <div class="md-form form-group">
-                <input type="text" class="form-control" id="inputUserName"  data-ng-model="responsable.user" required>
-                <label data-error="Usuari invàlid" for="inputUserName">Usuari</label>
+              <div class="md-form input-group">
+                  <select data-ng-options="botiga.nom for botiga in botigues track by botiga.id" data-ng-model="comanda.botiga" class="browser-default custom-select" id="inputBotiga">
+                  </select>
+                <label class="active" data-error="Botiga invàlid" for="inputBotiga">Botiga</label>
               </div>
             </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
-            <div class="col-md-6">
+            <!-- Grid column --> 
+              
+              <!-- Grid column -->
+            <div class="col-md-6">                
               <!-- Material input -->
-              <div class="md-form form-group">
-                <input type="password" class="form-control" id="inputPassword"  data-ng-model="responsable.password" required>
-                <label for="inputPassword">Contrasenya</label>
+              <div class="md-form input-group">
+                  <select data-ng-options="proveidor.nom for proveidor in proveidors track by proveidor.id" data-ng-model="comanda.proveidor" class="browser-default custom-select" id="inputProveidor" data-ng-change="resetProductes()">
+                  </select>
+                <label class="active" data-error="Proveïdor invàlid" for="inputProveidor">Proveïdor</label>
               </div>
             </div>
-            <!-- Grid column -->
+            <!-- Grid column --> 
+              
           </div>
           <!-- Grid row -->
-          
-          <!-- Grid row -->
+              
+              
+                 <!-- Grid row -->
           <div class="form-row">
-            <!-- Grid column -->
-            <div class="col-md-4">
+              
+              
+              <!-- Grid column -->
+            <div class="col-md-6">                
               <!-- Material input -->
-              <div class="md-form form-group">
-                <input type="text" class="form-control" id="inputNom" data-ng-model="responsable.nom" required>
-                <label data-error="Nom invàlid" for="inputNom">Nom</label>
+              <div class="md-form input-group">
+                  <select data-ng-options="(producte.marca+' '+producte.model) for producte in productes track by producte.id" data-ng-model="producteToAdd.producte" class="browser-default custom-select" id="inputProducte">
+                  </select>
+                <label class="active" data-error="Botiga invàlid" for="inputProducte">Producte</label>
               </div>
             </div>
-            <!-- Grid column -->
-            <!-- Grid column -->
-            <div class="col-md-4">
+            <!-- Grid column --> 
+              
+              <!-- Grid column -->
+            <div class="col-md-6">
               <!-- Material input -->
-              <div class="md-form form-group">
-                <input type="text" class="form-control" id="inputCognom1"  data-ng-model="responsable.cognom1" required>
-                <label data-error="Cognom invàlid" for="inputCognom1">Cognom 1</label>
-              </div>
-            </div>
-            <!-- Grid column -->
-            <!-- Grid column -->
-            <div class="col-md-4">
-              <!-- Material input -->
-              <div class="md-form form-group">
-                <input type="text" class="form-control" id="inputCognom2"  data-ng-model="responsable.cognom2">
-                <label data-error="Cognom invàlid" for="inputCognom2">Cognom 2</label>
-              </div>
-            </div>
-            <!-- Grid column -->
-
-          </div>
-          <!-- Grid row -->
-
-          <!-- Grid row -->
-          <div class="form-row">
-            <!-- Grid column -->
-            <div class="col-md-4">
-              <!-- Material input -->
-              <div class="md-form form-group">
-                <input type="text" class="form-control" id="inputNIF" data-ng-model="responsable.nif" required>
-                <label for="inputNIF">NIF</label>
+              <div class="md-form input-group">
+                <input type="number" class="form-control" id="inputQuantitat" min="0"  data-ng-model="producteToAdd.quantitat" required>
+                <label class="active" data-error="Quantitat invàlida" for="inputQuantitat">Quantitat</label>
+                  
+                  <div class="input-group-append" id="MaterialButton-addon4">
+                    <button data-ng-click="AddProducteToList()" class="btn btn-md btn-primary m-0 px-3" type="button"  data-ng-class="producteToAdd.producte == null || producteToAdd.quantitat == 0? 'disabled' : ''"><i class="fas fa-cart-plus mx-3"></i></button>
+                  </div>
               </div>
             </div>
             <!-- Grid column -->
               
-            <!-- Grid column -->
-            <div class="col-md-4">
-              <!-- Material input -->
-              <div class="md-form form-group">
-                <input type="text" class="form-control" id="inputBirthDate"  data-ng-model="responsable.data_naixement">
-                <label for="inputBirthDate">Data naixement</label>
-              </div>
-            </div>
-            <!-- Grid column -->
 
-            <!-- Grid column -->
-            <div class="col-md-4">
-              <!-- Material input -->
-              <div class="md-form form-group">
-                <input type="email" class="form-control" id="inputEmail"  data-ng-model="responsable.correu" required>
-                <label data-error="Correu invàlid" for="inputEmail">Correu electrònic</label>
-              </div>
-            </div>
-            <!-- Grid column -->
+              
           </div>
           <!-- Grid row -->
+              
+              
+                 <!-- Grid row -->
+          <div class="form-row">
+              
+              
+              <!-- Grid column -->
+            <div class="col-md-11">                
+              <!-- Material input -->
+              <div class="md-form input-group">
+                  <input type="text" class="form-control" id="inputDescripcio"  data-ng-model="producteToAdd.producte.descripcio" readonly>
+                <label class="active" for="inputDescripcio">Descripció</label>
+              </div>
+            </div>
+            <!-- Grid column --> 
+              
+              <!-- Grid column -->
+            <div class="col-md-1">                
+              <!-- Material input -->
+              <div class="md-form input-group">
+                  <input type="text" class="form-control" id="inputPreu"  data-ng-model="producteToAdd.producte.preu" readonly>
+                <label class="active" for="inputPreu">Preu</label>
+              </div>
+            </div>
+            <!-- Grid column --> 
+              
+
+              
+          </div>
+          <!-- Grid row -->
+              
+              <hr>
+              
+              
+                <!-- Table Responsive container -->
+                <div class="table-responsive">
+                
+                <table class="table table-hover">
+                  <thead>
+                    <tr>                  
+                        <th>Marca</th>
+                        <th>Model</th>      
+                        <th>Preu</th>
+                        <th>Quantitat</th>
+                        <th style="text-align: right;width:200px;">
+                            <a class="btn btn-red btn-sm" data-ng-click="resetProductes()">Borrar-ho tot <i class="fas fa-magic ml-1"></i></a></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr data-ng-repeat="item in productesList">
+                      <td>{{item.producte.marca}}</td>                      
+                      <td>{{item.producte.model}}</td>
+                      <td>{{item.producte.preu}}</td>
+                      <td>{{item.quantitat}}</td>
+                      <td style="width:140px;text-align: right">
+                          <a class="btn btn-red btn-smaller" data-ng-click="deleteProducte($index)"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                  </tbody>
+                </table>
+                
+                
+                </div>
+                <!-- /.Table Responsive container -->
+              
+              
               <br>
           </form>
       </div>
+        
       <div class="modal-footer d-flex justify-content-center">
-        <button class="btn btn-blue" data-ng-disabled="UserCreation.$invalid" data-ng-click="AddUser(responsable)">Donar d'alta</button>
+        <button data-ng-if="modalType === 'alta'" class="btn btn-blue" data-ng-disabled="ComandaCreation.$invalid" data-ng-click="AddComanda(comanda)" +
+                data-ng-class="productesList.length == 0 || comanda.botiga == null || comanda.proveidor == null ? 'disabled' : ''">Crear</button>
+        <button data-ng-if="modalType === 'modificacio'" class="btn btn-orange" data-ng-disabled="ComandaCreation.$invalid" data-ng-click="UpdateComanda(comanda)">Actualitzar</button>
       </div>
     </div>
   </div>
 </div>
                 
                 
-<div class="modal fade show" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-modal="true">
+<div class="modal fade show" id="modalDeleteComanda" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-modal="true">
       <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
         <!--Content-->
         <div class="modal-content text-center">
           <!--Header-->
           <div class="modal-header d-flex justify-content-center">
-            <p class="heading">Està segur de borrar el responsable?</p>
+            <p class="heading">Està segur de borrar la comanda?</p>
           </div>
 
           <!--Body-->
           <div class="modal-body">
 
-            <i class="fas fa-user-minus fa-4x animated fadeIn"></i>
+            <i class="fas fa-shopping-basket fa-4x animated fadeIn"></i>
 
           </div>
 
           <!--Footer-->
           <div class="modal-footer flex-center">
-            <a href="" class="btn btn-outline-danger waves-effect waves-light">Si</a>
+            <a href="" class="btn btn-outline-danger waves-effect waves-light" data-ng-click="ConfirmDelete(comanda)">Si</a>
             <a type="button" class="btn btn-danger waves-effect" data-dismiss="modal">No</a>
+          </div>
+        </div>
+        <!--/.Content-->
+      </div>
+    </div>
+
+        
+<div class="modal fade show" id="modalUpdateToInventari" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-modal="true">
+      <div class="modal-dialog modal-sm modal-notify modal-success" role="document">
+        <!--Content-->
+        <div class="modal-content text-center">
+          <!--Header-->
+          <div class="modal-header d-flex justify-content-center">
+            <p class="heading">Està segur de marcar la comanda com realitzada?</p>
+          </div>
+
+          <!--Body-->
+          <div class="modal-body">
+
+            <i class="fas fa-shopping-basket fa-4x animated fadeIn"></i>
+
+          </div>
+
+          <!--Footer-->
+          <div class="modal-footer flex-center">
+            <a href="" class="btn btn-outline-success waves-effect waves-light" data-ng-click="ConfirmUpdateToInventari(comanda)">Si</a>
+            <a type="button" class="btn btn-info waves-effect" data-dismiss="modal">No</a>
           </div>
         </div>
         <!--/.Content-->

@@ -18,8 +18,15 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 
+import restock.dto.Login;
+import restock.entities.Botiga;
+import restock.entities.Organitzacio;
 import restock.entities.Usuari;
 import restock.services.UsuariBusiness;
+
+import restock.services.BotigaBusiness;
+import restock.services.OrganitzacioBusiness;;
+
 
 
 /**
@@ -49,6 +56,8 @@ public class UsuariController {
 		}
 	}
 
+
+	
 	/**
 	 * Gets usuaris de organitzacio.
 	 *
@@ -96,11 +105,13 @@ public class UsuariController {
 	 */
 	@RequestMapping(path = "/alta", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> alta(
-			@RequestBody final Usuari usuari) {
+			@RequestBody final Organitzacio organitzacio) {
 
 		try {
 			final HttpHeaders httpHeaders = new HttpHeaders();
-			final Usuari usuariRetorn = usuariBusiness.guardaUsuari(usuari);
+			final Usuari responsable = organitzacio.getUsuari();
+			responsable.setOrganitzacio(organitzacio);
+			final Usuari usuariRetorn = usuariBusiness.guardaUsuari(responsable);
 			if ((usuariRetorn == null)) {
 				return new ResponseEntity<>("El responsable ja existeix", httpHeaders, HttpStatus.BAD_REQUEST);
 			} else {

@@ -1,4 +1,4 @@
-app.controller("proveidorsCtrl", function($scope, $http, $window, proveidorsService, Notification) {
+app.controller("proveidorsCtrl", function($scope, $http, $window, proveidorsService, Notification, Auth) {
         
     $scope.proveidor = {};
     $scope.proveidors = [];
@@ -13,7 +13,7 @@ app.controller("proveidorsCtrl", function($scope, $http, $window, proveidorsServ
 
     function LoadProveidors() {
         //add loader
-        return proveidorsService.getAllProveidors(1)
+        return proveidorsService.getAllProveidors(Auth.currentUser().organitzacio.id)
             .then(function (data) {
                 console.log(data);
                 $scope.proveidors = data;
@@ -42,7 +42,7 @@ app.controller("proveidorsCtrl", function($scope, $http, $window, proveidorsServ
         console.log(proveidor);
         
         var organitzacio = {};
-        organitzacio.id = 1;
+        organitzacio.id = Auth.currentUser().organitzacio.id;
         
         proveidor.organitzacio = organitzacio;
         

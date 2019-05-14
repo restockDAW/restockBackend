@@ -24,16 +24,30 @@ app.controller("LoginCtrl", function($scope, $http, $window, Notification, login
             password: password
         }
         
+        var usuari = {};
+        
         return loginService.login(credentials)
-            .then(function (response) {
+            .then(function (usuari) {
             
-            console.log(response);            
-            Auth.login(response);
-            Auth.currentUser();
+            console.log(usuari);
             
-            //redirect to user app - depending on role
-            
-            redirectToRolePath();
+            loginService.getBotiga(usuari).then(function(botiga) {
+                usuari.botiga = botiga;                
+            }).finally(function() {
+                loginService.getOrganitzacio(usuari).then(function(organitzacio) {
+                usuari.organitzacio = organitzacio;                
+                }).finally(function() {
+                    
+
+                    Auth.login(usuari);
+                    Auth.currentUser();
+
+                    //redirect to user app - depending on role
+
+                    redirectToRolePath();
+
+                });
+            });
             
             
             }).catch(function(response) {

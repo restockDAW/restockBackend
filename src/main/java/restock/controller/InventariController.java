@@ -22,6 +22,7 @@ import restock.dto.ComandaBotiga;
 import restock.entities.Botiga;
 import restock.entities.Inventari;
 import restock.entities.Organitzacio;
+import restock.services.ComandaBusiness;
 import restock.services.InventariBusiness;
 
 
@@ -34,6 +35,8 @@ public class InventariController {
     
     @Autowired
     private InventariBusiness inventariBusiness;
+    @Autowired
+    private ComandaBusiness comandaBusiness;
     
 
     /**
@@ -105,6 +108,7 @@ public class InventariController {
 			if ((listInventari.size()== 0)) {
 				return new ResponseEntity<>("No s'ha pogut actualitzar l'inventari", httpHeaders, HttpStatus.BAD_REQUEST);
 			} else {
+				comandaBusiness.eliminaComanda(comandaBotiga);
 				return new ResponseEntity<>(listInventari, httpHeaders, HttpStatus.OK);
 			}
 		} catch (final Exception e) {

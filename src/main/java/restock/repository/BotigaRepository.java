@@ -50,6 +50,8 @@ public interface BotigaRepository extends JpaRepository<Botiga, Integer> {
 	 */
 	public Botiga findById(Integer id);
 	
+	public Botiga findByUsuariId(Integer id);
+	
 
 	/**
 	 * Cerca botiga.

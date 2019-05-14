@@ -5,6 +5,7 @@ function productesService($q, $http) {
     var baseURL = "../producte";    
     var service = {
         getAllProductes:  getAllProductes, 
+        getProductesOfProveedor: getProductesOfProveedor,
         createProducte: createProducte,
         updateProducte: updateProducte,
         deleteProducte: deleteProducte,
@@ -20,6 +21,23 @@ function productesService($q, $http) {
             method: 'POST',
             data: orgId,
             url: baseURL + '/getProductes',
+            dataType: "json",
+            contentType: 'application/json',
+            timeout: 120000
+        }).then(function (response) {
+            deferred.resolve(angular.fromJson(response.data));
+        }, function (error) {
+            deferred.reject(error);
+        });
+        return deferred.promise;
+    }
+    
+    function getProductesOfProveedor(proveedor) {
+        var deferred = $q.defer();
+        $http({
+            method: 'POST',
+            data: angular.toJson(proveedor),
+            url: baseURL + '/getProductesOfProveedor',
             dataType: "json",
             contentType: 'application/json',
             timeout: 120000

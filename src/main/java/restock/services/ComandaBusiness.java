@@ -103,6 +103,23 @@ public class ComandaBusiness {
 		}		
 	}
 	
+	public Boolean eliminaComanda(final ComandaBotiga comandaBotiga) {
+		if(comandaBotiga.getDetallComandaList().size()>0){
+			
+			Integer comandaId = comandaBotiga.getDetallComandaList().get(0).getComanda().getId();
+			List<DetallComanda> detallComandaList = detallComandaRepository.findByComandaId(comandaId);
+			detallComandaRepository.delete(detallComandaList);
+			
+			Comanda comanda = comandaRepository.findOne(comandaId);
+			comandaRepository.delete(comanda);
+			
+			return true;
+		}else {
+			return null;
+		}		
+	}
+	
+	
 	/**
 	 * Cerca comandes per botiga.
 	 *

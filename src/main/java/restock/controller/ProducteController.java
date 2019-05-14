@@ -23,6 +23,7 @@ import restock.dto.Cercador;
 import restock.entities.Familia;
 import restock.entities.Producte;
 import restock.entities.SubFamilia;
+import restock.entities.Usuari;
 import restock.services.ProducteBusiness;
 
 
@@ -51,7 +52,7 @@ public class ProducteController {
 	 * @return proveidors de organitzacio
 	 */
 	@RequestMapping(path = "/getProductes", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> getProveidorsDeOrganitzacio(
+	public ResponseEntity<?> getProductesDeOrganitzacio(
 			@RequestBody final Integer orgId) {
 		try {
 			final HttpHeaders httpHeaders = new HttpHeaders();
@@ -62,7 +63,24 @@ public class ProducteController {
 		}
 	}
 	
-    
+	/**
+	 * Gets productes de proveidor
+	 *
+	 * @param orgId the org id
+	 * @return proveidors de organitzacio
+	 */
+	@RequestMapping(path = "/getProductesOfProveedor", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> getProductesDeProveedor(
+			@RequestBody final Usuari usuari) {
+		try {
+			final HttpHeaders httpHeaders = new HttpHeaders();
+			final List<Producte> productes = producteBusiness.getProductesPerProveidor(usuari.getId());
+			return new ResponseEntity<>(productes, httpHeaders, HttpStatus.OK);
+		}catch(final Exception e){	
+			return new ResponseEntity<>(e.getMessage(),HttpStatus.NO_CONTENT);
+		}
+	}
+	
 	/**
 	 * Alta.
 	 *

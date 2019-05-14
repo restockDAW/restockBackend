@@ -1,4 +1,4 @@
-app.controller("responsablesCtrl", function($scope, $http, $window, Notification, responsablesService) {
+app.controller("responsablesCtrl", function($scope, $http, $window, Notification, responsablesService, Auth) {
         
     $scope.responsable = {};
     $scope.responsables = [];        
@@ -9,13 +9,15 @@ app.controller("responsablesCtrl", function($scope, $http, $window, Notification
     function onInit() {
         console.log("Responsables controller initiatied!");
         LoadResponsables(); 
+        console.log(Auth.currentUser());
     }
         
     
+    
     function LoadResponsables() {
         //add loader
-        //return responsablesService.getAllResponsables(1)
-        return responsablesService.getAll()
+        return responsablesService.getAllResponsables(Auth.currentUser().organitzacio.id)
+        //return responsablesService.getAll()
             .then(function (data) {
                 console.log(data);
                 $scope.responsables = data;
@@ -46,12 +48,12 @@ app.controller("responsablesCtrl", function($scope, $http, $window, Notification
         responsable.rol = 2; //hardcoded value for responsable
         
         var organitzacio = {};
-        organitzacio.id = 1;
+        organitzacio.id = Auth.currentUser().organitzacio.id;
+        organitzacio.usuari = responsable;
         
-        responsable.organitzacio = organitzacio;
+        //responsable.organitzacio = organitzacio;
         
-        
-        return responsablesService.createResponsable(responsable)
+        return responsablesService.createResponsable(organitzacio)
             .then(function (response) {
                 console.log(response);
                 Notification.primary(response);

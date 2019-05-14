@@ -29,4 +29,7 @@ public interface OrganitzacioRepository extends JpaRepository<Organitzacio, Inte
 	 */
 	public Organitzacio findByNom(String nom);
 
+	public Organitzacio findByUsuariId(Integer id);
+	
+	
 }

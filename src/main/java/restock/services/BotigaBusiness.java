@@ -180,4 +180,11 @@ public class BotigaBusiness {
 		}
 	}
 	
+	public Botiga getBotigaOfResponsable(Usuari usuari) {
+		Botiga botiga = botigaRepository.findByUsuariId(usuari.getId());
+		return botiga;
+		}
+	
+	
+	
 }

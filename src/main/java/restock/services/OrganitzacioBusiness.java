@@ -7,6 +7,7 @@ package restock.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import restock.entities.Botiga;
 import restock.entities.Organitzacio;
 import restock.entities.Usuari;
 import restock.repository.OrganitzacioRepository;
@@ -56,4 +57,10 @@ public class OrganitzacioBusiness {
 			return null;
 		}else return null;
 	}
+		
+	public Organitzacio getOrganitzacioOfUsuari(Usuari usuari) {
+		Organitzacio organitzacio = organitzacioRepository.findByUsuariId(usuari.getId());
+		return organitzacio;
+		}
+	
 }

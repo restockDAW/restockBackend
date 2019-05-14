@@ -88,6 +88,23 @@ public class ComandaController {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
+
+	@RequestMapping(path = "/baixa", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> baixa(
+			@RequestBody final ComandaBotiga comandaBotiga) {
+
+		try {
+			final HttpHeaders httpHeaders = new HttpHeaders();
+			final Boolean deleted = comandaBusiness.eliminaComanda(comandaBotiga);
+			if (deleted == false) {
+				return new ResponseEntity<>("No s'ha pogut borrar la comanda", httpHeaders, HttpStatus.BAD_REQUEST);
+			} else {
+				return new ResponseEntity<>("Comanda borrada correctament", httpHeaders, HttpStatus.OK);
+			}
+		} catch (final Exception e) {
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+	}
 		
 	
 	/**

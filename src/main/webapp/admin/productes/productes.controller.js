@@ -1,4 +1,4 @@
-app.controller("productesCtrl", function($scope, $http, $window, Notification, productesService, proveidorsService) {
+app.controller("productesCtrl", function($scope, $http, $window, Notification, productesService, proveidorsService, Auth) {
         
     $scope.producte = {};
     $scope.productes = [];      
@@ -17,7 +17,7 @@ app.controller("productesCtrl", function($scope, $http, $window, Notification, p
     
     function LoadProductes() {
         //add loader
-        return productesService.getAllProductes(1)
+        return productesService.getAllProductes(Auth.currentUser().organitzacio.id)
             .then(function (data) {
                 console.log(data);
                 $scope.productes = data;
@@ -30,7 +30,7 @@ app.controller("productesCtrl", function($scope, $http, $window, Notification, p
     
     
     function LoadProveidors() {
-        return proveidorsService.getAllProveidors(1)
+        return proveidorsService.getAllProveidors(Auth.currentUser().organitzacio.id)
             .then(function (data) {
                 console.log(data);
                 $scope.proveidors = data;
